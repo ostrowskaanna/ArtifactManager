@@ -11,8 +11,10 @@ namespace ArtifactManager
     {
         public CodeFirstContext(): base("ArtifactDatabase")
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<CodeFirstContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<CodeFirstContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<CodeFirstContext>());
         }
+
 
         public virtual DbSet<User> Users { get; set; }
 

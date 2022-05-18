@@ -18,7 +18,8 @@ namespace ArtifactManager
         bool EmailFilled = false;
         bool PasswordFilled = false;
         bool ConfirmPasswordFilled = false;
-
+        
+        
         public Registration()
         {
             InitializeComponent();
@@ -28,16 +29,34 @@ namespace ArtifactManager
 
         private void SignUp_Click(object sender, EventArgs e)
         {
-            registrationHandle.getRegistrationData(this.textBoxUsername.ToString(), this.textBoxEmail.ToString(),
-                this.textBoxPassword.ToString(), this.textBoxConfirmPassword.ToString());
-            registrationHandle.addNewUser();
-            registrationHandle.openHomeForm();
+            registrationHandle.getRegistrationData(this.textBoxUsername.Text, this.textBoxEmail.Text,
+                this.textBoxPassword.Text, this.textBoxConfirmPassword.Text);
+            int error = registrationHandle.checkIfRegistrationDataIsCorrect();
+            if(error == 1)
+            {
+                MessageBox.Show("This username is taken. Please select a differnet one.");
+            }
+            else if(error == 2)
+            {
+                MessageBox.Show("Entered passwords are not the same. Please try again.");
+            }
+            else
+            {
+                MessageBox.Show("User added.");
+                registrationHandle.openHomeForm();
+            }
+
         }
+    
 
         private void SignIn_Click(object sender, EventArgs e)
         {
-            registrationHandle.getLoginData(this.textBoxUsername.ToString(), this.textBoxEmail.ToString(), this.textBoxPassword.ToString());
-            registrationHandle.openHomeForm();
+            registrationHandle.getLoginData(this.textBoxUsername.Text, this.textBoxEmail.Text, this.textBoxPassword.Text);
+            bool correct = registrationHandle.checkIfLoginDataIsCorrect();
+            if (correct)
+            {
+                registrationHandle.openHomeForm();
+            }
         }
 
         private void textBoxUsernameCheck(object sender, EventArgs e)
@@ -45,8 +64,8 @@ namespace ArtifactManager
             if(textBoxUsername != null) 
             { 
                 UsernameFilled = true;
-                this.checkIfSignInIsEnable();
             }
+            this.checkIfSignInIsEnable();
         }
 
         private void textBoxEmailCheck(object sender, EventArgs e)
@@ -54,8 +73,8 @@ namespace ArtifactManager
             if(textBoxEmail != null) 
             { 
                 EmailFilled = true;
-                this.checkIfSignInIsEnable();
             }
+            this.checkIfSignInIsEnable();
         }
 
         private void textBoxPassowrdCheck(object sender, EventArgs e)
@@ -63,8 +82,8 @@ namespace ArtifactManager
             if(textBoxPassword != null) 
             { 
                 PasswordFilled = true;
-                this.checkIfSignInIsEnable();
             }
+            this.checkIfSignInIsEnable();
         }
 
         private void textBoxConfirmPasswordCheck(object sender, EventArgs e)
@@ -72,8 +91,8 @@ namespace ArtifactManager
             if(textBoxConfirmPassword != null) 
             { 
                 ConfirmPasswordFilled = true;
-                this.checkIfSignUpIsEnable();
             }
+            this.checkIfSignUpIsEnable();
         }
 
         private void checkIfSignInIsEnable()
@@ -82,6 +101,10 @@ namespace ArtifactManager
             {
                 this.SignIn.Enabled = true;
             }
+            else
+            {
+                this.SignIn.Enabled = false;
+            }
         }
 
         private void checkIfSignUpIsEnable()
@@ -89,6 +112,10 @@ namespace ArtifactManager
             if(this.SignIn.Enabled == true && ConfirmPasswordFilled == true)
             {
                 this.SignUp.Enabled = true;
+            }
+            else
+            {
+                this.SignUp.Enabled = false;
             }
         }
 

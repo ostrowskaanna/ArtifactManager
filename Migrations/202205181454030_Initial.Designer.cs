@@ -7,13 +7,13 @@ namespace ArtifactManager.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddedPasswordProp : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedPasswordProp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205172138394_AddedPasswordProp"; }
+            get { return "202205181454030_Initial"; }
         }
         
         string IMigrationMetadata.Source

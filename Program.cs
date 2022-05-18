@@ -9,11 +9,11 @@ namespace ArtifactManager
     internal class Program
     {
 
-        CodeFirstContext context = new CodeFirstContext();
+        public static CodeFirstContext context = new CodeFirstContext();
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Registration());
         }
     }

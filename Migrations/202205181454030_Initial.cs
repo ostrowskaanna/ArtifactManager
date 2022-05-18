@@ -13,7 +13,9 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
-                        email = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Password = c.String(nullable: false),
+                        Role = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

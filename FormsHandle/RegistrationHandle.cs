@@ -13,7 +13,6 @@ namespace ArtifactManager.FormsHandle
         string email;
         string password;
         string confirmPassword;
-
         public RegistrationHandle()
         {
         }
@@ -37,6 +36,32 @@ namespace ArtifactManager.FormsHandle
             password = password_;
         }
 
+        public bool checkIfLoginDataIsCorrect()
+        {
+            return true;
+        }
+
+        public int checkIfRegistrationDataIsCorrect()
+        {
+            int error = 0;
+
+            //user with this username already exists
+            using (var db = new CodeFirstContext())
+            {
+                var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
+                if (foundUser != null) { error = 1; }
+            }
+
+            //password and confirmPassword are different
+            if (password != confirmPassword) { error = 2; }
+
+            if (error == 0)
+            {
+                this.addNewUser();
+            }
+            return error;
+        }
+
         public void openHomeForm()
         {
             registration.Hide();
@@ -47,7 +72,18 @@ namespace ArtifactManager.FormsHandle
 
         public void addNewUser()
         {
-            
+            using (var db = new CodeFirstContext())
+            {
+                db.Users.Add(new User()
+                {
+                    Id = 1,
+                    Name = username,
+                    Email = email,
+                    Password = password,
+                    Role = "user"
+                });
+                db.SaveChanges();
+            }
         }
 
     }
