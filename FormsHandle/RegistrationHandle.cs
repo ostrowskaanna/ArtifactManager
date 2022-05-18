@@ -38,7 +38,14 @@ namespace ArtifactManager.FormsHandle
 
         public bool checkIfLoginDataIsCorrect()
         {
-            return true;
+            using (var db = new CodeFirstContext())
+            {
+                var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
+                if (foundUser == null) { return false; }
+                else if(foundUser.Email == email && foundUser.Password == password) { return true; }
+                else { return false; }
+            }
+            
         }
 
         public int checkIfRegistrationDataIsCorrect()

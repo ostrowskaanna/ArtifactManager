@@ -55,7 +55,12 @@ namespace ArtifactManager
             bool correct = registrationHandle.checkIfLoginDataIsCorrect();
             if (correct)
             {
+                MessageBox.Show("Logged in correctly.");
                 registrationHandle.openHomeForm();
+            }
+            else
+            {
+                MessageBox.Show("Entered data is incorrect. Please try again.");
             }
         }
 
