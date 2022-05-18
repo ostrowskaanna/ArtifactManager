@@ -45,7 +45,7 @@
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(299, 53);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(100, 22);
+            this.textBoxUsername.Size = new System.Drawing.Size(132, 22);
             this.textBoxUsername.TabIndex = 0;
             this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsernameCheck);
             // 
@@ -53,7 +53,7 @@
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(299, 103);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(100, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(132, 22);
             this.textBoxEmail.TabIndex = 1;
             this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmailCheck);
             // 
@@ -61,7 +61,7 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(299, 155);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPassword.Size = new System.Drawing.Size(132, 22);
             this.textBoxPassword.TabIndex = 2;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassowrdCheck);
             // 
@@ -105,7 +105,7 @@
             // 
             this.textBoxConfirmPassword.Location = new System.Drawing.Point(299, 205);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
-            this.textBoxConfirmPassword.Size = new System.Drawing.Size(100, 22);
+            this.textBoxConfirmPassword.Size = new System.Drawing.Size(132, 22);
             this.textBoxConfirmPassword.TabIndex = 7;
             this.textBoxConfirmPassword.TextChanged += new System.EventHandler(this.textBoxConfirmPasswordCheck);
             // 
