@@ -197,7 +197,6 @@ namespace ArtifactManager.FormsHandle
         {
             registration.Hide();
             Home home = new Home(username);
-            //home.username = username;
             home.ShowDialog();
             registration.Close();
         }

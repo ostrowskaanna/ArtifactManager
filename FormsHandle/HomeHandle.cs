@@ -101,10 +101,19 @@ namespace ArtifactManager.FormsHandle
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
-                if(foundUser.Email == textBoxOldPassword.Text)
+                if(foundUser.Password == textBoxOldPassword.Text)
                 {
-                    
+                    foundUser.Password = textBoxNewPassword.Text;
+                    MessageBox.Show("Password changed.");
+                    textBoxNewPassword.Text = "";
+                    textBoxOldPassword.Text = "";
+                    confirmButton.Enabled = false;
                 }
+                else
+                {
+                    MessageBox.Show("You entered wrong old password. Please try again.");
+                }
+                db.SaveChanges();
             }
         }
 
