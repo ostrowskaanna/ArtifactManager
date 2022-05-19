@@ -19,9 +19,16 @@ namespace ArtifactManager
         {
             InitializeComponent();
             username = username_;
-            MessageBox.Show(username);
             homeHandle.getHomeForm(this, this.label1, this.label2, 
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username);
+            using (var db = new CodeFirstContext())
+            {
+                var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
+                if (foundUser != null && foundUser.Role == "admin")
+                {
+                    this.Users.Visible = true;
+                }
+            }
         }
 
         private void showProfileDetails(object sender, EventArgs e)
@@ -47,6 +54,11 @@ namespace ArtifactManager
         private void confirmButtonClick(object sender, EventArgs e)
         {
             homeHandle.confirmButtonClick();
+        }
+
+        private void logOut(object sender, EventArgs e)
+        {
+            homeHandle.logOut();
         }
     }
 }

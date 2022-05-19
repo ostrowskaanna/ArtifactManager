@@ -43,6 +43,9 @@
             this.textBoxOldPassword = new System.Windows.Forms.TextBox();
             this.textBoxNewPassword = new System.Windows.Forms.TextBox();
             this.confirmButton = new System.Windows.Forms.Button();
+            this.Users = new System.Windows.Forms.ToolStripMenuItem();
+            this.SeeAllUsers = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewUser = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +63,8 @@
             this.Menu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MyProfile,
-            this.MyFigures});
+            this.MyFigures,
+            this.Users});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(648, 28);
@@ -80,22 +84,23 @@
             // ProfileDetails
             // 
             this.ProfileDetails.Name = "ProfileDetails";
-            this.ProfileDetails.Size = new System.Drawing.Size(207, 26);
+            this.ProfileDetails.Size = new System.Drawing.Size(224, 26);
             this.ProfileDetails.Text = "Profile Details";
             this.ProfileDetails.Click += new System.EventHandler(this.showProfileDetails);
             // 
             // ChangePassword
             // 
             this.ChangePassword.Name = "ChangePassword";
-            this.ChangePassword.Size = new System.Drawing.Size(207, 26);
+            this.ChangePassword.Size = new System.Drawing.Size(224, 26);
             this.ChangePassword.Text = "Change Password";
             this.ChangePassword.Click += new System.EventHandler(this.changePassword);
             // 
             // LogOut
             // 
             this.LogOut.Name = "LogOut";
-            this.LogOut.Size = new System.Drawing.Size(207, 26);
+            this.LogOut.Size = new System.Drawing.Size(224, 26);
             this.LogOut.Text = "Log Out";
+            this.LogOut.Click += new System.EventHandler(this.logOut);
             // 
             // MyFigures
             // 
@@ -175,6 +180,28 @@
             this.confirmButton.Visible = false;
             this.confirmButton.Click += new System.EventHandler(this.confirmButtonClick);
             // 
+            // Users
+            // 
+            this.Users.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SeeAllUsers,
+            this.AddNewUser});
+            this.Users.Name = "Users";
+            this.Users.Size = new System.Drawing.Size(58, 24);
+            this.Users.Text = "Users";
+            this.Users.Visible = false;
+            // 
+            // SeeAllUsers
+            // 
+            this.SeeAllUsers.Name = "SeeAllUsers";
+            this.SeeAllUsers.Size = new System.Drawing.Size(224, 26);
+            this.SeeAllUsers.Text = "See All Users";
+            // 
+            // AddNewUser
+            // 
+            this.AddNewUser.Name = "AddNewUser";
+            this.AddNewUser.Size = new System.Drawing.Size(224, 26);
+            this.AddNewUser.Text = "Add New User";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -214,5 +241,8 @@
         private System.Windows.Forms.TextBox textBoxOldPassword;
         private System.Windows.Forms.TextBox textBoxNewPassword;
         private System.Windows.Forms.Button confirmButton;
+        private System.Windows.Forms.ToolStripMenuItem Users;
+        private System.Windows.Forms.ToolStripMenuItem SeeAllUsers;
+        private System.Windows.Forms.ToolStripMenuItem AddNewUser;
     }
 }

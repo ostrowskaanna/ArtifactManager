@@ -31,15 +31,14 @@ namespace ArtifactManager.FormsHandle
             textBoxNewPassword = textBoxNewPasword_ ;
             confirmButton = confirmButton_;
             username = username_;
-            MessageBox.Show(username);
             textBoxOldPassword.PasswordChar = '*';
             textBoxNewPassword.PasswordChar = '*';
-
-            
         }
         
         public void showProfileDetails()
         {
+            this.textBoxOldPassword.Visible = false;
+            this.textBoxNewPassword.Visible = false;
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
@@ -115,6 +114,14 @@ namespace ArtifactManager.FormsHandle
                 }
                 db.SaveChanges();
             }
+        }
+
+        public void logOut()
+        {
+            home.Hide();
+            Registration registration = new Registration();
+            registration.ShowDialog();
+            home.Close();
         }
 
     }
