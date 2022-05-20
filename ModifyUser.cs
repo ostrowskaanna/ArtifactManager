@@ -13,17 +13,17 @@ namespace ArtifactManager
 {
     public partial class ModifyUser : Form
     {
-        string userToModify;
+        User userToModify;
         string adminUsername;
         ModifyUserHandle modifyHandle = new ModifyUserHandle();
 
-        public ModifyUser(string userToModify_, string adminUsername_)
+        public ModifyUser(User userToModify_, string adminUsername_)
         {
             InitializeComponent();
             userToModify_ = userToModify_;
             adminUsername = adminUsername_;
             modifyHandle.getModifyUserForm(this, this.returnButton, this.changeButton, this.adminUsername,
-                this.textBoxUsername, this.textBoxEmail, this.textBoxPassword);
+                this.userToModify, this.textBoxUsername, this.textBoxEmail, this.textBoxPassword);
         }
 
         private void returnToHomePanel(object sender, EventArgs e)

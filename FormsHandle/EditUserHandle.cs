@@ -55,7 +55,14 @@ namespace ArtifactManager.FormsHandle
 
         public void modifyUser()
         {
-            string userToModify = list.SelectedItem.ToString();
+            User userToModify;
+            string user = list.SelectedItem.ToString();
+            using(var db = new CodeFirstContext())
+            {
+                userToModify = db.Users.FirstOrDefault(u => u.Name == user);
+                db.SaveChanges();
+            }
+
             usersList.Hide();
             ModifyUser modifyUserForm = new ModifyUser(userToModify, this.username);
             modifyUserForm.ShowDialog();

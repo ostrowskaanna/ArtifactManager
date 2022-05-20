@@ -18,14 +18,15 @@ namespace ArtifactManager.FormsHandle
         CheckedListBox roleListBox;
 
         string adminUsername;
-
+        User userToModify;
         public void getModifyUserForm(ModifyUser modifyuserForm_, Button returnButton_, Button changeButton_,
-            string adminUsername_, TextBox textBoxUsername_, TextBox textBoxEmail_, TextBox textBoxPassword_)
+            string adminUsername_, User userToModify_, TextBox textBoxUsername_, TextBox textBoxEmail_, TextBox textBoxPassword_)
         {
             modifyUserForm = modifyuserForm_;
             returnButton = returnButton_;
             changeButton = changeButton_;
             adminUsername = adminUsername_;
+            userToModify = userToModify_;
             textBoxUsername = textBoxUsername_;
             textBoxEmail = textBoxEmail_;
             textBoxPassword = textBoxPassword_;
@@ -41,7 +42,7 @@ namespace ArtifactManager.FormsHandle
         
         public void usernameChanged()
         {
-
+            
         }
 
 
