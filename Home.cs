@@ -24,7 +24,7 @@ namespace ArtifactManager
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
-                if (foundUser != null && foundUser.Role == "admin")
+                if (foundUser != null && foundUser.UserRole == User.RoleType.Admin)
                 {
                     this.Users.Visible = true;
                 }
@@ -61,14 +61,20 @@ namespace ArtifactManager
             homeHandle.logOut();
         }
 
-        private void seeAllUsers(object sender, EventArgs e)
-        {
-            homeHandle.seeAllUsers();
-        }
 
         private void addNewUser(object sender, EventArgs e)
         {
             homeHandle.addNewUser();
+        }
+
+        private void modifyUser(object sender, EventArgs e)
+        {
+            homeHandle.modifyUser();
+        }
+
+        private void seeAllUsers(object sender, EventArgs e)
+        {
+            homeHandle.seeAllUsers();
         }
     }
 }

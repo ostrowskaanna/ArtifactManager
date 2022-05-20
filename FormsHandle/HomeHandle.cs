@@ -124,18 +124,23 @@ namespace ArtifactManager.FormsHandle
             home.Close();
         }
 
-        public void seeAllUsers()
+        public void modifyUser()
         {
             home.Hide();
-            UsersList usersList = new UsersList(this.username);
-            usersList.ShowDialog();
+            EditUser editUserForm = new EditUser(this.username);
+            editUserForm.ShowDialog();
             home.Close();
+        }
+
+        public void seeAllUsers()
+        {
+
         }
 
         public void addNewUser()
         {
             home.Hide();
-            NewUserForm newUserForm = new NewUserForm();
+            NewUserForm newUserForm = new NewUserForm(this.username);
             newUserForm.ShowDialog();
             home.Close();
         }

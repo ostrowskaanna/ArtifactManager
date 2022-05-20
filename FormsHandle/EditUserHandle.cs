@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace ArtifactManager.FormsHandle
 {
-    public class UsersListHandle : Form
+    public class EditUserHandle : Form
     {
-        UsersList usersList;
+        EditUser usersList;
         CheckedListBox list;
         string username;
-        public void getUsersListForm(UsersList usersList_, CheckedListBox list_, string username_)
+        public void getUsersListForm(EditUser usersList_, CheckedListBox list_, string username_)
         {
             usersList = usersList_;
             list = list_;
@@ -53,6 +53,15 @@ namespace ArtifactManager.FormsHandle
             this.showAllUsers();
         }
 
+        public void modifyUser()
+        {
+            string userToModify = list.SelectedItem.ToString();
+            usersList.Hide();
+            ModifyUser modifyUserForm = new ModifyUser(userToModify, this.username);
+            modifyUserForm.ShowDialog();
+            usersList.Close();
+
+        }
 
         public void returnToHomePanel()
         {

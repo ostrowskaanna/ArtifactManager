@@ -1,6 +1,6 @@
 ﻿namespace ArtifactManager
 {
-    partial class UsersList
+    partial class EditUser
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,6 @@
             this.List.Size = new System.Drawing.Size(183, 89);
             this.List.TabIndex = 0;
             this.List.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.allowOnlyOneItemChecked);
-            this.List.SelectedIndexChanged += new System.EventHandler(this.checkIfItemChosen);
             // 
             // Info
             // 
@@ -73,6 +72,7 @@
             this.modifyButton.TabIndex = 3;
             this.modifyButton.Text = "Modify";
             this.modifyButton.UseVisualStyleBackColor = true;
+            this.modifyButton.Click += new System.EventHandler(this.modifyUser);
             // 
             // deleteButton
             // 
@@ -95,7 +95,7 @@
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Click += new System.EventHandler(this.returnToHomePanel);
             // 
-            // UsersList
+            // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,8 +106,8 @@
             this.Controls.Add(this.Info2);
             this.Controls.Add(this.Info);
             this.Controls.Add(this.List);
-            this.Name = "UsersList";
-            this.Text = "UsersList";
+            this.Name = "EditUser";
+            this.Text = "Edit User";
             this.ResumeLayout(false);
             this.PerformLayout();
 

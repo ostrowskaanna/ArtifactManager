@@ -11,54 +11,50 @@ using ArtifactManager.FormsHandle;
 
 namespace ArtifactManager
 {
-    public partial class UsersList : Form
+    public partial class EditUser : Form
     {
-        UsersListHandle usersListHandle = new UsersListHandle();
+        EditUserHandle editHandle = new EditUserHandle();
         public string username;
 
-        public UsersList(string username_)
+        public EditUser(string username_)
         {
             InitializeComponent();
             username = username_;
-            usersListHandle.getUsersListForm(this, this.List, this.username);
-            usersListHandle.showAllUsers();
+            editHandle.getUsersListForm(this, this.List, this.username);
+            editHandle.showAllUsers();
         }
 
 
         private void allowOnlyOneItemChecked(object sender, ItemCheckEventArgs e)
         {
-            usersListHandle.allowOnlyOneItemChecked(e);
+            editHandle.allowOnlyOneItemChecked(e);
             if(List.SelectedItem != null)
             {
                 this.deleteButton.Enabled = true;
                 this.modifyButton.Enabled = true;
             }
+            else
+            {
+                this.deleteButton.Enabled = false;
+                this.modifyButton.Enabled = false;
+            }
         }
 
         private void deleteUser(object sender, EventArgs e)
         {
-            usersListHandle.deleteUser();
+            editHandle.deleteUser();
             this.deleteButton.Enabled = false;
             this.modifyButton.Enabled = false;
         }
 
         private void returnToHomePanel(object sender, EventArgs e)
         {
-            usersListHandle.returnToHomePanel();
+            editHandle.returnToHomePanel();
         }
 
-        private void checkIfItemChosen(object sender, EventArgs e)
+        private void modifyUser(object sender, EventArgs e)
         {
-            if(List.SelectedItem == null)
-            {
-                this.deleteButton.Enabled = false;
-                this.modifyButton.Enabled = false;
-            }
-            else
-            {
-                this.deleteButton.Enabled = true;
-                this.modifyButton.Enabled = true;
-            }
+            editHandle.modifyUser();
         }
     }
 }

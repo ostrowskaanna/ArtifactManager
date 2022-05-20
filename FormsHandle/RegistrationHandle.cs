@@ -211,8 +211,8 @@ namespace ArtifactManager.FormsHandle
                     Name = username,
                     Email = email,
                     Password = password,
-                    Role = "user"
-                });
+                    UserRole = User.RoleType.User
+                }); ;
                 db.SaveChanges();
             }
         }
