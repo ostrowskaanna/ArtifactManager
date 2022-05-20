@@ -60,5 +60,15 @@ namespace ArtifactManager
         {
             homeHandle.logOut();
         }
+
+        private void seeAllUsers(object sender, EventArgs e)
+        {
+            homeHandle.seeAllUsers();
+        }
+
+        private void addNewUser(object sender, EventArgs e)
+        {
+            homeHandle.addNewUser();
+        }
     }
 }

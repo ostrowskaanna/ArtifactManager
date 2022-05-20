@@ -195,12 +195,14 @@
             this.SeeAllUsers.Name = "SeeAllUsers";
             this.SeeAllUsers.Size = new System.Drawing.Size(224, 26);
             this.SeeAllUsers.Text = "See All Users";
+            this.SeeAllUsers.Click += new System.EventHandler(this.seeAllUsers);
             // 
             // AddNewUser
             // 
             this.AddNewUser.Name = "AddNewUser";
             this.AddNewUser.Size = new System.Drawing.Size(224, 26);
             this.AddNewUser.Text = "Add New User";
+            this.AddNewUser.Click += new System.EventHandler(this.addNewUser);
             // 
             // Home
             // 
