@@ -56,7 +56,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModels\Cave.cs" />
+    <Compile Include="DataModels\Bat.cs" />
+    <Compile Include="DataModels\Category.cs" />
     <Compile Include="DataModels\CodeFirstContext.cs" />
+    <Compile Include="DataModels\Dragon.cs" />
+    <Compile Include="DataModels\Ent.cs" />
+    <Compile Include="DataModels\Forest.cs" />
+    <Compile Include="DataModels\Giant.cs" />
+    <Compile Include="DataModels\Knight.cs" />
+    <Compile Include="DataModels\Magus.cs" />
+    <Compile Include="DataModels\Spider.cs" />
+    <Compile Include="DataModels\Tower.cs" />
+    <Compile Include="DataModels\Witch.cs" />
+    <Compile Include="DataModels\Wolf.cs" />
     <Compile Include="FormsHandle\HomeHandle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +100,14 @@
     <Compile Include="Migrations\202205211925306_RoleChangedToString.cs" />
     <Compile Include="Migrations\202205211925306_RoleChangedToString.designer.cs">
       <DependentUpon>202205211925306_RoleChangedToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205212119322_AddedAllModels.cs" />
+    <Compile Include="Migrations\202205212119322_AddedAllModels.designer.cs">
+      <DependentUpon>202205212119322_AddedAllModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205212138190_CreatedAllModels.cs" />
+    <Compile Include="Migrations\202205212138190_CreatedAllModels.designer.cs">
+      <DependentUpon>202205212138190_CreatedAllModels.cs</DependentUpon>
     </Compile>
     <Compile Include="ModifyUser.cs">
       <SubType>Form</SubType>
@@ -137,6 +158,12 @@
     <EmbeddedResource Include="Migrations\202205211925306_RoleChangedToString.resx">
       <DependentUpon>202205211925306_RoleChangedToString.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205212119322_AddedAllModels.resx">
+      <DependentUpon>202205212119322_AddedAllModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205212138190_CreatedAllModels.resx">
+      <DependentUpon>202205212138190_CreatedAllModels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModifyUser.resx">
       <DependentUpon>ModifyUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,9 +199,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Categories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
