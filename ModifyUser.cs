@@ -20,7 +20,7 @@ namespace ArtifactManager
         public ModifyUser(User userToModify_, string adminUsername_)
         {
             InitializeComponent();
-            userToModify_ = userToModify_;
+            userToModify = userToModify_;
             adminUsername = adminUsername_;
             modifyHandle.getModifyUserForm(this, this.returnButton, this.changeButton, this.adminUsername,
                 this.userToModify, this.textBoxUsername, this.textBoxEmail, this.textBoxPassword);

@@ -24,7 +24,7 @@ namespace ArtifactManager
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
-                if (foundUser != null && foundUser.UserRole == User.RoleType.Admin)
+                if (foundUser != null && foundUser.Role == "admin")
                 {
                     this.Users.Visible = true;
                 }
@@ -33,11 +33,15 @@ namespace ArtifactManager
 
         private void showProfileDetails(object sender, EventArgs e)
         {
+            this.listBoxUsers.Visible = false;
+            this.usersInfo.Visible = false;
             homeHandle.showProfileDetails();
         }
 
         private void changePassword(object sender, EventArgs e)
         {
+            this.listBoxUsers.Visible = false;
+            this.usersInfo.Visible = false;
             homeHandle.changePassword();
         }
 
@@ -74,7 +78,30 @@ namespace ArtifactManager
 
         private void seeAllUsers(object sender, EventArgs e)
         {
-            homeHandle.seeAllUsers();
+            this.Info.Visible = false;
+            this.label1.Visible = false;
+            this.label2.Visible = false;
+            this.textBoxNewPassword.Visible = false;
+            this.textBoxOldPassword.Visible = false;
+            this.confirmButton.Visible = false;
+            this.listBoxUsers.Visible = true;
+            this.usersInfo.Visible = true;
+            
+            using(var db = new CodeFirstContext())
+            {
+                foreach (var user in db.Users)
+                {
+                    if (user.Name == username)
+                    {
+                        listBoxUsers.Items.Add(user.Name + (" (you)"));
+                    }
+                    else
+                    {
+                        listBoxUsers.Items.Add(user.Name);
+                    }
+                }
+            }
+
         }
     }
 }

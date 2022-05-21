@@ -40,9 +40,9 @@ namespace ArtifactManager.FormsHandle
                 var allUsers = db.Users.ToList();
                 foreach (var user in allUsers)
                 {
-                    if (!listBoxRoles.Items.Contains(user.UserRole))
+                    if (!listBoxRoles.Items.Contains(user.Role))
                     {
-                        listBoxRoles.Items.Add(user.UserRole);
+                        listBoxRoles.Items.Add(user.Role);
                     }
                 }
             }
@@ -115,7 +115,7 @@ namespace ArtifactManager.FormsHandle
                     Name = textBoxUsername.Text,
                     Email = textBoxEmail.Text,
                     Password = textBoxPassword.Text,
-                    UserRole = (User.RoleType)listBoxRoles.SelectedItem
+                    Role = (string)listBoxRoles.SelectedItem
                 });  
                 db.SaveChanges();
             }

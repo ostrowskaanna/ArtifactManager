@@ -30,7 +30,18 @@ namespace ArtifactManager.FormsHandle
             textBoxUsername = textBoxUsername_;
             textBoxEmail = textBoxEmail_;
             textBoxPassword = textBoxPassword_;
+            this.showUser();
+
         }
+
+        public void showUser()
+        {
+            textBoxUsername.Text = userToModify.Name;
+            textBoxEmail.Text = userToModify.Email;
+            textBoxPassword.Text = userToModify.Password;
+
+        }
+
 
         public void returnToHomePanel()
         {
@@ -42,23 +53,53 @@ namespace ArtifactManager.FormsHandle
         
         public void usernameChanged()
         {
-            
+            if (textBoxUsername.Text == userToModify.Name)
+            {
+                changeButton.Enabled = false;
+            }
+            else
+            {
+                changeButton.Enabled = true;
+            }
         }
 
 
         public void emailChanged()
         {
-
+            if (textBoxEmail.Text == userToModify.Email)
+            {
+                changeButton.Enabled = false;
+            }
+            else
+            {
+                changeButton.Enabled = true;
+            }
         }
 
         public void passwordChanged()
         {
-
+            if (textBoxPassword.Text == userToModify.Password)
+            {
+                changeButton.Enabled = false;
+            }
+            else
+            {
+                changeButton.Enabled = true;
+            }
         }
 
         public void changeUserData()
         {
-
+            using(var db = new CodeFirstContext())
+            {
+                var user = db.Users.FirstOrDefault(u => u == userToModify);
+                user.Name = textBoxUsername.Text;
+                user.Email = textBoxEmail.Text;
+                user.Password = textBoxPassword.Text;
+                db.SaveChanges();
+            }
+            MessageBox.Show("User data changed.");
+            this.returnToHomePanel();
         }
 
     }

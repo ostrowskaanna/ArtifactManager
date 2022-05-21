@@ -78,34 +78,34 @@
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(332, 65);
+            this.textBoxUsername.Location = new System.Drawing.Point(304, 65);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(100, 22);
+            this.textBoxUsername.Size = new System.Drawing.Size(128, 22);
             this.textBoxUsername.TabIndex = 4;
             this.textBoxUsername.TextChanged += new System.EventHandler(this.usernameChanged);
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(332, 111);
+            this.textBoxEmail.Location = new System.Drawing.Point(304, 111);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(100, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(128, 22);
             this.textBoxEmail.TabIndex = 5;
             this.textBoxEmail.TextChanged += new System.EventHandler(this.emailChanged);
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(332, 157);
+            this.textBoxPassword.Location = new System.Drawing.Point(304, 157);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPassword.Size = new System.Drawing.Size(128, 22);
             this.textBoxPassword.TabIndex = 6;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.passwordChanged);
             // 
             // roleListBox
             // 
             this.roleListBox.FormattingEnabled = true;
-            this.roleListBox.Location = new System.Drawing.Point(332, 205);
+            this.roleListBox.Location = new System.Drawing.Point(304, 205);
             this.roleListBox.Name = "roleListBox";
-            this.roleListBox.Size = new System.Drawing.Size(100, 89);
+            this.roleListBox.Size = new System.Drawing.Size(128, 89);
             this.roleListBox.TabIndex = 7;
             this.roleListBox.Click += new System.EventHandler(this.roleClicked);
             // 
@@ -121,6 +121,7 @@
             // 
             // changeButton
             // 
+            this.changeButton.Enabled = false;
             this.changeButton.Location = new System.Drawing.Point(347, 316);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(85, 40);

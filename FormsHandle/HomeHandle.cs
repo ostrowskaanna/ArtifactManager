@@ -132,11 +132,6 @@ namespace ArtifactManager.FormsHandle
             home.Close();
         }
 
-        public void seeAllUsers()
-        {
-
-        }
-
         public void addNewUser()
         {
             home.Hide();
@@ -144,5 +139,7 @@ namespace ArtifactManager.FormsHandle
             newUserForm.ShowDialog();
             home.Close();
         }
+
+
     }
 }

@@ -24,15 +24,9 @@ namespace ArtifactManager
         [Required]
         public string Password { get; set; }
         
-
         [Required]
-        public RoleType UserRole { get; set; }
+        public string Role { get; set; }
 
-        public enum RoleType
-        {
-            Admin,
-            User
-        }
 
     }
 }
