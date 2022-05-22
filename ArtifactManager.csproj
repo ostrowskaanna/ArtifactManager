@@ -66,6 +66,7 @@
     <Compile Include="DataModels\Giant.cs" />
     <Compile Include="DataModels\Knight.cs" />
     <Compile Include="DataModels\Magus.cs" />
+    <Compile Include="DataModels\Role.cs" />
     <Compile Include="DataModels\Spider.cs" />
     <Compile Include="DataModels\Tower.cs" />
     <Compile Include="DataModels\Witch.cs" />
@@ -84,6 +85,18 @@
     </Compile>
     <Compile Include="FormsHandle\EditUserHandle.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewCategory.Designer.cs">
+      <DependentUpon>NewCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewCategoryObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewCategoryObject.Designer.cs">
+      <DependentUpon>NewCategoryObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202205181454030_Initial.cs" />
     <Compile Include="Migrations\202205181454030_Initial.designer.cs">
@@ -137,6 +150,10 @@
     <Compile Include="Migrations\202205221016315_DeletedMinLengthAnnotations.designer.cs">
       <DependentUpon>202205221016315_DeletedMinLengthAnnotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205221045311_AddedRoleClass.cs" />
+    <Compile Include="Migrations\202205221045311_AddedRoleClass.designer.cs">
+      <DependentUpon>202205221045311_AddedRoleClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewCategory.resx">
+      <DependentUpon>NewCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205181454030_Initial.resx">
       <DependentUpon>202205181454030_Initial.cs</DependentUpon>
@@ -179,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205221016315_DeletedMinLengthAnnotations.resx">
       <DependentUpon>202205221016315_DeletedMinLengthAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205221045311_AddedRoleClass.resx">
+      <DependentUpon>202205221045311_AddedRoleClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

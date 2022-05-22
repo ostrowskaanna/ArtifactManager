@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ArtifactManager.Forms;
 
 namespace ArtifactManager.FormsHandle
 {
@@ -24,7 +25,7 @@ namespace ArtifactManager.FormsHandle
         bool oldPasswordFiled = false;
         bool newPasswordFilled = false;
 
-        public void getHomeForm(Home home_, Label label1_, Label label2_, 
+        public void getHomeForm(Home home_, Label label1_, Label label2_,
             TextBox textBoxOldPassword_, TextBox textBoxNewPasword_, Button confirmButton_, string username_,
             Label Info_, ListBox listBox_, Label text_)
         {
@@ -32,7 +33,7 @@ namespace ArtifactManager.FormsHandle
             label1 = label1_;
             label2 = label2_;
             textBoxOldPassword = textBoxOldPassword_;
-            textBoxNewPassword = textBoxNewPasword_ ;
+            textBoxNewPassword = textBoxNewPasword_;
             confirmButton = confirmButton_;
             username = username_;
             textBoxOldPassword.PasswordChar = '*';
@@ -41,7 +42,7 @@ namespace ArtifactManager.FormsHandle
             listBox = listBox_;
             text = text_;
         }
-        
+
         public void showProfileDetails()
         {
             this.listBox.Visible = false;
@@ -75,7 +76,7 @@ namespace ArtifactManager.FormsHandle
             this.textBoxNewPassword.Visible = true;
             this.confirmButton.Visible = true;
         }
-    
+
         public void textBoxOldPasswordCheck()
         {
             if (textBoxOldPassword.Text != "")
@@ -91,7 +92,7 @@ namespace ArtifactManager.FormsHandle
                 confirmButton.Enabled = false;
             }
         }
-    
+
         public void textBoxNewPasswordCheck()
         {
             if (textBoxNewPassword.Text != "")
@@ -113,7 +114,7 @@ namespace ArtifactManager.FormsHandle
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
-                if(foundUser.Password == textBoxOldPassword.Text)
+                if (foundUser.Password == textBoxOldPassword.Text)
                 {
                     foundUser.Password = textBoxNewPassword.Text;
                     MessageBox.Show("Password changed.");
@@ -197,13 +198,13 @@ namespace ArtifactManager.FormsHandle
             using (var db = new CodeFirstContext())
             {
                 string record;
-                foreach(var cave in db.Caves)
+                foreach (var cave in db.Caves)
                 {
                     record = "Type: Cave, Name: " + cave.Name + ", Area: " + cave.Area;
                     listBox.Items.Add(record);
                 }
 
-                foreach(var forest in db.Forests)
+                foreach (var forest in db.Forests)
                 {
                     record = "Type: Forest, Name: " + forest.Name + ", Area: " + forest.Area;
                     listBox.Items.Add(record);
@@ -215,6 +216,30 @@ namespace ArtifactManager.FormsHandle
                     listBox.Items.Add(record);
                 }
             }
+        }
+
+        public void openNewCategoryForm(bool isTower)
+        {
+            home.Hide();
+            NewCategory newCategory = new NewCategory(this.username, isTower);
+            newCategory.ShowDialog();
+            home.Close();
+            
+        }
+
+        public void addNewCave()
+        {
+            this.openNewCategoryForm(false);
+        }
+
+        public void addNewForest()
+        {
+            this.openNewCategoryForm(false);
+        }
+
+        public void addNewTower()
+        {
+            this.openNewCategoryForm(true);
         }
     }
 }

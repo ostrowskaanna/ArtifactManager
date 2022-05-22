@@ -99,21 +99,21 @@
             // ProfileDetails
             // 
             this.ProfileDetails.Name = "ProfileDetails";
-            this.ProfileDetails.Size = new System.Drawing.Size(224, 26);
+            this.ProfileDetails.Size = new System.Drawing.Size(207, 26);
             this.ProfileDetails.Text = "Profile Details";
             this.ProfileDetails.Click += new System.EventHandler(this.showProfileDetails);
             // 
             // ChangePassword
             // 
             this.ChangePassword.Name = "ChangePassword";
-            this.ChangePassword.Size = new System.Drawing.Size(224, 26);
+            this.ChangePassword.Size = new System.Drawing.Size(207, 26);
             this.ChangePassword.Text = "Change Password";
             this.ChangePassword.Click += new System.EventHandler(this.changePassword);
             // 
             // LogOut
             // 
             this.LogOut.Name = "LogOut";
-            this.LogOut.Size = new System.Drawing.Size(224, 26);
+            this.LogOut.Size = new System.Drawing.Size(207, 26);
             this.LogOut.Text = "Log Out";
             this.LogOut.Click += new System.EventHandler(this.logOut);
             // 
@@ -140,20 +140,23 @@
             // AddNewCave
             // 
             this.AddNewCave.Name = "AddNewCave";
-            this.AddNewCave.Size = new System.Drawing.Size(198, 26);
+            this.AddNewCave.Size = new System.Drawing.Size(224, 26);
             this.AddNewCave.Text = "Add New Cave";
+            this.AddNewCave.Click += new System.EventHandler(this.addNewCave);
             // 
             // AddNewForest
             // 
             this.AddNewForest.Name = "AddNewForest";
-            this.AddNewForest.Size = new System.Drawing.Size(198, 26);
+            this.AddNewForest.Size = new System.Drawing.Size(224, 26);
             this.AddNewForest.Text = "Add New Forest";
+            this.AddNewForest.Click += new System.EventHandler(this.addNewForest);
             // 
             // AddNewTower
             // 
             this.AddNewTower.Name = "AddNewTower";
-            this.AddNewTower.Size = new System.Drawing.Size(198, 26);
+            this.AddNewTower.Size = new System.Drawing.Size(224, 26);
             this.AddNewTower.Text = "Add New Tower";
+            this.AddNewTower.Click += new System.EventHandler(this.addNewTower);
             // 
             // AddNewCategoryObject
             // 
@@ -245,21 +248,21 @@
             // EditUsers
             // 
             this.EditUsers.Name = "EditUsers";
-            this.EditUsers.Size = new System.Drawing.Size(187, 26);
+            this.EditUsers.Size = new System.Drawing.Size(224, 26);
             this.EditUsers.Text = "Edit Users";
             this.EditUsers.Click += new System.EventHandler(this.modifyUser);
             // 
             // AddNewUser
             // 
             this.AddNewUser.Name = "AddNewUser";
-            this.AddNewUser.Size = new System.Drawing.Size(187, 26);
+            this.AddNewUser.Size = new System.Drawing.Size(224, 26);
             this.AddNewUser.Text = "Add New User";
             this.AddNewUser.Click += new System.EventHandler(this.addNewUser);
             // 
             // SeeAllUsers
             // 
             this.SeeAllUsers.Name = "SeeAllUsers";
-            this.SeeAllUsers.Size = new System.Drawing.Size(187, 26);
+            this.SeeAllUsers.Size = new System.Drawing.Size(224, 26);
             this.SeeAllUsers.Text = "See All Users";
             this.SeeAllUsers.Click += new System.EventHandler(this.seeAllUsers);
             // 

@@ -18,6 +18,8 @@ namespace ArtifactManager
 
 
         public virtual DbSet<User> Users { get; set; }
+
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Cave> Caves { get; set; }
         public virtual DbSet<Forest> Forests  { get; set; }

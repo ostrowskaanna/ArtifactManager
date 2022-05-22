@@ -74,5 +74,20 @@ namespace ArtifactManager
         {
             homeHandle.seeAllCategories();
         }
+
+        private void addNewCave(object sender, EventArgs e)
+        {
+            homeHandle.addNewCave();
+        }
+
+        private void addNewForest(object sender, EventArgs e)
+        {
+            homeHandle.addNewForest();
+        }
+
+        private void addNewTower(object sender, EventArgs e)
+        {
+            homeHandle.addNewTower();
+        }
     }
 }
