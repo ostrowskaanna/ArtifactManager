@@ -20,28 +20,17 @@ namespace ArtifactManager
             InitializeComponent();
             username = username_;
             homeHandle.getHomeForm(this, this.label1, this.label2, 
-                this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username);
-            using (var db = new CodeFirstContext())
-            {
-                var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
-                if (foundUser != null && foundUser.Role == "admin")
-                {
-                    this.Users.Visible = true;
-                }
-            }
+                this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
+                this.listBox, this.text);
         }
 
         private void showProfileDetails(object sender, EventArgs e)
         {
-            this.listBoxUsers.Visible = false;
-            this.usersInfo.Visible = false;
             homeHandle.showProfileDetails();
         }
 
         private void changePassword(object sender, EventArgs e)
         {
-            this.listBoxUsers.Visible = false;
-            this.usersInfo.Visible = false;
             homeHandle.changePassword();
         }
 
@@ -78,30 +67,12 @@ namespace ArtifactManager
 
         private void seeAllUsers(object sender, EventArgs e)
         {
-            this.Info.Visible = false;
-            this.label1.Visible = false;
-            this.label2.Visible = false;
-            this.textBoxNewPassword.Visible = false;
-            this.textBoxOldPassword.Visible = false;
-            this.confirmButton.Visible = false;
-            this.listBoxUsers.Visible = true;
-            this.usersInfo.Visible = true;
-            
-            using(var db = new CodeFirstContext())
-            {
-                foreach (var user in db.Users)
-                {
-                    if (user.Name == username)
-                    {
-                        listBoxUsers.Items.Add(user.Name + (" (you)"));
-                    }
-                    else
-                    {
-                        listBoxUsers.Items.Add(user.Name);
-                    }
-                }
-            }
+            homeHandle.seeAllUsers();
+        }
 
+        private void seeAllCategories(object sender, EventArgs e)
+        {
+            homeHandle.seeAllCategories();
         }
     }
 }

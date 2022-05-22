@@ -109,41 +109,45 @@
     <Compile Include="Migrations\202205212138190_CreatedAllModels.designer.cs">
       <DependentUpon>202205212138190_CreatedAllModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModifyUser.cs">
+    <Compile Include="Forms\ModifyUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModifyUser.Designer.cs">
+    <Compile Include="Forms\ModifyUser.Designer.cs">
       <DependentUpon>ModifyUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewUserForm.cs">
+    <Compile Include="Forms\NewUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewUserForm.Designer.cs">
+    <Compile Include="Forms\NewUserForm.Designer.cs">
       <DependentUpon>NewUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registration.cs">
+    <Compile Include="Forms\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registration.Designer.cs">
+    <Compile Include="Forms\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="Forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Forms\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205221016315_DeletedMinLengthAnnotations.cs" />
+    <Compile Include="Migrations\202205221016315_DeletedMinLengthAnnotations.designer.cs">
+      <DependentUpon>202205221016315_DeletedMinLengthAnnotations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataModels\User.cs" />
-    <Compile Include="EditUser.cs">
+    <Compile Include="Forms\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditUser.Designer.cs">
+    <Compile Include="Forms\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205181454030_Initial.resx">
@@ -164,14 +168,17 @@
     <EmbeddedResource Include="Migrations\202205212138190_CreatedAllModels.resx">
       <DependentUpon>202205212138190_CreatedAllModels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModifyUser.resx">
+    <EmbeddedResource Include="Forms\ModifyUser.resx">
       <DependentUpon>ModifyUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewUserForm.resx">
+    <EmbeddedResource Include="Forms\NewUserForm.resx">
       <DependentUpon>NewUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registration.resx">
+    <EmbeddedResource Include="Forms\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205221016315_DeletedMinLengthAnnotations.resx">
+      <DependentUpon>202205221016315_DeletedMinLengthAnnotations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,7 +189,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EditUser.resx">
+    <EmbeddedResource Include="Forms\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

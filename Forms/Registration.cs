@@ -62,6 +62,9 @@ namespace ArtifactManager
             registrationHandle.textBoxConfirmPasswordCheck();
         }
 
-
+        private void Finish_Click(object sender, EventArgs e)
+        {
+            registrationHandle.finish();
+        }
     }
 }

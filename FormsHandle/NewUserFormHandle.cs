@@ -105,18 +105,35 @@ namespace ArtifactManager.FormsHandle
             userForm.Close();
         }
 
+        public int checkIfRegistrationDataIsCorrect()
+        {
+            int error = 0;
+
+            //user with this username already exists
+            using (var db = new CodeFirstContext())
+            {
+                var foundUser = db.Users.FirstOrDefault(c => c.Name == textBoxUsername.Text);
+                if (foundUser != null) { error = 1; }
+            }
+            return error;
+        }
+
         public void addNewUser()
         {
+            if(this.checkIfRegistrationDataIsCorrect() == 1)
+            {
+                MessageBox.Show("User with this username already exists.");
+                return;
+            }
             using (var db = new CodeFirstContext())
             {
                 db.Users.Add(new User()
                 {
-                    Id = 1,
                     Name = textBoxUsername.Text,
                     Email = textBoxEmail.Text,
                     Password = textBoxPassword.Text,
-                    Role = (string)listBoxRoles.SelectedItem
-                });  
+                    Role = listBoxRoles.SelectedItem.ToString()
+                }); ;  
                 db.SaveChanges();
             }
             MessageBox.Show("User added.");

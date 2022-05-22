@@ -39,7 +39,7 @@ namespace ArtifactManager.FormsHandle
             textBoxUsername.Text = userToModify.Name;
             textBoxEmail.Text = userToModify.Email;
             textBoxPassword.Text = userToModify.Password;
-
+            
         }
 
 

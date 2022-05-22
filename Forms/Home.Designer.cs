@@ -35,9 +35,21 @@
             this.ChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.LogOut = new System.Windows.Forms.ToolStripMenuItem();
             this.MyFigures = new System.Windows.Forms.ToolStripMenuItem();
-            this.SeeMyFigures = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewCategory = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddbewCategoryObject = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewCave = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewForest = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewTower = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewCategoryObject = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewDragon = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewBat = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewSpider = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewEnt = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewWolf = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewGiant = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewKnight = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewMagus = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewWitch = new System.Windows.Forms.ToolStripMenuItem();
+            this.SeeAllCategories = new System.Windows.Forms.ToolStripMenuItem();
             this.Users = new System.Windows.Forms.ToolStripMenuItem();
             this.EditUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,8 +59,8 @@
             this.textBoxOldPassword = new System.Windows.Forms.TextBox();
             this.textBoxNewPassword = new System.Windows.Forms.TextBox();
             this.confirmButton = new System.Windows.Forms.Button();
-            this.listBoxUsers = new System.Windows.Forms.ListBox();
-            this.usersInfo = new System.Windows.Forms.Label();
+            this.listBox = new System.Windows.Forms.ListBox();
+            this.text = new System.Windows.Forms.Label();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +82,7 @@
             this.Users});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(648, 30);
+            this.Menu.Size = new System.Drawing.Size(648, 28);
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
             // 
@@ -81,57 +93,144 @@
             this.ChangePassword,
             this.LogOut});
             this.MyProfile.Name = "MyProfile";
-            this.MyProfile.Size = new System.Drawing.Size(90, 26);
+            this.MyProfile.Size = new System.Drawing.Size(90, 24);
             this.MyProfile.Text = "My Profile";
             // 
             // ProfileDetails
             // 
             this.ProfileDetails.Name = "ProfileDetails";
-            this.ProfileDetails.Size = new System.Drawing.Size(207, 26);
+            this.ProfileDetails.Size = new System.Drawing.Size(224, 26);
             this.ProfileDetails.Text = "Profile Details";
             this.ProfileDetails.Click += new System.EventHandler(this.showProfileDetails);
             // 
             // ChangePassword
             // 
             this.ChangePassword.Name = "ChangePassword";
-            this.ChangePassword.Size = new System.Drawing.Size(207, 26);
+            this.ChangePassword.Size = new System.Drawing.Size(224, 26);
             this.ChangePassword.Text = "Change Password";
             this.ChangePassword.Click += new System.EventHandler(this.changePassword);
             // 
             // LogOut
             // 
             this.LogOut.Name = "LogOut";
-            this.LogOut.Size = new System.Drawing.Size(207, 26);
+            this.LogOut.Size = new System.Drawing.Size(224, 26);
             this.LogOut.Text = "Log Out";
             this.LogOut.Click += new System.EventHandler(this.logOut);
             // 
             // MyFigures
             // 
             this.MyFigures.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SeeMyFigures,
             this.AddNewCategory,
-            this.AddbewCategoryObject});
+            this.AddNewCategoryObject,
+            this.SeeAllCategories});
             this.MyFigures.Name = "MyFigures";
-            this.MyFigures.Size = new System.Drawing.Size(94, 26);
-            this.MyFigures.Text = "My Figures";
-            // 
-            // SeeMyFigures
-            // 
-            this.SeeMyFigures.Name = "SeeMyFigures";
-            this.SeeMyFigures.Size = new System.Drawing.Size(270, 26);
-            this.SeeMyFigures.Text = "See My Figures";
+            this.MyFigures.Size = new System.Drawing.Size(70, 24);
+            this.MyFigures.Text = "Figures";
             // 
             // AddNewCategory
             // 
+            this.AddNewCategory.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddNewCave,
+            this.AddNewForest,
+            this.AddNewTower});
             this.AddNewCategory.Name = "AddNewCategory";
             this.AddNewCategory.Size = new System.Drawing.Size(270, 26);
             this.AddNewCategory.Text = "Add New Category";
             // 
-            // AddbewCategoryObject
+            // AddNewCave
             // 
-            this.AddbewCategoryObject.Name = "AddbewCategoryObject";
-            this.AddbewCategoryObject.Size = new System.Drawing.Size(270, 26);
-            this.AddbewCategoryObject.Text = "Add New Category Object ";
+            this.AddNewCave.Name = "AddNewCave";
+            this.AddNewCave.Size = new System.Drawing.Size(198, 26);
+            this.AddNewCave.Text = "Add New Cave";
+            // 
+            // AddNewForest
+            // 
+            this.AddNewForest.Name = "AddNewForest";
+            this.AddNewForest.Size = new System.Drawing.Size(198, 26);
+            this.AddNewForest.Text = "Add New Forest";
+            // 
+            // AddNewTower
+            // 
+            this.AddNewTower.Name = "AddNewTower";
+            this.AddNewTower.Size = new System.Drawing.Size(198, 26);
+            this.AddNewTower.Text = "Add New Tower";
+            // 
+            // AddNewCategoryObject
+            // 
+            this.AddNewCategoryObject.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddNewDragon,
+            this.AddNewBat,
+            this.AddNewSpider,
+            this.AddNewEnt,
+            this.AddNewWolf,
+            this.AddNewGiant,
+            this.AddNewKnight,
+            this.AddNewMagus,
+            this.AddNewWitch});
+            this.AddNewCategoryObject.Name = "AddNewCategoryObject";
+            this.AddNewCategoryObject.Size = new System.Drawing.Size(270, 26);
+            this.AddNewCategoryObject.Text = "Add New Category Object ";
+            // 
+            // AddNewDragon
+            // 
+            this.AddNewDragon.Name = "AddNewDragon";
+            this.AddNewDragon.Size = new System.Drawing.Size(208, 26);
+            this.AddNewDragon.Text = "Add New Dragon";
+            // 
+            // AddNewBat
+            // 
+            this.AddNewBat.Name = "AddNewBat";
+            this.AddNewBat.Size = new System.Drawing.Size(208, 26);
+            this.AddNewBat.Text = "Add New Bat";
+            // 
+            // AddNewSpider
+            // 
+            this.AddNewSpider.Name = "AddNewSpider";
+            this.AddNewSpider.Size = new System.Drawing.Size(208, 26);
+            this.AddNewSpider.Text = "Add New Spider ";
+            // 
+            // AddNewEnt
+            // 
+            this.AddNewEnt.Name = "AddNewEnt";
+            this.AddNewEnt.Size = new System.Drawing.Size(208, 26);
+            this.AddNewEnt.Text = "Add New Ent";
+            // 
+            // AddNewWolf
+            // 
+            this.AddNewWolf.Name = "AddNewWolf";
+            this.AddNewWolf.Size = new System.Drawing.Size(208, 26);
+            this.AddNewWolf.Text = "Add New Wolf";
+            // 
+            // AddNewGiant
+            // 
+            this.AddNewGiant.Name = "AddNewGiant";
+            this.AddNewGiant.Size = new System.Drawing.Size(208, 26);
+            this.AddNewGiant.Text = "Add New Giant";
+            // 
+            // AddNewKnight
+            // 
+            this.AddNewKnight.Name = "AddNewKnight";
+            this.AddNewKnight.Size = new System.Drawing.Size(208, 26);
+            this.AddNewKnight.Text = "Add New Knight";
+            // 
+            // AddNewMagus
+            // 
+            this.AddNewMagus.Name = "AddNewMagus";
+            this.AddNewMagus.Size = new System.Drawing.Size(208, 26);
+            this.AddNewMagus.Text = "Add New Magus ";
+            // 
+            // AddNewWitch
+            // 
+            this.AddNewWitch.Name = "AddNewWitch";
+            this.AddNewWitch.Size = new System.Drawing.Size(208, 26);
+            this.AddNewWitch.Text = "Add New Witch";
+            // 
+            // SeeAllCategories
+            // 
+            this.SeeAllCategories.Name = "SeeAllCategories";
+            this.SeeAllCategories.Size = new System.Drawing.Size(270, 26);
+            this.SeeAllCategories.Text = "See All Categories";
+            this.SeeAllCategories.Click += new System.EventHandler(this.seeAllCategories);
             // 
             // Users
             // 
@@ -142,7 +241,6 @@
             this.Users.Name = "Users";
             this.Users.Size = new System.Drawing.Size(58, 24);
             this.Users.Text = "Users";
-            this.Users.Visible = false;
             // 
             // EditUsers
             // 
@@ -215,33 +313,33 @@
             this.confirmButton.Visible = false;
             this.confirmButton.Click += new System.EventHandler(this.confirmButtonClick);
             // 
-            // listBoxUsers
+            // listBox
             // 
-            this.listBoxUsers.FormattingEnabled = true;
-            this.listBoxUsers.ItemHeight = 16;
-            this.listBoxUsers.Location = new System.Drawing.Point(217, 110);
-            this.listBoxUsers.Name = "listBoxUsers";
-            this.listBoxUsers.Size = new System.Drawing.Size(190, 100);
-            this.listBoxUsers.TabIndex = 7;
-            this.listBoxUsers.Visible = false;
+            this.listBox.FormattingEnabled = true;
+            this.listBox.ItemHeight = 16;
+            this.listBox.Location = new System.Drawing.Point(126, 111);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(403, 116);
+            this.listBox.TabIndex = 7;
+            this.listBox.Visible = false;
             // 
-            // usersInfo
+            // text
             // 
-            this.usersInfo.AutoSize = true;
-            this.usersInfo.Location = new System.Drawing.Point(214, 66);
-            this.usersInfo.Name = "usersInfo";
-            this.usersInfo.Size = new System.Drawing.Size(116, 16);
-            this.usersInfo.TabIndex = 8;
-            this.usersInfo.Text = "Here are all users:";
-            this.usersInfo.Visible = false;
+            this.text.AutoSize = true;
+            this.text.Location = new System.Drawing.Point(214, 66);
+            this.text.Name = "text";
+            this.text.Size = new System.Drawing.Size(116, 16);
+            this.text.TabIndex = 8;
+            this.text.Text = "Here are all users:";
+            this.text.Visible = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 351);
-            this.Controls.Add(this.usersInfo);
-            this.Controls.Add(this.listBoxUsers);
+            this.Controls.Add(this.text);
+            this.Controls.Add(this.listBox);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.textBoxNewPassword);
             this.Controls.Add(this.textBoxOldPassword);
@@ -268,9 +366,8 @@
         private System.Windows.Forms.ToolStripMenuItem MyFigures;
         private System.Windows.Forms.ToolStripMenuItem ChangePassword;
         private System.Windows.Forms.ToolStripMenuItem LogOut;
-        private System.Windows.Forms.ToolStripMenuItem SeeMyFigures;
         private System.Windows.Forms.ToolStripMenuItem AddNewCategory;
-        private System.Windows.Forms.ToolStripMenuItem AddbewCategoryObject;
+        private System.Windows.Forms.ToolStripMenuItem AddNewCategoryObject;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxOldPassword;
@@ -280,7 +377,20 @@
         private System.Windows.Forms.ToolStripMenuItem EditUsers;
         private System.Windows.Forms.ToolStripMenuItem AddNewUser;
         private System.Windows.Forms.ToolStripMenuItem SeeAllUsers;
-        private System.Windows.Forms.ListBox listBoxUsers;
-        private System.Windows.Forms.Label usersInfo;
+        private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Label text;
+        private System.Windows.Forms.ToolStripMenuItem SeeAllCategories;
+        private System.Windows.Forms.ToolStripMenuItem AddNewCave;
+        private System.Windows.Forms.ToolStripMenuItem AddNewForest;
+        private System.Windows.Forms.ToolStripMenuItem AddNewTower;
+        private System.Windows.Forms.ToolStripMenuItem AddNewDragon;
+        private System.Windows.Forms.ToolStripMenuItem AddNewBat;
+        private System.Windows.Forms.ToolStripMenuItem AddNewSpider;
+        private System.Windows.Forms.ToolStripMenuItem AddNewEnt;
+        private System.Windows.Forms.ToolStripMenuItem AddNewWolf;
+        private System.Windows.Forms.ToolStripMenuItem AddNewGiant;
+        private System.Windows.Forms.ToolStripMenuItem AddNewKnight;
+        private System.Windows.Forms.ToolStripMenuItem AddNewMagus;
+        private System.Windows.Forms.ToolStripMenuItem AddNewWitch;
     }
 }

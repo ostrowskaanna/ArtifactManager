@@ -39,6 +39,7 @@
             this.SignUp = new System.Windows.Forms.Button();
             this.SignIn = new System.Windows.Forms.Button();
             this.Info = new System.Windows.Forms.Label();
+            this.Finish = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxUsername
@@ -140,11 +141,22 @@
             this.Info.TabIndex = 10;
             this.Info.Text = "If you already have an account just type the passsword once and click \"Sign in\"";
             // 
+            // Finish
+            // 
+            this.Finish.Location = new System.Drawing.Point(427, 279);
+            this.Finish.Name = "Finish";
+            this.Finish.Size = new System.Drawing.Size(100, 40);
+            this.Finish.TabIndex = 11;
+            this.Finish.Text = "Finish";
+            this.Finish.UseVisualStyleBackColor = true;
+            this.Finish.Click += new System.EventHandler(this.Finish_Click);
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 359);
+            this.Controls.Add(this.Finish);
             this.Controls.Add(this.Info);
             this.Controls.Add(this.SignIn);
             this.Controls.Add(this.SignUp);
@@ -176,6 +188,7 @@
         private System.Windows.Forms.Button SignUp;
         private System.Windows.Forms.Button SignIn;
         private System.Windows.Forms.Label Info;
+        private System.Windows.Forms.Button Finish;
     }
 }
 

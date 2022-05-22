@@ -144,7 +144,6 @@ namespace ArtifactManager.FormsHandle
         {
             using (var db = new CodeFirstContext())
             {
-                bool correct = false;
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
                 if (foundUser != null && foundUser.Email == email && foundUser.Password == password)
                 {
@@ -207,15 +206,18 @@ namespace ArtifactManager.FormsHandle
             {
                 db.Users.Add(new User()
                 {
-                    Id = 1,
                     Name = username,
                     Email = email,
                     Password = password,
                     Role = "user"
-                }); ;
+                });
                 db.SaveChanges();
             }
         }
 
+        public void finish()
+        {
+            registration.Close();
+        }
     }
 }
