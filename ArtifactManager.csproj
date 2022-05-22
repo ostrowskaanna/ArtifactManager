@@ -77,6 +77,9 @@
     <Compile Include="FormsHandle\ModifyUserHandle.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormsHandle\NewCategoryHandle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormsHandle\NewUserFormHandle.cs">
       <SubType>Form</SubType>
     </Compile>

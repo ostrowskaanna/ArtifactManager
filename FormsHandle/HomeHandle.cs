@@ -203,13 +203,11 @@ namespace ArtifactManager.FormsHandle
                     record = "Type: Cave, Name: " + cave.Name + ", Area: " + cave.Area;
                     listBox.Items.Add(record);
                 }
-
                 foreach (var forest in db.Forests)
                 {
                     record = "Type: Forest, Name: " + forest.Name + ", Area: " + forest.Area;
                     listBox.Items.Add(record);
                 }
-
                 foreach (var tower in db.Towers)
                 {
                     record = "Type: Tower, Name: " + tower.Name + ", Height: " + tower.Height + ", Age: " + tower.Age;
@@ -218,10 +216,10 @@ namespace ArtifactManager.FormsHandle
             }
         }
 
-        public void openNewCategoryForm(bool isTower)
+        public void openNewCategoryForm(int categoryType)
         {
             home.Hide();
-            NewCategory newCategory = new NewCategory(this.username, isTower);
+            NewCategory newCategory = new NewCategory(this.username, categoryType);
             newCategory.ShowDialog();
             home.Close();
             
@@ -229,17 +227,17 @@ namespace ArtifactManager.FormsHandle
 
         public void addNewCave()
         {
-            this.openNewCategoryForm(false);
+            this.openNewCategoryForm(1);
         }
 
         public void addNewForest()
         {
-            this.openNewCategoryForm(false);
+            this.openNewCategoryForm(2);
         }
 
         public void addNewTower()
         {
-            this.openNewCategoryForm(true);
+            this.openNewCategoryForm(3);
         }
     }
 }
