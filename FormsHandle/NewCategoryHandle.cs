@@ -87,17 +87,20 @@ namespace ArtifactManager.FormsHandle
                 MessageBox.Show("Category added.");
                 this.returnToHomePanel();
             }
-            else return;
         }
 
         public bool checkIfFree()
         {
+            MessageBox.Show("checkIfFree()");
             using (var db = new CodeFirstContext())
             {
                 if (categoryType == 1)
                 {
+                    MessageBox.Show("Category Cave");
                     foreach (var cave in db.Caves)
                     {
+                        MessageBox.Show(cave.Area.ToString());
+                        MessageBox.Show(int.Parse(textBoxAreaAge.Text).ToString());
                         if (cave.Name == textBoxName.Text)
                             MessageBox.Show("Cave with this name already exists.");
                             return false;
@@ -107,14 +110,18 @@ namespace ArtifactManager.FormsHandle
                 {
                     foreach (var forest in db.Forests)
                     {
-                        if (forest.Name == textBoxName.Text) return false;
+                        if (forest.Name == textBoxName.Text)
+                            MessageBox.Show("Forest with this name already exists.");
+                            return false;
                     }
                 }
                 else
                 {
                     foreach(var tower in db.Towers)
                     {
-                        if(tower.Name == textBoxName.Text) return false;
+                        if(tower.Name == textBoxName.Text)
+                            MessageBox.Show("Tower with this name already exists.");
+                            return false;
                     }
                 }
             }
@@ -161,7 +168,7 @@ namespace ArtifactManager.FormsHandle
             int height = 0;
             if(heightFilled) height = int.Parse(textBoxHeight.Text);
             int age = 0;
-            if(areaAgeFilled){ age = int.Parse(textBoxAreaAge.Text); }
+            if(areaAgeFilled) age = int.Parse(textBoxAreaAge.Text); 
 
             using (var db = new CodeFirstContext())
             {

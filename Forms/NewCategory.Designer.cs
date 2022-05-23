@@ -92,6 +92,7 @@
             this.textBoxAreaAge.Size = new System.Drawing.Size(192, 22);
             this.textBoxAreaAge.TabIndex = 6;
             this.textBoxAreaAge.TextChanged += new System.EventHandler(this.areaAgeChanged);
+            this.textBoxAreaAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAreaAge_KeyPress);
             // 
             // textBoxHeight
             // 
@@ -101,6 +102,7 @@
             this.textBoxHeight.TabIndex = 7;
             this.textBoxHeight.Visible = false;
             this.textBoxHeight.TextChanged += new System.EventHandler(this.heightChanged);
+            this.textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHeight_KeyPress);
             // 
             // returnButton
             // 
