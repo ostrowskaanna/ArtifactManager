@@ -80,6 +80,9 @@
     <Compile Include="FormsHandle\NewCategoryHandle.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormsHandle\NewCategoryObjectHandle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormsHandle\NewUserFormHandle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewCategory.resx">
       <DependentUpon>NewCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewCategoryObject.resx">
+      <DependentUpon>NewCategoryObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205181454030_Initial.resx">
       <DependentUpon>202205181454030_Initial.cs</DependentUpon>

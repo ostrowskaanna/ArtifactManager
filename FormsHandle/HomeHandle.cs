@@ -239,5 +239,24 @@ namespace ArtifactManager.FormsHandle
         {
             this.openNewCategoryForm(3);
         }
+
+        public void addNewCategoryObject(int objectType)
+        {
+            /* objectType defines what character is being created
+             * 1 - Dragon
+             * 2 - Bat
+             * 3 - Spider
+             * 4 - Ent
+             * 5 - Wolf
+             * 6 - Giant 
+             * 7 - Knight
+             * 8 - Magus 
+             * 9 - Witch
+             * */
+            home.Hide();
+            NewCategoryObject newObject = new NewCategoryObject(this.username, objectType);
+            newObject.ShowDialog();
+            home.Close();
+        }
     }
 }

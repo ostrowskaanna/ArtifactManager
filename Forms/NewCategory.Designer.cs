@@ -45,9 +45,9 @@
             this.Info.AutoSize = true;
             this.Info.Location = new System.Drawing.Point(287, 21);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(173, 16);
+            this.Info.Size = new System.Drawing.Size(133, 16);
             this.Info.TabIndex = 0;
-            this.Info.Text = "Create new category object:";
+            this.Info.Text = "Create new category:";
             // 
             // nameLabel
             // 

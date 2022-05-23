@@ -96,11 +96,8 @@ namespace ArtifactManager.FormsHandle
             {
                 if (categoryType == 1)
                 {
-                    MessageBox.Show("Category Cave");
                     foreach (var cave in db.Caves)
                     {
-                        MessageBox.Show(cave.Area.ToString());
-                        MessageBox.Show(int.Parse(textBoxAreaAge.Text).ToString());
                         if (cave.Name == textBoxName.Text)
                             MessageBox.Show("Cave with this name already exists.");
                             return false;

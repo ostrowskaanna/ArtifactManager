@@ -89,5 +89,50 @@ namespace ArtifactManager
         {
             homeHandle.addNewTower();
         }
+
+        private void addNewDragon(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(1);
+        }
+
+        private void addNewBat(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(2);
+        }
+
+        private void addNewSpider(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(3);
+        }
+
+        private void addNewEnt(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(4);
+        }
+
+        private void addNewWolf(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(5);
+        }
+
+        private void addNewGiant(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(6);
+        }
+
+        private void addNewKnight(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(7);
+        }
+
+        private void addNewMagus(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(8);
+        }
+
+        private void addNewWitch(object sender, EventArgs e)
+        {
+            homeHandle.addNewCategoryObject(9);
+        }
     }
 }
