@@ -56,9 +56,5 @@ namespace ArtifactManager
             modifyHandle.allowOnlyOneItemChecked(e);
         }
 
-        private void roleChanged(object sender, EventArgs e)
-        {
-            modifyHandle.roleChanged();
-        }
     }
 }

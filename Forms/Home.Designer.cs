@@ -85,7 +85,7 @@
             this.Users});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(648, 28);
+            this.Menu.Size = new System.Drawing.Size(581, 28);
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
             // 
@@ -340,9 +340,9 @@
             // 
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 16;
-            this.listBox.Location = new System.Drawing.Point(126, 111);
+            this.listBox.Location = new System.Drawing.Point(12, 94);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(403, 116);
+            this.listBox.Size = new System.Drawing.Size(557, 116);
             this.listBox.TabIndex = 7;
             this.listBox.Visible = false;
             this.listBox.Click += new System.EventHandler(this.itemSelected);
@@ -383,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 351);
+            this.ClientSize = new System.Drawing.Size(581, 351);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.text);

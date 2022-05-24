@@ -264,7 +264,64 @@ namespace ArtifactManager.FormsHandle
 
             listBox.Items.Clear();
 
-
+            using (var db = new CodeFirstContext())
+            {
+                string record;
+                foreach(var dragon in db.Dragons)
+                {
+                    record = "Type: Dragon, Name: " + dragon.Name + ", Cave: " + dragon.Cave.Name + ", Power: " +
+                        dragon.Power + ", Size: " + dragon.Size;
+                    listBox.Items.Add(record);
+                }
+                foreach(var bat in db.Bats)
+                {
+                    record = "Type: Bat, Name: " + bat.Name + ", Cave: " + bat.Cave.Name + ", Speed: " +
+                        bat.Speed + ", Size: " + bat.Size;
+                    listBox.Items.Add(record);
+                }
+                foreach (var spider in db.Spiders)
+                {
+                    record = "Type: Spider, Name: " + spider.Name + ", Cave: " + spider.Cave.Name + ", Speed: " +
+                        spider.Speed + ", Sight: " + spider.Sight;
+                    listBox.Items.Add(record);
+                }
+                foreach (var ent in db.Ents)
+                {
+                    record = "Type: Ent, Name: " + ent.Name + ", Forest: " + ent.Forest.Name + ", Power: " +
+                        ent.Power + ", Courage: " + ent.Courage;
+                    listBox.Items.Add(record);
+                }
+                foreach (var wolf in db.Wolfs)
+                {
+                    record = "Type: Wolf, Name: " + wolf.Name + ", Forest: " + wolf.Forest.Name + ", Power: " +
+                        wolf.Power + ", Speed: " + wolf.Speed;
+                    listBox.Items.Add(record);
+                }
+                foreach (var giant in db.Giants)
+                {
+                    record = "Type: Giant, Name: " + giant.Name + ", Forest: " + giant.Forest.Name + ", Height: " +
+                        giant.Height + ", Sight: " + giant.Sight;
+                    listBox.Items.Add(record);
+                }
+                foreach (var knight in db.Knights)
+                {
+                    record = "Type: Knight, Name: " + knight.Name + ", Tower: " + knight.Tower.Name + ", Power: " +
+                        knight.Power + ", Courage: " + knight.Courage;
+                    listBox.Items.Add(record);
+                }
+                foreach (var magus in db.Magus)
+                {
+                    record = "Type: Magus, Name: " + magus.Name + ", Tower: " + magus.Tower.Name + ", Power: " +
+                        magus.Power + ", Smart: " + magus.Smart;
+                    listBox.Items.Add(record);
+                }
+                foreach (var witch in db.Witches)
+                {
+                    record = "Type: Witch, Name: " + witch.Name + ", Tower: " + witch.Tower.Name + ", Power: " +
+                        witch.Power + ", Smart: " + witch.Smart;
+                    listBox.Items.Add(record);
+                }
+            }
         }
 
         public void itemSelected()
@@ -283,13 +340,87 @@ namespace ArtifactManager.FormsHandle
 
         public void deleteCategory()
         {
-            //usuwanie kategorii
+            var catToDelete = listBox.SelectedItem;
+            string [] parts = catToDelete.ToString().Split(',');
+            string type = parts[0];
+            string name = parts[1];
+            parts = type.Split(':');
+            type = parts[1];
+            parts = name.Split(':');
+            name = parts[1];
+
+            using(var db = new CodeFirstContext())
+            {
+                if(type == " Cave")
+                {
+                    db.Caves.Remove(db.Caves.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Forest")
+                {
+                    db.Forests.Remove(db.Forests.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Tower")
+                {
+                    db.Towers.Remove(db.Towers.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                db.SaveChanges();
+            }
+            MessageBox.Show("Category deleted.");
+            this.seeAllCategories();
         }
 
         public void deleteObject()
         {
-            //usuwanie obiektu 
-            
+            var objToDelete = listBox.SelectedItem;
+            string [] parts = objToDelete.ToString().Split(',');
+            string type = parts[0];
+            string name = parts[1];
+            parts = type.Split(':');
+            type = parts[1];
+            parts = name.Split(':');
+            name = parts[1];
+            using(var db = new CodeFirstContext())
+            {
+                if (type == " Dragon")
+                {
+                    db.Dragons.Remove(db.Dragons.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Bat")
+                {
+                    db.Bats.Remove(db.Bats.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Spider")
+                {
+                    db.Spiders.Remove(db.Spiders.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Ent")
+                {
+                    db.Ents.Remove(db.Ents.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Wolf")
+                {
+                    db.Wolfs.Remove(db.Wolfs.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Giant")
+                {
+                    db.Giants.Remove(db.Giants.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Knight")
+                {
+                    db.Knights.Remove(db.Knights.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Magus")
+                {
+                    db.Magus.Remove(db.Magus.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                else if (type == " Witch")
+                {
+                    db.Witches.Remove(db.Witches.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                }
+                db.SaveChanges();
+            }
+            MessageBox.Show("Object deleted.");
+            this.seeAllObjects();
         }
 
         public void deleteUser()

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ArtifactManager.FormsHandle;
+using ArtifactManager.DataModels;
 
 namespace ArtifactManager
 {
@@ -19,9 +20,142 @@ namespace ArtifactManager
         {
             InitializeComponent();
             username = username_;
-            homeHandle.getHomeForm(this, this.label1, this.label2, 
+            homeHandle.getHomeForm(this, this.label1, this.label2,
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
                 this.listBox, this.text, this.deleteButton, this.editButton);
+            /*
+            using(var db = new CodeFirstContext())
+            {
+                foreach (var d in db.Dragons)
+                    db.Dragons.Remove(d);
+                db.SaveChanges();
+                foreach(var d in db.Bats)
+                    db.Bats.Remove(d);
+                db.SaveChanges();
+                foreach(var d in db.Spiders)
+                    db.Spiders.Remove(d);
+                db.SaveChanges();
+                foreach(var d in db.Ents)
+                    db.Ents.Remove(d);
+                db.SaveChanges();
+                foreach(var d in db.Wolfs)
+                    db.Wolfs.Remove(d);
+                db.SaveChanges();
+                foreach(var d in db.Giants)
+                    db.Giants.Remove(d);
+                db.SaveChanges();
+                foreach(var d in db.Knights)
+                    db.Knights.Remove(d);
+                db.SaveChanges();
+            }
+            */
+        }
+
+        private void addObjects()
+        {
+            using(var db = new CodeFirstContext())
+            {
+                db.Dragons.Add(new Dragon()
+                {
+                    Cave = db.Caves.FirstOrDefault(c => c.Id == 1),
+                    Name = "Fireball Dragon",
+                    Power = 100,
+                    Size = 100
+                });
+                db.Dragons.Add(new Dragon()
+                {
+                    Cave = db.Caves.FirstOrDefault(c => c.Id == 1),
+                    Name = "Ice Dragon",
+                    Power = 50,
+                    Size = 150
+                });
+                db.SaveChanges();
+                db.Bats.Add(new Bat()
+                {
+                    Cave = db.Caves.FirstOrDefault(c => c.Id == 1),
+                    Name = "Invisible Bat",
+                    Speed = 100,
+                    Size = 5
+                });
+                db.SaveChanges();
+                db.Spiders.Add(new Spider()
+                {
+                    Cave = db.Caves.FirstOrDefault(c => c.Id == 1),
+                    Name = "Multi Spider",
+                    Speed = 50,
+                    Sight = 10
+                });
+                db.SaveChanges();
+                db.Ents.Add(new Ent()
+                {
+                    Forest = db.Forests.FirstOrDefault(f => f.Id == 1),
+                    Name = "Twin Ent",
+                    Power = 200,
+                    Courage = 70,
+                });
+                db.Ents.Add(new Ent()
+                {
+                    Forest = db.Forests.FirstOrDefault(f => f.Id == 2),
+                    Name = "Classic Ent",
+                    Power = 100,
+                    Courage = 100,
+                });
+                db.SaveChanges();
+                db.Wolfs.Add(new Wolf()
+                {
+                    Forest = db.Forests.FirstOrDefault(f => f.Id == 1),
+                    Name = "Winter Wolf",
+                    Power = 50,
+                    Speed = 70,
+                });
+                db.Wolfs.Add(new Wolf()
+                {
+                    Forest = db.Forests.FirstOrDefault(f => f.Id == 2),
+                    Name = "WereWolf",
+                    Power = 150,
+                    Speed = 150,
+                });
+                db.SaveChanges();
+                db.Giants.Add(new Giant()
+                {
+                    Forest = db.Forests.FirstOrDefault(f => f.Id == 2),
+                    Name = "Green Giant",
+                    Height = 50,
+                    Sight = 3
+                });
+                db.SaveChanges();
+                db.Knights.Add(new Knight()
+                {
+                    Tower = db.Towers.FirstOrDefault(t => t.Id == 1),
+                    Name = "Half-Dead Knight",
+                    Power = 100,
+                    Courage = 40
+                });
+                db.SaveChanges();
+                db.Magus.Add(new Magus()
+                {
+                    Tower = db.Towers.FirstOrDefault(t => t.Id == 1),
+                    Name = "Dark-Magic Magus",
+                    Power = 200,
+                    Smart = 100
+                });
+                db.SaveChanges();
+                db.Witches.Add(new Witch()
+                {
+                    Tower = db.Towers.FirstOrDefault(t => t.Id == 1),
+                    Name = "Bad Witch",
+                    Power = 100,
+                    Smart = 50
+                });
+                db.Witches.Add(new Witch()
+                {
+                    Tower = db.Towers.FirstOrDefault(t => t.Id == 3),
+                    Name = "Good Witch",
+                    Power = 50,
+                    Smart = 100
+                });
+                db.SaveChanges();
+            }
         }
 
         private void showProfileDetails(object sender, EventArgs e)

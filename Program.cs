@@ -13,7 +13,7 @@ namespace ArtifactManager
 
         public static CodeFirstContext context = new CodeFirstContext();
 
-        public static void init()
+        public static void addCategories()
         {
             using (var db = new CodeFirstContext())
             {
@@ -62,6 +62,7 @@ namespace ArtifactManager
                 db.SaveChanges();
             }
         }
+
 
         static void Main()
         {

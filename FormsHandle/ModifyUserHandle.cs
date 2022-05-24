@@ -106,22 +106,19 @@ namespace ArtifactManager.FormsHandle
             }
         }
 
-        public void roleChanged()
-        {
-            if (roleListBox.SelectedItem.ToString() == userToModify.Role)
-            {
-                changeButton.Enabled = false;
-            }
-            else
-            {
-                changeButton.Enabled = true;
-            }
-        }
 
         public void allowOnlyOneItemChecked(ItemCheckEventArgs e)
         {
             for (int ix = 0; ix < roleListBox.Items.Count; ++ix)
                 if (ix != e.Index) roleListBox.SetItemChecked(ix, false);
+
+            if (roleListBox.SelectedIndex >= 0)
+            {
+                if (roleListBox.SelectedItem.ToString() != userToModify.Role)
+                {
+                    changeButton.Enabled = true;
+                }
+            }
         }
 
         public void changeUserData()
