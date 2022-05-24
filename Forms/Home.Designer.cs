@@ -345,6 +345,7 @@
             this.listBox.Size = new System.Drawing.Size(403, 116);
             this.listBox.TabIndex = 7;
             this.listBox.Visible = false;
+            this.listBox.Click += new System.EventHandler(this.itemSelected);
             // 
             // text
             // 

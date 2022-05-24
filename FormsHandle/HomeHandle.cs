@@ -31,6 +31,7 @@ namespace ArtifactManager.FormsHandle
         /* defines what is shown in listBox:
          * 1 - categories
          * 2 - objects
+         * 3 - users
          * */
 
         public void getHomeForm(Home home_, Label label1_, Label label2_,
@@ -179,8 +180,12 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the users:";
-            this.deleteButton.Visible = false;
-            this.editButton.Visible = false;
+            this.deleteButton.Visible = true;
+            this.editButton.Visible = true;
+            this.deleteButton.Enabled = false;
+            this.editButton.Enabled = false;
+
+            whatIsShown = 3;
 
             listBox.Items.Clear();
 
@@ -212,6 +217,8 @@ namespace ArtifactManager.FormsHandle
             this.text.Text = "Here are all the categories:";
             this.deleteButton.Visible = true;
             this.editButton.Visible = true;
+            this.deleteButton.Enabled = false;
+            this.editButton.Enabled = false;
 
             whatIsShown = 1;
 
@@ -251,7 +258,8 @@ namespace ArtifactManager.FormsHandle
             this.text.Text = "Here are all the objects:";
             this.deleteButton.Visible = true;
             this.editButton.Visible = true;
-
+            this.deleteButton.Enabled = false;
+            this.editButton.Enabled = false;
             whatIsShown = 2;
 
             listBox.Items.Clear();
@@ -259,10 +267,18 @@ namespace ArtifactManager.FormsHandle
 
         }
 
+        public void itemSelected()
+        {
+            if(listBox.SelectedIndex >= 0)
+                deleteButton.Enabled = true;
+                editButton.Enabled = true;
+        }
+
         public void deleteSelectedItem()
         {
             if (whatIsShown == 1) this.deleteCategory();
             else if (whatIsShown == 2) this.deleteObject();
+            else if(whatIsShown == 3) this.deleteUser();
         }
 
         public void deleteCategory()
@@ -273,12 +289,26 @@ namespace ArtifactManager.FormsHandle
         public void deleteObject()
         {
             //usuwanie obiektu 
+            
+        }
+
+        public void deleteUser()
+        {
+            var userToDelete = listBox.SelectedItem;
+            using (var db = new CodeFirstContext())
+            {
+                db.Users.Remove(db.Users.Where(u => u.Name == userToDelete.ToString()).FirstOrDefault());
+                db.SaveChanges();
+            }
+            MessageBox.Show("User deleted.");
+            this.seeAllUsers();
         }
 
         public void editSelectedItem()
         {
             if(whatIsShown == 1) this.editCategory();
             else if (whatIsShown == 2) this.editObject();
+            else if(whatIsShown == 3) this.editUser();
         }
 
         public void editCategory()
@@ -289,6 +319,21 @@ namespace ArtifactManager.FormsHandle
         public void editObject()
         {
             //edytowanie obiektu 
+        }
+
+        public void editUser()
+        {
+            User userToModify;
+            string user = listBox.SelectedItem.ToString();
+            using (var db = new CodeFirstContext())
+            {
+                userToModify = db.Users.FirstOrDefault(u => u.Name == user);
+            }
+
+            this.Hide();
+            ModifyUser modifyUserForm = new ModifyUser(userToModify, this.username);
+            modifyUserForm.ShowDialog();
+            this.Close();
         }
 
         public void openNewCategoryForm(int categoryType)

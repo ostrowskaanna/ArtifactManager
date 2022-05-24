@@ -23,7 +23,7 @@ namespace ArtifactManager
             userToModify = userToModify_;
             adminUsername = adminUsername_;
             modifyHandle.getModifyUserForm(this, this.returnButton, this.changeButton, this.adminUsername,
-                this.userToModify, this.textBoxUsername, this.textBoxEmail, this.textBoxPassword);
+                this.userToModify, this.textBoxUsername, this.textBoxEmail, this.textBoxPassword, this.roleListBox);
         }
 
         private void returnToHomePanel(object sender, EventArgs e)
@@ -51,9 +51,14 @@ namespace ArtifactManager
             modifyHandle.passwordChanged();
         }
 
-        private void roleClicked(object sender, EventArgs e)
+        private void allowOnlyOneItemChecked(object sender, ItemCheckEventArgs e)
         {
+            modifyHandle.allowOnlyOneItemChecked(e);
+        }
 
+        private void roleChanged(object sender, EventArgs e)
+        {
+            modifyHandle.roleChanged();
         }
     }
 }

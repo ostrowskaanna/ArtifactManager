@@ -107,7 +107,8 @@
             this.roleListBox.Name = "roleListBox";
             this.roleListBox.Size = new System.Drawing.Size(128, 89);
             this.roleListBox.TabIndex = 7;
-            this.roleListBox.Click += new System.EventHandler(this.roleClicked);
+            this.roleListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.allowOnlyOneItemChecked);
+            this.roleListBox.SelectedIndexChanged += new System.EventHandler(this.roleChanged);
             // 
             // returnButton
             // 

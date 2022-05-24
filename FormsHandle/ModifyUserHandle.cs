@@ -20,7 +20,8 @@ namespace ArtifactManager.FormsHandle
         string adminUsername;
         User userToModify;
         public void getModifyUserForm(ModifyUser modifyuserForm_, Button returnButton_, Button changeButton_,
-            string adminUsername_, User userToModify_, TextBox textBoxUsername_, TextBox textBoxEmail_, TextBox textBoxPassword_)
+            string adminUsername_, User userToModify_, TextBox textBoxUsername_, TextBox textBoxEmail_, TextBox textBoxPassword_, 
+            CheckedListBox roleListBox_)
         {
             modifyUserForm = modifyuserForm_;
             returnButton = returnButton_;
@@ -30,6 +31,7 @@ namespace ArtifactManager.FormsHandle
             textBoxUsername = textBoxUsername_;
             textBoxEmail = textBoxEmail_;
             textBoxPassword = textBoxPassword_;
+            roleListBox = roleListBox_;
             this.showUser();
 
         }
@@ -39,6 +41,22 @@ namespace ArtifactManager.FormsHandle
             textBoxUsername.Text = userToModify.Name;
             textBoxEmail.Text = userToModify.Email;
             textBoxPassword.Text = userToModify.Password;
+            using(var db = new CodeFirstContext())
+            {
+                int i = 0;
+                string record;
+                
+                foreach(var role in db.Roles)
+                {
+                    roleListBox.Items.Add(role.Name);
+                    if(role.Name == userToModify.Role)
+                    {
+                        roleListBox.SetItemCheckState(i, CheckState.Checked);
+                    }
+                    i++;
+                }
+                
+            }
             
         }
 
@@ -88,14 +106,35 @@ namespace ArtifactManager.FormsHandle
             }
         }
 
+        public void roleChanged()
+        {
+            if (roleListBox.SelectedItem.ToString() == userToModify.Role)
+            {
+                changeButton.Enabled = false;
+            }
+            else
+            {
+                changeButton.Enabled = true;
+            }
+        }
+
+        public void allowOnlyOneItemChecked(ItemCheckEventArgs e)
+        {
+            for (int ix = 0; ix < roleListBox.Items.Count; ++ix)
+                if (ix != e.Index) roleListBox.SetItemChecked(ix, false);
+        }
+
         public void changeUserData()
         {
             using(var db = new CodeFirstContext())
             {
-                var user = db.Users.FirstOrDefault(u => u == userToModify);
-                user.Name = textBoxUsername.Text;
-                user.Email = textBoxEmail.Text;
-                user.Password = textBoxPassword.Text;
+                var user = db.Users.SingleOrDefault(u => u.Name == userToModify.Name);
+                if (user != null)
+                {
+                    user.Name = textBoxUsername.Text;
+                    user.Email = textBoxEmail.Text;
+                    user.Password = textBoxPassword.Text;
+                }
                 db.SaveChanges();
             }
             MessageBox.Show("User data changed.");

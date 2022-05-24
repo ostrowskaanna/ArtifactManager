@@ -149,5 +149,10 @@ namespace ArtifactManager
         {
             homeHandle.editSelectedItem();
         }
+
+        private void itemSelected(object sender, EventArgs e)
+        {
+            homeHandle.itemSelected();
+        }
     }
 }
