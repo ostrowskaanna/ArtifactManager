@@ -134,5 +134,10 @@ namespace ArtifactManager
         {
             homeHandle.addNewCategoryObject(9);
         }
+
+        private void seeAllObjects(object sender, EventArgs e)
+        {
+            homeHandle.seeAllObjects();
+        }
     }
 }

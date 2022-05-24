@@ -192,7 +192,7 @@ namespace ArtifactManager.FormsHandle
             this.confirmButton.Visible = false;
             this.listBox.Visible = true;
             this.text.Visible = true;
-            this.text.Text = "Here are all the objects:";
+            this.text.Text = "Here are all the categories:";
 
             listBox.Items.Clear();
             using (var db = new CodeFirstContext())
@@ -216,6 +216,20 @@ namespace ArtifactManager.FormsHandle
             }
         }
 
+        public void seeAllObjects()
+        {
+            this.Info.Visible = false;
+            this.label1.Visible = false;
+            this.label2.Visible = false;
+            this.textBoxNewPassword.Visible = false;
+            this.textBoxOldPassword.Visible = false;
+            this.confirmButton.Visible = false;
+            this.listBox.Visible = true;
+            this.text.Visible = true;
+            this.text.Text = "Here are all the objects:";
+
+            listBox.Items.Clear();
+        }
         public void openNewCategoryForm(int categoryType)
         {
             home.Hide();

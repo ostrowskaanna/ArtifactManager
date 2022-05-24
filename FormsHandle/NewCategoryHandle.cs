@@ -52,7 +52,6 @@ namespace ArtifactManager.FormsHandle
             {
                 areaAgeFilled = true;
             }
-            this.addEnableCheck();
         }
 
         public void heightChanged()
@@ -62,7 +61,6 @@ namespace ArtifactManager.FormsHandle
             {
                 heightFilled = true;
             }
-            this.addEnableCheck();
         }
 
         public void addEnableCheck()

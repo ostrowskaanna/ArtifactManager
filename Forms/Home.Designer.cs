@@ -50,6 +50,7 @@
             this.AddNewMagus = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewWitch = new System.Windows.Forms.ToolStripMenuItem();
             this.SeeAllCategories = new System.Windows.Forms.ToolStripMenuItem();
+            this.SeeAllObjects = new System.Windows.Forms.ToolStripMenuItem();
             this.Users = new System.Windows.Forms.ToolStripMenuItem();
             this.EditUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.confirmButton = new System.Windows.Forms.Button();
             this.listBox = new System.Windows.Forms.ListBox();
             this.text = new System.Windows.Forms.Label();
-            this.seeAllObjects = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,7 +124,7 @@
             this.AddNewCategory,
             this.AddNewCategoryObject,
             this.SeeAllCategories,
-            this.seeAllObjects});
+            this.SeeAllObjects});
             this.MyFigures.Name = "MyFigures";
             this.MyFigures.Size = new System.Drawing.Size(70, 24);
             this.MyFigures.Text = "Figures";
@@ -142,21 +142,21 @@
             // AddNewCave
             // 
             this.AddNewCave.Name = "AddNewCave";
-            this.AddNewCave.Size = new System.Drawing.Size(224, 26);
+            this.AddNewCave.Size = new System.Drawing.Size(198, 26);
             this.AddNewCave.Text = "Add New Cave";
             this.AddNewCave.Click += new System.EventHandler(this.addNewCave);
             // 
             // AddNewForest
             // 
             this.AddNewForest.Name = "AddNewForest";
-            this.AddNewForest.Size = new System.Drawing.Size(224, 26);
+            this.AddNewForest.Size = new System.Drawing.Size(198, 26);
             this.AddNewForest.Text = "Add New Forest";
             this.AddNewForest.Click += new System.EventHandler(this.addNewForest);
             // 
             // AddNewTower
             // 
             this.AddNewTower.Name = "AddNewTower";
-            this.AddNewTower.Size = new System.Drawing.Size(224, 26);
+            this.AddNewTower.Size = new System.Drawing.Size(198, 26);
             this.AddNewTower.Text = "Add New Tower";
             this.AddNewTower.Click += new System.EventHandler(this.addNewTower);
             // 
@@ -179,63 +179,63 @@
             // AddNewDragon
             // 
             this.AddNewDragon.Name = "AddNewDragon";
-            this.AddNewDragon.Size = new System.Drawing.Size(224, 26);
+            this.AddNewDragon.Size = new System.Drawing.Size(208, 26);
             this.AddNewDragon.Text = "Add New Dragon";
             this.AddNewDragon.Click += new System.EventHandler(this.addNewDragon);
             // 
             // AddNewBat
             // 
             this.AddNewBat.Name = "AddNewBat";
-            this.AddNewBat.Size = new System.Drawing.Size(224, 26);
+            this.AddNewBat.Size = new System.Drawing.Size(208, 26);
             this.AddNewBat.Text = "Add New Bat";
             this.AddNewBat.Click += new System.EventHandler(this.addNewBat);
             // 
             // AddNewSpider
             // 
             this.AddNewSpider.Name = "AddNewSpider";
-            this.AddNewSpider.Size = new System.Drawing.Size(224, 26);
+            this.AddNewSpider.Size = new System.Drawing.Size(208, 26);
             this.AddNewSpider.Text = "Add New Spider ";
             this.AddNewSpider.Click += new System.EventHandler(this.addNewSpider);
             // 
             // AddNewEnt
             // 
             this.AddNewEnt.Name = "AddNewEnt";
-            this.AddNewEnt.Size = new System.Drawing.Size(224, 26);
+            this.AddNewEnt.Size = new System.Drawing.Size(208, 26);
             this.AddNewEnt.Text = "Add New Ent";
             this.AddNewEnt.Click += new System.EventHandler(this.addNewEnt);
             // 
             // AddNewWolf
             // 
             this.AddNewWolf.Name = "AddNewWolf";
-            this.AddNewWolf.Size = new System.Drawing.Size(224, 26);
+            this.AddNewWolf.Size = new System.Drawing.Size(208, 26);
             this.AddNewWolf.Text = "Add New Wolf";
             this.AddNewWolf.Click += new System.EventHandler(this.addNewWolf);
             // 
             // AddNewGiant
             // 
             this.AddNewGiant.Name = "AddNewGiant";
-            this.AddNewGiant.Size = new System.Drawing.Size(224, 26);
+            this.AddNewGiant.Size = new System.Drawing.Size(208, 26);
             this.AddNewGiant.Text = "Add New Giant";
             this.AddNewGiant.Click += new System.EventHandler(this.addNewGiant);
             // 
             // AddNewKnight
             // 
             this.AddNewKnight.Name = "AddNewKnight";
-            this.AddNewKnight.Size = new System.Drawing.Size(224, 26);
+            this.AddNewKnight.Size = new System.Drawing.Size(208, 26);
             this.AddNewKnight.Text = "Add New Knight";
             this.AddNewKnight.Click += new System.EventHandler(this.addNewKnight);
             // 
             // AddNewMagus
             // 
             this.AddNewMagus.Name = "AddNewMagus";
-            this.AddNewMagus.Size = new System.Drawing.Size(224, 26);
+            this.AddNewMagus.Size = new System.Drawing.Size(208, 26);
             this.AddNewMagus.Text = "Add New Magus ";
             this.AddNewMagus.Click += new System.EventHandler(this.addNewMagus);
             // 
             // AddNewWitch
             // 
             this.AddNewWitch.Name = "AddNewWitch";
-            this.AddNewWitch.Size = new System.Drawing.Size(224, 26);
+            this.AddNewWitch.Size = new System.Drawing.Size(208, 26);
             this.AddNewWitch.Text = "Add New Witch";
             this.AddNewWitch.Click += new System.EventHandler(this.addNewWitch);
             // 
@@ -245,6 +245,13 @@
             this.SeeAllCategories.Size = new System.Drawing.Size(270, 26);
             this.SeeAllCategories.Text = "See All Categories";
             this.SeeAllCategories.Click += new System.EventHandler(this.seeAllCategories);
+            // 
+            // seeAllObjects
+            // 
+            this.SeeAllObjects.Name = "seeAllObjects";
+            this.SeeAllObjects.Size = new System.Drawing.Size(270, 26);
+            this.SeeAllObjects.Text = "See All Objects";
+            this.SeeAllObjects.Click += new System.EventHandler(this.seeAllObjects);
             // 
             // Users
             // 
@@ -347,12 +354,6 @@
             this.text.Text = "Here are all users:";
             this.text.Visible = false;
             // 
-            // seeAllObjects
-            // 
-            this.seeAllObjects.Name = "seeAllObjects";
-            this.seeAllObjects.Size = new System.Drawing.Size(270, 26);
-            this.seeAllObjects.Text = "See All Objects";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -412,6 +413,6 @@
         private System.Windows.Forms.ToolStripMenuItem AddNewKnight;
         private System.Windows.Forms.ToolStripMenuItem AddNewMagus;
         private System.Windows.Forms.ToolStripMenuItem AddNewWitch;
-        private System.Windows.Forms.ToolStripMenuItem seeAllObjects;
+        private System.Windows.Forms.ToolStripMenuItem SeeAllObjects;
     }
 }

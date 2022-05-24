@@ -75,6 +75,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(139, 22);
             this.textBoxName.TabIndex = 3;
+            this.textBoxName.TextChanged += new System.EventHandler(this.nameChanged);
             // 
             // categoryType
             // 
@@ -88,10 +89,11 @@
             // comboBoxCategoryType
             // 
             this.comboBoxCategoryType.FormattingEnabled = true;
-            this.comboBoxCategoryType.Location = new System.Drawing.Point(314, 144);
+            this.comboBoxCategoryType.Location = new System.Drawing.Point(242, 144);
             this.comboBoxCategoryType.Name = "comboBoxCategoryType";
-            this.comboBoxCategoryType.Size = new System.Drawing.Size(139, 24);
+            this.comboBoxCategoryType.Size = new System.Drawing.Size(211, 24);
             this.comboBoxCategoryType.TabIndex = 5;
+            this.comboBoxCategoryType.SelectedIndexChanged += new System.EventHandler(this.typeChanged);
             // 
             // firstAttribute
             // 
@@ -117,6 +119,8 @@
             this.textBoxFirstAttribute.Name = "textBoxFirstAttribute";
             this.textBoxFirstAttribute.Size = new System.Drawing.Size(139, 22);
             this.textBoxFirstAttribute.TabIndex = 8;
+            this.textBoxFirstAttribute.TextChanged += new System.EventHandler(this.firstAttChanged);
+            this.textBoxFirstAttribute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // textBoxSecondAttribute
             // 
@@ -124,6 +128,8 @@
             this.textBoxSecondAttribute.Name = "textBoxSecondAttribute";
             this.textBoxSecondAttribute.Size = new System.Drawing.Size(139, 22);
             this.textBoxSecondAttribute.TabIndex = 9;
+            this.textBoxSecondAttribute.TextChanged += new System.EventHandler(this.secondAttChanged);
+            this.textBoxSecondAttribute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // returnButton
             // 
@@ -133,9 +139,11 @@
             this.returnButton.TabIndex = 10;
             this.returnButton.Text = "Return";
             this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnToHomePanel);
             // 
             // addButton
             // 
+            this.addButton.Enabled = false;
             this.addButton.Location = new System.Drawing.Point(341, 279);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(112, 39);
