@@ -128,9 +128,74 @@ namespace ArtifactManager.FormsHandle
                 addButton.Enabled = false;
             }
         }
+
+        public bool checkIfFree()
+        {
+            return true;
+        }
         public void addNewObject()
+        {
+            /* objectType defines what character is being created
+             * 1 - Dragon
+             * 2 - Bat
+             * 3 - Spider
+             * 4 - Ent
+             * 5 - Wolf
+             * 6 - Giant 
+             * 7 - Knight
+             * 8 - Magus 
+             * 9 - Witch
+             * */
+            if (this.checkIfFree())
+            {
+                
+            }
+        }
+
+        public void addNewDragon()
+        {
+
+        }
+
+        public void addNewBat()
+        {
+
+        }
+
+        public void addNewSpider()
+        {
+
+        }
+
+        public void addNewEnt()
+        {
+
+        }
+
+        public void addNewWolf()
+        {
+
+        }
+
+        public void addNewGiant()
+        {
+
+        }
+
+        public void addNewKnight()
+        {
+
+        }
+
+        public void addMagus()
+        {
+
+        }
+
+        public void addNewWitch()
         {
 
         }
     }
+
 }

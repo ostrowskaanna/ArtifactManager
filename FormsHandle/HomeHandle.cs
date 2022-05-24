@@ -19,15 +19,23 @@ namespace ArtifactManager.FormsHandle
         Label Info;
         ListBox listBox;
         Label text;
+        Button deleteButton;
+        Button editButton;
 
         string username;
 
         bool oldPasswordFiled = false;
         bool newPasswordFilled = false;
 
+        int whatIsShown;
+        /* defines what is shown in listBox:
+         * 1 - categories
+         * 2 - objects
+         * */
+
         public void getHomeForm(Home home_, Label label1_, Label label2_,
             TextBox textBoxOldPassword_, TextBox textBoxNewPasword_, Button confirmButton_, string username_,
-            Label Info_, ListBox listBox_, Label text_)
+            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button editButton_)
         {
             home = home_;
             label1 = label1_;
@@ -41,6 +49,8 @@ namespace ArtifactManager.FormsHandle
             Info = Info_;
             listBox = listBox_;
             text = text_;
+            deleteButton = deleteButton_;
+            editButton = editButton_;
         }
 
         public void showProfileDetails()
@@ -50,6 +60,8 @@ namespace ArtifactManager.FormsHandle
             this.Info.Visible = true;
             this.textBoxOldPassword.Visible = false;
             this.textBoxNewPassword.Visible = false;
+            this.deleteButton.Visible = false;
+            this.editButton.Visible = false;
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
@@ -75,6 +87,8 @@ namespace ArtifactManager.FormsHandle
             this.textBoxOldPassword.Visible = true;
             this.textBoxNewPassword.Visible = true;
             this.confirmButton.Visible = true;
+            this.deleteButton.Visible = false;
+            this.editButton.Visible = false;
         }
 
         public void textBoxOldPasswordCheck()
@@ -165,8 +179,11 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the users:";
+            this.deleteButton.Visible = false;
+            this.editButton.Visible = false;
 
             listBox.Items.Clear();
+
             using (var db = new CodeFirstContext())
             {
                 foreach (var user in db.Users)
@@ -193,8 +210,13 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the categories:";
+            this.deleteButton.Visible = true;
+            this.editButton.Visible = true;
+
+            whatIsShown = 1;
 
             listBox.Items.Clear();
+
             using (var db = new CodeFirstContext())
             {
                 string record;
@@ -227,9 +249,48 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the objects:";
+            this.deleteButton.Visible = true;
+            this.editButton.Visible = true;
+
+            whatIsShown = 2;
 
             listBox.Items.Clear();
+
+
         }
+
+        public void deleteSelectedItem()
+        {
+            if (whatIsShown == 1) this.deleteCategory();
+            else if (whatIsShown == 2) this.deleteObject();
+        }
+
+        public void deleteCategory()
+        {
+            //usuwanie kategorii
+        }
+
+        public void deleteObject()
+        {
+            //usuwanie obiektu 
+        }
+
+        public void editSelectedItem()
+        {
+            if(whatIsShown == 1) this.editCategory();
+            else if (whatIsShown == 2) this.editObject();
+        }
+
+        public void editCategory()
+        {
+            //edytowanie kategorii
+        }
+
+        public void editObject()
+        {
+            //edytowanie obiektu 
+        }
+
         public void openNewCategoryForm(int categoryType)
         {
             home.Hide();

@@ -21,7 +21,7 @@ namespace ArtifactManager
             username = username_;
             homeHandle.getHomeForm(this, this.label1, this.label2, 
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
-                this.listBox, this.text);
+                this.listBox, this.text, this.deleteButton, this.editButton);
         }
 
         private void showProfileDetails(object sender, EventArgs e)
@@ -138,6 +138,16 @@ namespace ArtifactManager
         private void seeAllObjects(object sender, EventArgs e)
         {
             homeHandle.seeAllObjects();
+        }
+
+        private void deleteSelectedItem(object sender, EventArgs e)
+        {
+            homeHandle.deleteSelectedItem();
+        }
+
+        private void editSelectedItem(object sender, EventArgs e)
+        {
+            homeHandle.editSelectedItem();
         }
     }
 }

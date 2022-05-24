@@ -89,7 +89,6 @@ namespace ArtifactManager.FormsHandle
 
         public bool checkIfFree()
         {
-            MessageBox.Show("checkIfFree()");
             using (var db = new CodeFirstContext())
             {
                 if (categoryType == 1)

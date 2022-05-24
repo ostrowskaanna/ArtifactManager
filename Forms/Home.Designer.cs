@@ -62,6 +62,8 @@
             this.confirmButton = new System.Windows.Forms.Button();
             this.listBox = new System.Windows.Forms.ListBox();
             this.text = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -246,9 +248,9 @@
             this.SeeAllCategories.Text = "See All Categories";
             this.SeeAllCategories.Click += new System.EventHandler(this.seeAllCategories);
             // 
-            // seeAllObjects
+            // SeeAllObjects
             // 
-            this.SeeAllObjects.Name = "seeAllObjects";
+            this.SeeAllObjects.Name = "SeeAllObjects";
             this.SeeAllObjects.Size = new System.Drawing.Size(270, 26);
             this.SeeAllObjects.Text = "See All Objects";
             this.SeeAllObjects.Click += new System.EventHandler(this.seeAllObjects);
@@ -354,11 +356,35 @@
             this.text.Text = "Here are all users:";
             this.text.Visible = false;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Enabled = false;
+            this.deleteButton.Location = new System.Drawing.Point(217, 254);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(94, 37);
+            this.deleteButton.TabIndex = 9;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteSelectedItem);
+            // 
+            // editButton
+            // 
+            this.editButton.Enabled = false;
+            this.editButton.Location = new System.Drawing.Point(345, 254);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(94, 37);
+            this.editButton.TabIndex = 10;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editSelectedItem);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 351);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.text);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.confirmButton);
@@ -414,5 +440,7 @@
         private System.Windows.Forms.ToolStripMenuItem AddNewMagus;
         private System.Windows.Forms.ToolStripMenuItem AddNewWitch;
         private System.Windows.Forms.ToolStripMenuItem SeeAllObjects;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button editButton;
     }
 }
