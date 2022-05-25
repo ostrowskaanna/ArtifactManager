@@ -21,6 +21,7 @@ namespace ArtifactManager.FormsHandle
         Label text;
         Button deleteButton;
         Button editButton;
+        CheckedListBox filters;
 
         string username;
 
@@ -34,9 +35,25 @@ namespace ArtifactManager.FormsHandle
          * 3 - users
          * */
 
+        Dictionary<string, string> objAtt = new Dictionary<string, string>();
+        List<string> categories = new List<string>();
+        List<int> categoryIds = new List<int>();
+        public HomeHandle()
+        {
+            objAtt.Add("Dragon", "Cave,Power,Size");
+            objAtt.Add("Bat", "Cave,Speed,Size");
+            objAtt.Add("Spider", "Cave,Speed,Sight");
+            objAtt.Add("Ent", "Forest,Power,Courage");
+            objAtt.Add("Wolf", "Forest,Power,Speed");
+            objAtt.Add("Giant", "Forest,Height,Sight");
+            objAtt.Add("Knight", "Tower,Power,Courage");
+            objAtt.Add("Magus", "Tower,Power,Smart");
+            objAtt.Add("Witch", "Tower,Power,Smart");
+        }
+        
         public void getHomeForm(Home home_, Label label1_, Label label2_,
             TextBox textBoxOldPassword_, TextBox textBoxNewPasword_, Button confirmButton_, string username_,
-            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button editButton_)
+            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button editButton_, CheckedListBox filters_)
         {
             home = home_;
             label1 = label1_;
@@ -52,6 +69,36 @@ namespace ArtifactManager.FormsHandle
             text = text_;
             deleteButton = deleteButton_;
             editButton = editButton_;
+            filters = filters_;
+            this.getCategories();
+        }
+
+        public void getCategories()
+        {
+            categories.Clear();
+            using (var db = new CodeFirstContext())
+            {
+                string record;
+                foreach (var cave in db.Caves)
+                {
+                    record = "Type: Cave, Name: " + cave.Name + ", Area: " + cave.Area;
+                    categories.Add(record);
+                    categoryIds.Add(cave.Id);
+                }
+                foreach (var forest in db.Forests)
+                {
+                    record = "Type: Forest, Name: " + forest.Name + ", Area: " + forest.Area;
+                    categories.Add(record);
+                    categoryIds.Add(forest.Id);
+                }
+                foreach (var tower in db.Towers)
+                {
+                    record = "Type: Tower, Name: " + tower.Name + ", Height: " + tower.Height + ", Age: " + tower.Age;
+                    categories.Add(record);
+                    categoryIds.Add(tower.Id);
+                }
+            }
+
         }
 
         public void showProfileDetails()
@@ -63,6 +110,8 @@ namespace ArtifactManager.FormsHandle
             this.textBoxNewPassword.Visible = false;
             this.deleteButton.Visible = false;
             this.editButton.Visible = false;
+            this.filters.Visible = false;
+
             using (var db = new CodeFirstContext())
             {
                 var foundUser = db.Users.FirstOrDefault(c => c.Name == username);
@@ -90,6 +139,7 @@ namespace ArtifactManager.FormsHandle
             this.confirmButton.Visible = true;
             this.deleteButton.Visible = false;
             this.editButton.Visible = false;
+            this.filters.Visible = false;
         }
 
         public void textBoxOldPasswordCheck()
@@ -184,6 +234,7 @@ namespace ArtifactManager.FormsHandle
             this.editButton.Visible = true;
             this.deleteButton.Enabled = false;
             this.editButton.Enabled = false;
+            this.filters.Visible = false;
 
             whatIsShown = 3;
 
@@ -219,31 +270,19 @@ namespace ArtifactManager.FormsHandle
             this.editButton.Visible = true;
             this.deleteButton.Enabled = false;
             this.editButton.Enabled = false;
-
+            this.filters.Visible = true;
             whatIsShown = 1;
 
-            listBox.Items.Clear();
+            this.setFilters();
 
-            using (var db = new CodeFirstContext())
+            listBox.Items.Clear();
+            foreach (string cat in this.categories)
             {
-                string record;
-                foreach (var cave in db.Caves)
-                {
-                    record = "Type: Cave, Name: " + cave.Name + ", Area: " + cave.Area;
-                    listBox.Items.Add(record);
-                }
-                foreach (var forest in db.Forests)
-                {
-                    record = "Type: Forest, Name: " + forest.Name + ", Area: " + forest.Area;
-                    listBox.Items.Add(record);
-                }
-                foreach (var tower in db.Towers)
-                {
-                    record = "Type: Tower, Name: " + tower.Name + ", Height: " + tower.Height + ", Age: " + tower.Age;
-                    listBox.Items.Add(record);
-                }
+                listBox.Items.Add(cat);
             }
+
         }
+
 
         public void seeAllObjects()
         {
@@ -260,8 +299,10 @@ namespace ArtifactManager.FormsHandle
             this.editButton.Visible = true;
             this.deleteButton.Enabled = false;
             this.editButton.Enabled = false;
+            this.filters.Visible = true;
             whatIsShown = 2;
-
+            
+            this.setFilters();
             listBox.Items.Clear();
 
             using (var db = new CodeFirstContext())
@@ -324,6 +365,34 @@ namespace ArtifactManager.FormsHandle
             }
         }
 
+        public void setFilters()
+        {
+            filters.Items.Clear();
+            if(whatIsShown == 1)
+            {
+                filters.Items.Add("Cave");
+                filters.Items.Add("Forest");
+                filters.Items.Add("Tower");
+            }
+            else if(whatIsShown == 2)
+            {
+                filters.Items.Add("Dragon");
+                filters.Items.Add("Bat");
+                filters.Items.Add("Spider");
+                filters.Items.Add("Ent");
+                filters.Items.Add("Wolf");
+                filters.Items.Add("Giant");
+                filters.Items.Add("Knight");
+                filters.Items.Add("Magus");
+                filters.Items.Add("Witch");
+            }
+        }
+
+        public void filterCheck()
+        {
+            
+        }
+
         public void itemSelected()
         {
             if(listBox.SelectedIndex >= 0)
@@ -366,6 +435,7 @@ namespace ArtifactManager.FormsHandle
                 db.SaveChanges();
             }
             MessageBox.Show("Category deleted.");
+            this.getCategories();
             this.seeAllCategories();
         }
 
@@ -491,21 +561,10 @@ namespace ArtifactManager.FormsHandle
             this.openNewCategoryForm(3);
         }
 
-        public void addNewCategoryObject(int objectType)
+        public void addNewCategoryObject(string objectType)
         {
-            /* objectType defines what character is being created
-             * 1 - Dragon
-             * 2 - Bat
-             * 3 - Spider
-             * 4 - Ent
-             * 5 - Wolf
-             * 6 - Giant 
-             * 7 - Knight
-             * 8 - Magus 
-             * 9 - Witch
-             * */
             home.Hide();
-            NewCategoryObject newObject = new NewCategoryObject(this.username, objectType);
+            NewCategoryObject newObject = new NewCategoryObject(this.username, objectType,this.objAtt, this.categories, this.categoryIds);
             newObject.ShowDialog();
             home.Close();
         }

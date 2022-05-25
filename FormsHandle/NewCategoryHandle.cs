@@ -77,6 +77,8 @@ namespace ArtifactManager.FormsHandle
 
         public void addNewCategory()
         {
+            bool result = this.checkIfFree();
+            MessageBox.Show(result.ToString());
             if (this.checkIfFree())
             {
                 if (categoryType == 1) addNewCave();
@@ -96,8 +98,10 @@ namespace ArtifactManager.FormsHandle
                     foreach (var cave in db.Caves)
                     {
                         if (cave.Name == textBoxName.Text)
+                        {
                             MessageBox.Show("Cave with this name already exists.");
                             return false;
+                        }
                     }
                 }
                 else if (categoryType == 2)
@@ -105,17 +109,21 @@ namespace ArtifactManager.FormsHandle
                     foreach (var forest in db.Forests)
                     {
                         if (forest.Name == textBoxName.Text)
+                        {
                             MessageBox.Show("Forest with this name already exists.");
                             return false;
+                        }
                     }
                 }
                 else
                 {
                     foreach(var tower in db.Towers)
                     {
-                        if(tower.Name == textBoxName.Text)
+                        if (tower.Name == textBoxName.Text)
+                        {
                             MessageBox.Show("Tower with this name already exists.");
                             return false;
+                        }
                     }
                 }
             }
@@ -162,8 +170,7 @@ namespace ArtifactManager.FormsHandle
             int height = 0;
             if(heightFilled) height = int.Parse(textBoxHeight.Text);
             int age = 0;
-            if(areaAgeFilled) age = int.Parse(textBoxAreaAge.Text); 
-
+            if(areaAgeFilled) age = int.Parse(textBoxAreaAge.Text);
             using (var db = new CodeFirstContext())
             {
                 db.Towers.Add(new Tower()

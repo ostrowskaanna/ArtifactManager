@@ -14,94 +14,35 @@ namespace ArtifactManager.Forms
     public partial class NewCategoryObject : Form
     {
         string username;
-        int objectType;
+        string objectType;
         NewCategoryObjectHandle objectHandle = new NewCategoryObjectHandle();
-        public NewCategoryObject(string username_, int objectType_)
+        Dictionary<string, string> objAtt;
+        List<string> categories;
+        List<int> categoryIds;
+        public NewCategoryObject(string username_, string objectType_, Dictionary<string, string> objAtt_, List<string> categories_,
+             List<int> categoryIds_)
         {
             InitializeComponent();
             this.username = username_;
             this.objectType = objectType_;
+            this.objAtt = objAtt_;
+            this.categories = categories_;
+            this.categoryIds = categoryIds_;
             this.setComponents();
             objectHandle.getNewCategoryObjectForm(this, this.textBoxName, this.comboBoxCategoryType,
-                this.textBoxFirstAttribute, this.textBoxSecondAttribute, this.addButton, this.username, this.objectType);
+                this.textBoxFirstAttribute, this.textBoxSecondAttribute, this.addButton, this.username, this.objectType, 
+                this.objAtt, this.categories, this.categoryIds);
+            
         }
 
         public void setComponents()
         {
-            /* objectType defines what character is being created
-             * 1 - Dragon
-             * 2 - Bat
-             * 3 - Spider
-             * 4 - Ent
-             * 5 - Wolf
-             * 6 - Giant 
-             * 7 - Knight
-             * 8 - Magus 
-             * 9 - Witch
-             * */
-            if (objectType == 1)
-            {
-                this.type.Text = "Dragon";
-                this.categoryType.Text = "Cave";
-                this.firstAttribute.Text = "Power [int]:";
-                this.secondAttribute.Text = "Courage [int]:";
-            }
-            else if (objectType == 2)
-            {
-                this.type.Text = "Bat";
-                this.categoryType.Text = "Cave";
-                this.firstAttribute.Text = "Speed [int]:";
-                this.secondAttribute.Text = "Size [int]:";
-            }
-            else if (objectType == 3)
-            {
-                this.type.Text = "Spider";
-                this.categoryType.Text = "Cave";
-                this.firstAttribute.Text = "Speed [int]:";
-                this.secondAttribute.Text = "Sight [int]:";
-            }
-            else if (objectType == 4)
-            {
-                this.type.Text = "Ent";
-                this.categoryType.Text = "Forest";
-                this.firstAttribute.Text = "Power [int]:";
-                this.secondAttribute.Text = "Courage [int]:";
-            }
-            else if (objectType == 5)
-            {
-                this.type.Text = "Wolf";
-                this.categoryType.Text = "Forest";
-                this.firstAttribute.Text = "Power [int]:";
-                this.secondAttribute.Text = "Speed [int]:";
-            }
-            else if (objectType == 6)
-            {
-                this.type.Text = "Giant";
-                this.categoryType.Text = "Forest";
-                this.firstAttribute.Text = "Height [int]:";
-                this.secondAttribute.Text = "Sight [int]:";
-            }
-            else if (objectType == 7)
-            {
-                this.type.Text = "Knight";
-                this.categoryType.Text = "Tower";
-                this.firstAttribute.Text = "Power [int]:";
-                this.secondAttribute.Text = "Courage [int]:";
-            }
-            else if (objectType == 8)
-            {
-                this.type.Text = "Magus";
-                this.categoryType.Text = "Tower";
-                this.firstAttribute.Text = "Power [int]:";
-                this.secondAttribute.Text = "Smart [int]:";
-            }
-            else if (objectType == 9)
-            {
-                this.type.Text = "Witch";
-                this.categoryType.Text = "Tower";
-                this.firstAttribute.Text = "Power [int]:";
-                this.secondAttribute.Text = "Smart [int]:";
-            }
+            this.type.Text = objectType;
+            string info = objAtt[objectType];
+            string[] attributes = info.Split(',');
+            this.categoryType.Text = attributes[0];
+            this.firstAttribute.Text = attributes[1];
+            this.secondAttribute.Text = attributes[2];
         }
 
 

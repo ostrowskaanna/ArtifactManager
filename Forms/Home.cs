@@ -22,7 +22,7 @@ namespace ArtifactManager
             username = username_;
             homeHandle.getHomeForm(this, this.label1, this.label2,
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
-                this.listBox, this.text, this.deleteButton, this.editButton);
+                this.listBox, this.text, this.deleteButton, this.editButton, this.filtersListBox);
             /*
             using(var db = new CodeFirstContext())
             {
@@ -226,47 +226,47 @@ namespace ArtifactManager
 
         private void addNewDragon(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(1);
+            homeHandle.addNewCategoryObject("Dragon");
         }
 
         private void addNewBat(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(2);
+            homeHandle.addNewCategoryObject("Bat");
         }
 
         private void addNewSpider(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(3);
+            homeHandle.addNewCategoryObject("Spider");
         }
 
         private void addNewEnt(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(4);
+            homeHandle.addNewCategoryObject("Ent");
         }
 
         private void addNewWolf(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(5);
+            homeHandle.addNewCategoryObject("Wolf");
         }
 
         private void addNewGiant(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(6);
+            homeHandle.addNewCategoryObject("Giant");
         }
 
         private void addNewKnight(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(7);
+            homeHandle.addNewCategoryObject("Knight");
         }
 
         private void addNewMagus(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(8);
+            homeHandle.addNewCategoryObject("Magus");
         }
 
         private void addNewWitch(object sender, EventArgs e)
         {
-            homeHandle.addNewCategoryObject(9);
+            homeHandle.addNewCategoryObject("Witch");
         }
 
         private void seeAllObjects(object sender, EventArgs e)
@@ -287,6 +287,11 @@ namespace ArtifactManager
         private void itemSelected(object sender, EventArgs e)
         {
             homeHandle.itemSelected();
+        }
+
+        private void filterCheck(object sender, ItemCheckEventArgs e)
+        {
+            homeHandle.filterCheck();
         }
     }
 }

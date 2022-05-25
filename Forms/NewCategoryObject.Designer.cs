@@ -45,7 +45,7 @@
             // Info
             // 
             this.Info.AutoSize = true;
-            this.Info.Location = new System.Drawing.Point(254, 36);
+            this.Info.Location = new System.Drawing.Point(228, 30);
             this.Info.Name = "Info";
             this.Info.Size = new System.Drawing.Size(117, 16);
             this.Info.TabIndex = 0;
@@ -54,7 +54,7 @@
             // type
             // 
             this.type.AutoSize = true;
-            this.type.Location = new System.Drawing.Point(289, 70);
+            this.type.Location = new System.Drawing.Point(263, 64);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(44, 16);
             this.type.TabIndex = 1;
@@ -63,7 +63,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(158, 105);
+            this.nameLabel.Location = new System.Drawing.Point(132, 99);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(129, 16);
             this.nameLabel.TabIndex = 2;
@@ -71,16 +71,16 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(314, 102);
+            this.textBoxName.Location = new System.Drawing.Point(288, 96);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(139, 22);
+            this.textBoxName.Size = new System.Drawing.Size(190, 22);
             this.textBoxName.TabIndex = 3;
             this.textBoxName.TextChanged += new System.EventHandler(this.nameChanged);
             // 
             // categoryType
             // 
             this.categoryType.AutoSize = true;
-            this.categoryType.Location = new System.Drawing.Point(158, 152);
+            this.categoryType.Location = new System.Drawing.Point(132, 146);
             this.categoryType.Name = "categoryType";
             this.categoryType.Size = new System.Drawing.Size(44, 16);
             this.categoryType.TabIndex = 4;
@@ -89,16 +89,16 @@
             // comboBoxCategoryType
             // 
             this.comboBoxCategoryType.FormattingEnabled = true;
-            this.comboBoxCategoryType.Location = new System.Drawing.Point(242, 144);
+            this.comboBoxCategoryType.Location = new System.Drawing.Point(216, 138);
             this.comboBoxCategoryType.Name = "comboBoxCategoryType";
-            this.comboBoxCategoryType.Size = new System.Drawing.Size(211, 24);
+            this.comboBoxCategoryType.Size = new System.Drawing.Size(262, 24);
             this.comboBoxCategoryType.TabIndex = 5;
             this.comboBoxCategoryType.SelectedIndexChanged += new System.EventHandler(this.typeChanged);
             // 
             // firstAttribute
             // 
             this.firstAttribute.AutoSize = true;
-            this.firstAttribute.Location = new System.Drawing.Point(158, 195);
+            this.firstAttribute.Location = new System.Drawing.Point(132, 189);
             this.firstAttribute.Name = "firstAttribute";
             this.firstAttribute.Size = new System.Drawing.Size(44, 16);
             this.firstAttribute.TabIndex = 6;
@@ -107,7 +107,7 @@
             // secondAttribute
             // 
             this.secondAttribute.AutoSize = true;
-            this.secondAttribute.Location = new System.Drawing.Point(158, 238);
+            this.secondAttribute.Location = new System.Drawing.Point(132, 232);
             this.secondAttribute.Name = "secondAttribute";
             this.secondAttribute.Size = new System.Drawing.Size(44, 16);
             this.secondAttribute.TabIndex = 7;
@@ -115,25 +115,25 @@
             // 
             // textBoxFirstAttribute
             // 
-            this.textBoxFirstAttribute.Location = new System.Drawing.Point(314, 192);
+            this.textBoxFirstAttribute.Location = new System.Drawing.Point(288, 186);
             this.textBoxFirstAttribute.Name = "textBoxFirstAttribute";
-            this.textBoxFirstAttribute.Size = new System.Drawing.Size(139, 22);
+            this.textBoxFirstAttribute.Size = new System.Drawing.Size(190, 22);
             this.textBoxFirstAttribute.TabIndex = 8;
             this.textBoxFirstAttribute.TextChanged += new System.EventHandler(this.firstAttChanged);
             this.textBoxFirstAttribute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // textBoxSecondAttribute
             // 
-            this.textBoxSecondAttribute.Location = new System.Drawing.Point(314, 235);
+            this.textBoxSecondAttribute.Location = new System.Drawing.Point(288, 229);
             this.textBoxSecondAttribute.Name = "textBoxSecondAttribute";
-            this.textBoxSecondAttribute.Size = new System.Drawing.Size(139, 22);
+            this.textBoxSecondAttribute.Size = new System.Drawing.Size(190, 22);
             this.textBoxSecondAttribute.TabIndex = 9;
             this.textBoxSecondAttribute.TextChanged += new System.EventHandler(this.secondAttChanged);
             this.textBoxSecondAttribute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(161, 279);
+            this.returnButton.Location = new System.Drawing.Point(135, 273);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(112, 39);
             this.returnButton.TabIndex = 10;
@@ -144,7 +144,7 @@
             // addButton
             // 
             this.addButton.Enabled = false;
-            this.addButton.Location = new System.Drawing.Point(341, 279);
+            this.addButton.Location = new System.Drawing.Point(315, 273);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(112, 39);
             this.addButton.TabIndex = 11;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 347);
+            this.ClientSize = new System.Drawing.Size(582, 347);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.textBoxSecondAttribute);

@@ -133,7 +133,7 @@ namespace ArtifactManager.FormsHandle
                     Email = textBoxEmail.Text,
                     Password = textBoxPassword.Text,
                     Role = listBoxRoles.SelectedItem.ToString()
-                }); ;  
+                });   
                 db.SaveChanges();
             }
             MessageBox.Show("User added.");
