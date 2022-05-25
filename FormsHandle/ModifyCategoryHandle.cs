@@ -46,7 +46,7 @@ namespace ArtifactManager.FormsHandle
         {
             string[] parts = toModify.Split(',');
             type = parts[0];
-            if (type == "Type: Tower")
+            if (type == "Type:Tower")
             {
                 name = parts[1];
                 age = parts[2];
@@ -143,10 +143,10 @@ namespace ArtifactManager.FormsHandle
 
         public void returnToHomePanel()
         {
-            this.Hide();
+            modifyCategory.Hide();
             Home home = new Home(username);
             home.ShowDialog();
-            this.Close();
+            modifyCategory.Close();
         }
     }
 }

@@ -627,8 +627,9 @@ namespace ArtifactManager.FormsHandle
 
         public void editObject()
         {
+            string toModify = listBox.SelectedItem.ToString();
             this.home.Hide();
-            ModifyObject modifyObject = new ModifyObject();
+            ModifyObject modifyObject = new ModifyObject(this.username, toModify);
             modifyObject.ShowDialog();
             this.home.Close();
         }
