@@ -64,6 +64,7 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.filtersListBox = new System.Windows.Forms.CheckedListBox();
+            this.filterButton = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +97,7 @@
             this.ChangePassword,
             this.LogOut});
             this.MyProfile.Name = "MyProfile";
-            this.MyProfile.Size = new System.Drawing.Size(90, 26);
+            this.MyProfile.Size = new System.Drawing.Size(90, 24);
             this.MyProfile.Text = "My Profile";
             // 
             // ProfileDetails
@@ -128,7 +129,7 @@
             this.SeeAllCategories,
             this.SeeAllObjects});
             this.MyFigures.Name = "MyFigures";
-            this.MyFigures.Size = new System.Drawing.Size(70, 26);
+            this.MyFigures.Size = new System.Drawing.Size(70, 24);
             this.MyFigures.Text = "Figures";
             // 
             // AddNewCategory
@@ -261,20 +262,20 @@
             this.AddNewUser,
             this.SeeAllUsers});
             this.Users.Name = "Users";
-            this.Users.Size = new System.Drawing.Size(58, 26);
+            this.Users.Size = new System.Drawing.Size(58, 24);
             this.Users.Text = "Users";
             // 
             // AddNewUser
             // 
             this.AddNewUser.Name = "AddNewUser";
-            this.AddNewUser.Size = new System.Drawing.Size(224, 26);
+            this.AddNewUser.Size = new System.Drawing.Size(187, 26);
             this.AddNewUser.Text = "Add New User";
             this.AddNewUser.Click += new System.EventHandler(this.addNewUser);
             // 
             // SeeAllUsers
             // 
             this.SeeAllUsers.Name = "SeeAllUsers";
-            this.SeeAllUsers.Size = new System.Drawing.Size(224, 26);
+            this.SeeAllUsers.Size = new System.Drawing.Size(187, 26);
             this.SeeAllUsers.Text = "See All Users";
             this.SeeAllUsers.Click += new System.EventHandler(this.seeAllUsers);
             // 
@@ -358,6 +359,7 @@
             this.deleteButton.TabIndex = 9;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteSelectedItem);
             // 
             // editButton
@@ -369,6 +371,7 @@
             this.editButton.TabIndex = 10;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Visible = false;
             this.editButton.Click += new System.EventHandler(this.editSelectedItem);
             // 
             // filtersListBox
@@ -379,13 +382,24 @@
             this.filtersListBox.Size = new System.Drawing.Size(135, 89);
             this.filtersListBox.TabIndex = 11;
             this.filtersListBox.Visible = false;
-            this.filtersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.filterCheck);
+            // 
+            // filterButton
+            // 
+            this.filterButton.Location = new System.Drawing.Point(598, 228);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(94, 39);
+            this.filterButton.TabIndex = 12;
+            this.filterButton.Text = "Filter";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Visible = false;
+            this.filterButton.Click += new System.EventHandler(this.filterClick);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 282);
+            this.Controls.Add(this.filterButton);
             this.Controls.Add(this.filtersListBox);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.deleteButton);
@@ -446,5 +460,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.CheckedListBox filtersListBox;
+        private System.Windows.Forms.Button filterButton;
     }
 }

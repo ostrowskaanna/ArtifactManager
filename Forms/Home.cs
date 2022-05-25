@@ -22,7 +22,7 @@ namespace ArtifactManager
             username = username_;
             homeHandle.getHomeForm(this, this.label1, this.label2,
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
-                this.listBox, this.text, this.deleteButton, this.editButton, this.filtersListBox);
+                this.listBox, this.text, this.deleteButton, this.editButton, this.filterButton, this.filtersListBox);
             /*
             using(var db = new CodeFirstContext())
             {
@@ -289,9 +289,10 @@ namespace ArtifactManager
             homeHandle.itemSelected();
         }
 
-        private void filterCheck(object sender, ItemCheckEventArgs e)
+
+        private void filterClick(object sender, EventArgs e)
         {
-            homeHandle.filterCheck();
+            homeHandle.filterClick();
         }
     }
 }

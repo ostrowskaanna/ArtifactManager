@@ -21,6 +21,7 @@ namespace ArtifactManager.FormsHandle
         Label text;
         Button deleteButton;
         Button editButton;
+        Button filterButton;
         CheckedListBox filters;
 
         string username;
@@ -53,7 +54,8 @@ namespace ArtifactManager.FormsHandle
         
         public void getHomeForm(Home home_, Label label1_, Label label2_,
             TextBox textBoxOldPassword_, TextBox textBoxNewPasword_, Button confirmButton_, string username_,
-            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button editButton_, CheckedListBox filters_)
+            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button editButton_, Button filterButton_, 
+            CheckedListBox filters_)
         {
             home = home_;
             label1 = label1_;
@@ -69,6 +71,7 @@ namespace ArtifactManager.FormsHandle
             text = text_;
             deleteButton = deleteButton_;
             editButton = editButton_;
+            filterButton = filterButton_;
             filters = filters_;
             this.getCategories();
         }
@@ -81,25 +84,26 @@ namespace ArtifactManager.FormsHandle
                 string record;
                 foreach (var cave in db.Caves)
                 {
-                    record = "Type: Cave, Name: " + cave.Name + ", Area: " + cave.Area;
+                    record = "Type:Cave, Name:" + cave.Name + ", Area:" + cave.Area;
                     categories.Add(record);
                     categoryIds.Add(cave.Id);
                 }
                 foreach (var forest in db.Forests)
                 {
-                    record = "Type: Forest, Name: " + forest.Name + ", Area: " + forest.Area;
+                    record = "Type:Forest, Name:" + forest.Name + ", Area:" + forest.Area;
                     categories.Add(record);
                     categoryIds.Add(forest.Id);
                 }
                 foreach (var tower in db.Towers)
                 {
-                    record = "Type: Tower, Name: " + tower.Name + ", Height: " + tower.Height + ", Age: " + tower.Age;
+                    record = "Type:Tower, Name:" + tower.Name + ", Height:" + tower.Height + ", Age:" + tower.Age;
                     categories.Add(record);
                     categoryIds.Add(tower.Id);
                 }
             }
 
         }
+
 
         public void showProfileDetails()
         {
@@ -110,6 +114,7 @@ namespace ArtifactManager.FormsHandle
             this.textBoxNewPassword.Visible = false;
             this.deleteButton.Visible = false;
             this.editButton.Visible = false;
+            this.filterButton.Visible = false;
             this.filters.Visible = false;
 
             using (var db = new CodeFirstContext())
@@ -139,6 +144,7 @@ namespace ArtifactManager.FormsHandle
             this.confirmButton.Visible = true;
             this.deleteButton.Visible = false;
             this.editButton.Visible = false;
+            this.filterButton.Visible = false;
             this.filters.Visible = false;
         }
 
@@ -268,6 +274,7 @@ namespace ArtifactManager.FormsHandle
             this.text.Text = "Here are all the categories:";
             this.deleteButton.Visible = true;
             this.editButton.Visible = true;
+            this.filterButton.Visible = true;
             this.deleteButton.Enabled = false;
             this.editButton.Enabled = false;
             this.filters.Visible = true;
@@ -280,7 +287,6 @@ namespace ArtifactManager.FormsHandle
             {
                 listBox.Items.Add(cat);
             }
-
         }
 
 
@@ -297,12 +303,14 @@ namespace ArtifactManager.FormsHandle
             this.text.Text = "Here are all the objects:";
             this.deleteButton.Visible = true;
             this.editButton.Visible = true;
+            this.filterButton.Visible= true;
             this.deleteButton.Enabled = false;
             this.editButton.Enabled = false;
             this.filters.Visible = true;
             whatIsShown = 2;
             
             this.setFilters();
+            /*
             listBox.Items.Clear();
 
             using (var db = new CodeFirstContext())
@@ -363,8 +371,16 @@ namespace ArtifactManager.FormsHandle
                     listBox.Items.Add(record);
                 }
             }
+            */
+            listBox.Items.Clear();
+            string[] objects = { "Dragon", "Bat", "Spider", "Ent", "Wolf", "Giant", "Knight", "Magus", "Witch" };
+            foreach(string obj in objects)
+            {
+                this.showObjects(obj);
+            }
         }
 
+       
         public void setFilters()
         {
             filters.Items.Clear();
@@ -386,11 +402,98 @@ namespace ArtifactManager.FormsHandle
                 filters.Items.Add("Magus");
                 filters.Items.Add("Witch");
             }
+            for (int i = 0; i < filters.Items.Count; i++)
+            {
+                filters.SetItemChecked(i, true);
+            }
+
         }
 
-        public void filterCheck()
+        public void showCategories(string catName)
         {
-            
+            using (var db = new CodeFirstContext())
+            {
+
+                    if (catName == "Cave")
+                    {
+                        string[] names = db.Database.SqlQuery<string>("SELECT Name FROM Caves").ToArray();
+                        int[] area = db.Database.SqlQuery<int>("SELECT Area FROM Caves").ToArray();
+                        for (int i = 0; i < names.Length; i++)
+                        {
+                            string record = "Type:Cave, Name:" + names[i] + ", Area:" + area[i].ToString();
+                            listBox.Items.Add(record);
+                        }
+                    }
+                    else if (catName == "Forest")
+                    {
+                        string[] names = db.Database.SqlQuery<string>("SELECT Name FROM Forests").ToArray();
+                        int[] area = db.Database.SqlQuery<int>("SELECT Area FROM Forests").ToArray();
+                        for (int i = 0; i < names.Length; i++)
+                        {
+                            string record = "Type:Forest, Name:" + names[i] + ", Area:" + area[i].ToString();
+                            listBox.Items.Add(record);
+                        }
+                    }
+                    else if (catName == "Tower")
+                    {
+                        string[] names = db.Database.SqlQuery<string>("SELECT Name FROM Towers").ToArray();
+                        int[] height = db.Database.SqlQuery<int>("SELECT Height FROM Towers").ToArray();
+                        int[] age = db.Database.SqlQuery<int>("SELECT Age FROM Towers").ToArray();
+                        
+                        for (int i = 0; i < names.Length; i++)
+                        {
+                            string record = "Type:Forest, Name:" + names[i] +  ", Height:" + height[i]  + ", Age:" + age[i];
+                            listBox.Items.Add(record);
+                        }
+                    }
+                
+            }
+        }
+
+        public void showObjects(string catName)
+        {
+            string baseName;
+            if (catName == "Witch")  baseName = "Witches";
+            else if (catName == "Wolf") baseName = "Wolves";
+            else if (catName == "Magus") baseName = "Magus";
+            else baseName = catName + "s";
+            string att = objAtt[catName];
+            string[] parts = att.Split(',');
+            string type = parts[0];
+            string firstAtt = parts[1];
+            string secondAtt = parts[2];
+
+            using(var db = new CodeFirstContext())
+            {
+                string[] names = db.Database.SqlQuery<string>("SELECT Name FROM " + baseName).ToArray();
+                int[] firstAtts = db.Database.SqlQuery<int>("SELECT " + firstAtt + " FROM " + baseName).ToArray();
+                int[] secondAtts = db.Database.SqlQuery<int>("SELECT " + secondAtt + " FROM " + baseName).ToArray();
+                for(int i=0; i < names.Length; i++)
+                {
+                    string record = "Type:" + catName + ", Name:" + names[i] + ", " + firstAtt + ":" + firstAtts[i] +
+                        ", " + secondAtt + ":" + secondAtts[i];
+                    listBox.Items.Add(record);
+                }
+            }
+        }
+
+        public void filterClick()
+        {
+            listBox.Items.Clear();
+            if (whatIsShown == 1)
+            {
+                foreach (var item in filters.CheckedItems)
+                {
+                    this.showCategories(item.ToString());
+                }
+            }
+            else
+            {
+                foreach (var item in filters.CheckedItems)
+                {
+                    this.showObjects(item.ToString());
+                }
+            }
         }
 
         public void itemSelected()
@@ -420,17 +523,17 @@ namespace ArtifactManager.FormsHandle
 
             using(var db = new CodeFirstContext())
             {
-                if(type == " Cave")
+                if(type == "Cave")
                 {
-                    db.Caves.Remove(db.Caves.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Caves.Remove(db.Caves.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Forest")
+                else if (type == "Forest")
                 {
-                    db.Forests.Remove(db.Forests.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Forests.Remove(db.Forests.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Tower")
+                else if (type == "Tower")
                 {
-                    db.Towers.Remove(db.Towers.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Towers.Remove(db.Towers.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
                 db.SaveChanges();
             }
@@ -451,41 +554,41 @@ namespace ArtifactManager.FormsHandle
             name = parts[1];
             using(var db = new CodeFirstContext())
             {
-                if (type == " Dragon")
+                if (type == "Dragon")
                 {
-                    db.Dragons.Remove(db.Dragons.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Dragons.Remove(db.Dragons.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Bat")
+                else if (type == "Bat")
                 {
-                    db.Bats.Remove(db.Bats.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Bats.Remove(db.Bats.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Spider")
+                else if (type == "Spider")
                 {
-                    db.Spiders.Remove(db.Spiders.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Spiders.Remove(db.Spiders.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Ent")
+                else if (type == "Ent")
                 {
-                    db.Ents.Remove(db.Ents.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Ents.Remove(db.Ents.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Wolf")
+                else if (type == "Wolf")
                 {
-                    db.Wolfs.Remove(db.Wolfs.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Wolfs.Remove(db.Wolfs.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Giant")
+                else if (type == "Giant")
                 {
-                    db.Giants.Remove(db.Giants.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Giants.Remove(db.Giants.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Knight")
+                else if (type == "Knight")
                 {
-                    db.Knights.Remove(db.Knights.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Knights.Remove(db.Knights.Where(c => c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Magus")
+                else if (type == "Magus")
                 {
-                    db.Magus.Remove(db.Magus.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Magus.Remove(db.Magus.Where(c =>  c.Name == name.ToString()).FirstOrDefault());
                 }
-                else if (type == " Witch")
+                else if (type == "Witch")
                 {
-                    db.Witches.Remove(db.Witches.Where(c => " " + c.Name == name.ToString()).FirstOrDefault());
+                    db.Witches.Remove(db.Witches.Where(c =>  c.Name == name.ToString()).FirstOrDefault());
                 }
                 db.SaveChanges();
             }
@@ -514,12 +617,20 @@ namespace ArtifactManager.FormsHandle
 
         public void editCategory()
         {
-            //edytowanie kategorii
+            string toModify = listBox.SelectedItem.ToString();
+            this.home.Hide();
+            ModifyCategory modifyCategory = new ModifyCategory(this.username, toModify);
+            modifyCategory.ShowDialog();
+            this.home.Close();
+            
         }
 
         public void editObject()
         {
-            //edytowanie obiektu 
+            this.home.Hide();
+            ModifyObject modifyObject = new ModifyObject();
+            modifyObject.ShowDialog();
+            this.home.Close();
         }
 
         public void editUser()

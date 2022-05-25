@@ -74,6 +74,9 @@
     <Compile Include="FormsHandle\HomeHandle.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormsHandle\ModifyCategoryHandle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormsHandle\ModifyUserHandle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +94,18 @@
     </Compile>
     <Compile Include="FormsHandle\EditUserHandle.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModifyCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModifyCategory.Designer.cs">
+      <DependentUpon>ModifyCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ModifyObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModifyObject.Designer.cs">
+      <DependentUpon>ModifyObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewCategory.cs">
       <SubType>Form</SubType>
@@ -172,6 +187,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ModifyCategory.resx">
+      <DependentUpon>ModifyCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewCategory.resx">
       <DependentUpon>NewCategory.cs</DependentUpon>

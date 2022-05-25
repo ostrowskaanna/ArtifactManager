@@ -43,7 +43,7 @@
             // username
             // 
             this.username.AutoSize = true;
-            this.username.Location = new System.Drawing.Point(212, 68);
+            this.username.Location = new System.Drawing.Point(37, 45);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(73, 16);
             this.username.TabIndex = 0;
@@ -52,7 +52,7 @@
             // email
             // 
             this.email.AutoSize = true;
-            this.email.Location = new System.Drawing.Point(212, 114);
+            this.email.Location = new System.Drawing.Point(37, 91);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(44, 16);
             this.email.TabIndex = 1;
@@ -61,7 +61,7 @@
             // password
             // 
             this.password.AutoSize = true;
-            this.password.Location = new System.Drawing.Point(212, 160);
+            this.password.Location = new System.Drawing.Point(37, 137);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(70, 16);
             this.password.TabIndex = 2;
@@ -70,7 +70,7 @@
             // role
             // 
             this.role.AutoSize = true;
-            this.role.Location = new System.Drawing.Point(212, 205);
+            this.role.Location = new System.Drawing.Point(37, 182);
             this.role.Name = "role";
             this.role.Size = new System.Drawing.Size(39, 16);
             this.role.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(304, 65);
+            this.textBoxUsername.Location = new System.Drawing.Point(129, 42);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(128, 22);
             this.textBoxUsername.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(304, 111);
+            this.textBoxEmail.Location = new System.Drawing.Point(129, 88);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(128, 22);
             this.textBoxEmail.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(304, 157);
+            this.textBoxPassword.Location = new System.Drawing.Point(129, 134);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(128, 22);
             this.textBoxPassword.TabIndex = 6;
@@ -103,7 +103,7 @@
             // roleListBox
             // 
             this.roleListBox.FormattingEnabled = true;
-            this.roleListBox.Location = new System.Drawing.Point(304, 205);
+            this.roleListBox.Location = new System.Drawing.Point(129, 182);
             this.roleListBox.Name = "roleListBox";
             this.roleListBox.Size = new System.Drawing.Size(128, 89);
             this.roleListBox.TabIndex = 7;
@@ -111,7 +111,7 @@
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(215, 316);
+            this.returnButton.Location = new System.Drawing.Point(40, 293);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(83, 40);
             this.returnButton.TabIndex = 8;
@@ -122,7 +122,7 @@
             // changeButton
             // 
             this.changeButton.Enabled = false;
-            this.changeButton.Location = new System.Drawing.Point(347, 316);
+            this.changeButton.Location = new System.Drawing.Point(172, 293);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(85, 40);
             this.changeButton.TabIndex = 9;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 389);
+            this.ClientSize = new System.Drawing.Size(314, 361);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.roleListBox);
