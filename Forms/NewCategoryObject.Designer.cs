@@ -88,6 +88,7 @@
             // 
             // comboBoxCategoryType
             // 
+            this.comboBoxCategoryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategoryType.FormattingEnabled = true;
             this.comboBoxCategoryType.Location = new System.Drawing.Point(216, 138);
             this.comboBoxCategoryType.Name = "comboBoxCategoryType";

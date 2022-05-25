@@ -442,7 +442,7 @@ namespace ArtifactManager.FormsHandle
                         
                         for (int i = 0; i < names.Length; i++)
                         {
-                            string record = "Type:Forest, Name:" + names[i] +  ", Height:" + height[i]  + ", Age:" + age[i];
+                            string record = "Type:Tower, Name:" + names[i] +  ", Height:" + height[i]  + ", Age:" + age[i];
                             listBox.Items.Add(record);
                         }
                     }

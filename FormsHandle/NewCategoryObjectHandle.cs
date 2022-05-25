@@ -53,10 +53,6 @@ namespace ArtifactManager.FormsHandle
         public void showCategoryTypes()
         {
             comboBoxType.Items.Clear();
-            //foreach(string cat in categories)
-            //{
-            //    comboBoxType.Items.Add(cat);    
-            //}
 
             using (var db = new CodeFirstContext())
             {
@@ -149,31 +145,83 @@ namespace ArtifactManager.FormsHandle
 
         public bool checkIfFree()
         {
+            string table;
+            if (objectType == "Wolf")
+            {
+                table = "Wolves";
+            }
+            else if (objectType == "Witch")
+            {
+                table = "Witches";
+            }
+            else if (objectType == "Magus")
+            {
+                table = objectType;
+            }
+            else
+            {
+                table = objectType + "s";
+            }
+            string param = objAtt[objectType];
+            string[] parts = param.Split(',');
+            string firstAtt = parts[1];
+            string secondAtt = parts[2];
+
             using (var db = new CodeFirstContext())
             {
-                List<string> taken = db.Database.SqlQuery<string>("SELECT Name FROM " + objectType + "s").ToList();
+                List<string> taken = db.Database.SqlQuery<string>("SELECT Name FROM " + table).ToList();
                 foreach (string takenItem in taken)
                 {
                     if (takenItem == textBoxName.Text)
+                    {
                         MessageBox.Show(objectType + " with this name already exists.");
                         return false;
+                    }
+                }
+                
+                List<int> attributes = db.Database.SqlQuery<int>("SELECT " + firstAtt + " FROM " + table).ToList();
+                int maxVal = 0;
+                foreach (int attribute in attributes)
+                {
+                    maxVal = Math.Max(maxVal, attribute);
+                }
+                if(int.Parse(textBoxFirstAttribute.Text) > maxVal)
+                {
+                    MessageBox.Show("New figure can't have the best " + firstAtt);
+                    textBoxFirstAttribute.Text = maxVal.ToString();
+                }
+                
+                attributes = db.Database.SqlQuery<int>("SELECT " + secondAtt + " FROM " + table).ToList();
+                maxVal = 0;
+                foreach (int attribute in attributes)
+                {
+                    maxVal = Math.Max(maxVal, attribute);
+                }
+
+                if (int.Parse(textBoxSecondAttribute.Text) > maxVal)
+                {
+                    MessageBox.Show("New figure can't have the best " + secondAtt);
+                    textBoxSecondAttribute.Text = maxVal.ToString();
                 }
             }
             return true;
         }
         public void addNewObject()
         {
-            if (objectType == "Dragon") addNewDragon();
-            else if (objectType == "Bat") addNewBat();
-            else if (objectType == "Spider") addNewSpider();
-            else if (objectType == "Ent") addNewEnt();
-            else if (objectType == "Wolf") addNewWolf();
-            else if (objectType == "Giant") addNewGiant();
-            else if (objectType == "Knight") addNewKnight();
-            else if (objectType == "Magus") addNewMagus();
-            else addNewWitch();
-            MessageBox.Show("Object added.");
-            this.returnToHomePanel();
+            if (this.checkIfFree())
+            {
+                if (objectType == "Dragon") addNewDragon();
+                else if (objectType == "Bat") addNewBat();
+                else if (objectType == "Spider") addNewSpider();
+                else if (objectType == "Ent") addNewEnt();
+                else if (objectType == "Wolf") addNewWolf();
+                else if (objectType == "Giant") addNewGiant();
+                else if (objectType == "Knight") addNewKnight();
+                else if (objectType == "Magus") addNewMagus();
+                else addNewWitch();
+                MessageBox.Show("Object added.");
+                this.returnToHomePanel();
+            }
         }
 
         public string getCatName()
