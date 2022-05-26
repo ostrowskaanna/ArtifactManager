@@ -23,32 +23,33 @@ namespace ArtifactManager
             homeHandle.getHomeForm(this, this.label1, this.label2,
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
                 this.listBox, this.text, this.deleteButton, this.editButton, this.filterButton, this.filtersListBox);
-            /*
+            //this.checkRole();
+        }
+
+        public void checkRole()
+        {
+            string[] permissions = new string[9] {"AddCategory", "EditCategory", "DeleteCategory", "AddObject", "EditObject", "DeleteObject",
+            "AddUser", "EditUser", "DeleteUser"};
+            string perm;
+            int [] userPerms = new int[permissions.Length];
             using(var db = new CodeFirstContext())
             {
-                foreach (var d in db.Dragons)
-                    db.Dragons.Remove(d);
-                db.SaveChanges();
-                foreach(var d in db.Bats)
-                    db.Bats.Remove(d);
-                db.SaveChanges();
-                foreach(var d in db.Spiders)
-                    db.Spiders.Remove(d);
-                db.SaveChanges();
-                foreach(var d in db.Ents)
-                    db.Ents.Remove(d);
-                db.SaveChanges();
-                foreach(var d in db.Wolfs)
-                    db.Wolfs.Remove(d);
-                db.SaveChanges();
-                foreach(var d in db.Giants)
-                    db.Giants.Remove(d);
-                db.SaveChanges();
-                foreach(var d in db.Knights)
-                    db.Knights.Remove(d);
-                db.SaveChanges();
+                User user = db.Users.FirstOrDefault(u => u.Name == username);
+                Role role = db.Roles.FirstOrDefault(x => x.Name == user.Role);
+                foreach(string permission in permissions)
+                {
+                    perm = db.Database.SqlQuery<bool>("SELECT " + permission + " FROM Roles WHERE Name = '" + user.Role + "';").FirstOrDefault().ToString();
+                    if (perm.ToString() == "True") userPerms.Append(1);
+                    else userPerms.Append(0);
+                }
             }
-            */
+            if (userPerms[0] == 0) this.AddNewCategory.Visible = false;
+            else this.AddNewCategory.Visible = true;
+            if(userPerms[3] == 0) this.AddNewCategoryObject.Visible = false;
+            else this.AddNewCategoryObject.Visible = true;
+            if (userPerms[6] == 0) this.AddNewUser.Visible = false;
+            if (userPerms[1] == 0 || userPerms[4] == 0 || userPerms[7] == 0) this.editButton.Visible = false;
+            if (userPerms[2] == 0 || userPerms[5] == 0 || userPerms[8] == 0) this.deleteButton.Visible = false;
         }
 
         private void addObjects()

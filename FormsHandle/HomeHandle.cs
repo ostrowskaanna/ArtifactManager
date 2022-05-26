@@ -76,6 +76,7 @@ namespace ArtifactManager.FormsHandle
             this.getCategories();
         }
 
+
         public void getCategories()
         {
             categories.Clear();
@@ -310,68 +311,6 @@ namespace ArtifactManager.FormsHandle
             whatIsShown = 2;
             
             this.setFilters();
-            /*
-            listBox.Items.Clear();
-
-            using (var db = new CodeFirstContext())
-            {
-                string record;
-                foreach(var dragon in db.Dragons)
-                {
-                    record = "Type: Dragon, Name: " + dragon.Name + ", Cave: " + dragon.Cave.Name + ", Power: " +
-                        dragon.Power + ", Size: " + dragon.Size;
-                    listBox.Items.Add(record);
-                }
-                foreach(var bat in db.Bats)
-                {
-                    record = "Type: Bat, Name: " + bat.Name + ", Cave: " + bat.Cave.Name + ", Speed: " +
-                        bat.Speed + ", Size: " + bat.Size;
-                    listBox.Items.Add(record);
-                }
-                foreach (var spider in db.Spiders)
-                {
-                    record = "Type: Spider, Name: " + spider.Name + ", Cave: " + spider.Cave.Name + ", Speed: " +
-                        spider.Speed + ", Sight: " + spider.Sight;
-                    listBox.Items.Add(record);
-                }
-                foreach (var ent in db.Ents)
-                {
-                    record = "Type: Ent, Name: " + ent.Name + ", Forest: " + ent.Forest.Name + ", Power: " +
-                        ent.Power + ", Courage: " + ent.Courage;
-                    listBox.Items.Add(record);
-                }
-                foreach (var wolf in db.Wolfs)
-                {
-                    record = "Type: Wolf, Name: " + wolf.Name + ", Forest: " + wolf.Forest.Name + ", Power: " +
-                        wolf.Power + ", Speed: " + wolf.Speed;
-                    listBox.Items.Add(record);
-                }
-                foreach (var giant in db.Giants)
-                {
-                    record = "Type: Giant, Name: " + giant.Name + ", Forest: " + giant.Forest.Name + ", Height: " +
-                        giant.Height + ", Sight: " + giant.Sight;
-                    listBox.Items.Add(record);
-                }
-                foreach (var knight in db.Knights)
-                {
-                    record = "Type: Knight, Name: " + knight.Name + ", Tower: " + knight.Tower.Name + ", Power: " +
-                        knight.Power + ", Courage: " + knight.Courage;
-                    listBox.Items.Add(record);
-                }
-                foreach (var magus in db.Magus)
-                {
-                    record = "Type: Magus, Name: " + magus.Name + ", Tower: " + magus.Tower.Name + ", Power: " +
-                        magus.Power + ", Smart: " + magus.Smart;
-                    listBox.Items.Add(record);
-                }
-                foreach (var witch in db.Witches)
-                {
-                    record = "Type: Witch, Name: " + witch.Name + ", Tower: " + witch.Tower.Name + ", Power: " +
-                        witch.Power + ", Smart: " + witch.Smart;
-                    listBox.Items.Add(record);
-                }
-            }
-            */
             listBox.Items.Clear();
             string[] objects = { "Dragon", "Bat", "Spider", "Ent", "Wolf", "Giant", "Knight", "Magus", "Witch" };
             foreach(string obj in objects)

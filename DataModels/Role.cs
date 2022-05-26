@@ -14,5 +14,15 @@ namespace ArtifactManager.DataModels
        
         [Required]
         public string Name { get; set; }
+
+        public bool AddCategory { get; set; }
+        public bool EditCategory { get; set; }
+        public bool DeleteCategory { get; set; }
+        public bool AddObject { get; set; }
+        public bool EditObject { get; set; }
+        public bool DeleteObject { get; set; }
+        public bool AddUser { get; set; }
+        public bool EditUser { get; set; }
+        public bool DeleteUser { get; set; }
     }
 }
