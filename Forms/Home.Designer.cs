@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Info = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.MyProfile = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +66,11 @@
             this.editButton = new System.Windows.Forms.Button();
             this.filtersListBox = new System.Windows.Forms.CheckedListBox();
             this.filterButton = new System.Windows.Forms.Button();
+            this.editCategoryButton = new System.Windows.Forms.Button();
+            this.editObjectButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.deleteObject = new System.Windows.Forms.Button();
+            this.deleteCategory = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,21 +151,21 @@
             // AddNewCave
             // 
             this.AddNewCave.Name = "AddNewCave";
-            this.AddNewCave.Size = new System.Drawing.Size(198, 26);
+            this.AddNewCave.Size = new System.Drawing.Size(224, 26);
             this.AddNewCave.Text = "Add New Cave";
             this.AddNewCave.Click += new System.EventHandler(this.addNewCave);
             // 
             // AddNewForest
             // 
             this.AddNewForest.Name = "AddNewForest";
-            this.AddNewForest.Size = new System.Drawing.Size(198, 26);
+            this.AddNewForest.Size = new System.Drawing.Size(224, 26);
             this.AddNewForest.Text = "Add New Forest";
             this.AddNewForest.Click += new System.EventHandler(this.addNewForest);
             // 
             // AddNewTower
             // 
             this.AddNewTower.Name = "AddNewTower";
-            this.AddNewTower.Size = new System.Drawing.Size(198, 26);
+            this.AddNewTower.Size = new System.Drawing.Size(224, 26);
             this.AddNewTower.Text = "Add New Tower";
             this.AddNewTower.Click += new System.EventHandler(this.addNewTower);
             // 
@@ -365,7 +371,7 @@
             // editButton
             // 
             this.editButton.Enabled = false;
-            this.editButton.Location = new System.Drawing.Point(334, 228);
+            this.editButton.Location = new System.Drawing.Point(368, 228);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(94, 39);
             this.editButton.TabIndex = 10;
@@ -394,11 +400,64 @@
             this.filterButton.Visible = false;
             this.filterButton.Click += new System.EventHandler(this.filterClick);
             // 
+            // editCategoryButton
+            // 
+            this.editCategoryButton.Enabled = false;
+            this.editCategoryButton.Location = new System.Drawing.Point(368, 228);
+            this.editCategoryButton.Name = "editCategoryButton";
+            this.editCategoryButton.Size = new System.Drawing.Size(94, 39);
+            this.editCategoryButton.TabIndex = 13;
+            this.editCategoryButton.Text = "Edit";
+            this.editCategoryButton.UseVisualStyleBackColor = true;
+            this.editCategoryButton.Visible = false;
+            this.editCategoryButton.Click += new System.EventHandler(this.editSelectedItem);
+            // 
+            // editObjectButton
+            // 
+            this.editObjectButton.Enabled = false;
+            this.editObjectButton.Location = new System.Drawing.Point(368, 228);
+            this.editObjectButton.Name = "editObjectButton";
+            this.editObjectButton.Size = new System.Drawing.Size(94, 39);
+            this.editObjectButton.TabIndex = 14;
+            this.editObjectButton.Text = "Edit";
+            this.editObjectButton.UseVisualStyleBackColor = true;
+            this.editObjectButton.Visible = false;
+            this.editObjectButton.Click += new System.EventHandler(this.editSelectedItem);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.setButtons);
+            // 
+            // deleteObject
+            // 
+            this.deleteObject.Location = new System.Drawing.Point(153, 228);
+            this.deleteObject.Name = "deleteObject";
+            this.deleteObject.Size = new System.Drawing.Size(94, 39);
+            this.deleteObject.TabIndex = 15;
+            this.deleteObject.Text = "Delete";
+            this.deleteObject.UseVisualStyleBackColor = true;
+            // 
+            // deleteCategory
+            // 
+            this.deleteCategory.Enabled = false;
+            this.deleteCategory.Location = new System.Drawing.Point(153, 228);
+            this.deleteCategory.Name = "deleteCategory";
+            this.deleteCategory.Size = new System.Drawing.Size(94, 39);
+            this.deleteCategory.TabIndex = 16;
+            this.deleteCategory.Text = "Delete";
+            this.deleteCategory.UseVisualStyleBackColor = true;
+            this.deleteCategory.Visible = false;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 282);
+            this.Controls.Add(this.deleteCategory);
+            this.Controls.Add(this.deleteObject);
+            this.Controls.Add(this.editObjectButton);
+            this.Controls.Add(this.editCategoryButton);
             this.Controls.Add(this.filterButton);
             this.Controls.Add(this.filtersListBox);
             this.Controls.Add(this.editButton);
@@ -461,5 +520,10 @@
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.CheckedListBox filtersListBox;
         private System.Windows.Forms.Button filterButton;
+        private System.Windows.Forms.Button editCategoryButton;
+        private System.Windows.Forms.Button editObjectButton;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button deleteObject;
+        private System.Windows.Forms.Button deleteCategory;
     }
 }

@@ -19,8 +19,12 @@ namespace ArtifactManager.FormsHandle
         Label Info;
         ListBox listBox;
         Label text;
-        Button deleteButton;
-        Button editButton;
+        Button deleteUserButton;
+        Button deleteCategoryButton;
+        Button deleteObjectButton;
+        Button editUserButton;
+        Button editCategoryButton;
+        Button editObjectButton;
         Button filterButton;
         CheckedListBox filters;
 
@@ -28,6 +32,7 @@ namespace ArtifactManager.FormsHandle
 
         bool oldPasswordFiled = false;
         bool newPasswordFilled = false;
+
 
         int whatIsShown;
         /* defines what is shown in listBox:
@@ -54,7 +59,9 @@ namespace ArtifactManager.FormsHandle
         
         public void getHomeForm(Home home_, Label label1_, Label label2_,
             TextBox textBoxOldPassword_, TextBox textBoxNewPasword_, Button confirmButton_, string username_,
-            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button editButton_, Button filterButton_, 
+            Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button deleteCategoryButton_,
+            Button deleteObjectButton_, Button editUserButton_, Button editCategoryButton_,
+            Button editObjectButton_, Button filterButton_, 
             CheckedListBox filters_)
         {
             home = home_;
@@ -69,8 +76,12 @@ namespace ArtifactManager.FormsHandle
             Info = Info_;
             listBox = listBox_;
             text = text_;
-            deleteButton = deleteButton_;
-            editButton = editButton_;
+            deleteUserButton = deleteButton_;
+            deleteCategoryButton = deleteCategoryButton_;
+            deleteObjectButton = deleteObjectButton_;
+            editUserButton = editUserButton_;
+            editCategoryButton = editCategoryButton_;
+            editObjectButton = editObjectButton_;
             filterButton = filterButton_;
             filters = filters_;
             this.getCategories();
@@ -113,8 +124,12 @@ namespace ArtifactManager.FormsHandle
             this.Info.Visible = true;
             this.textBoxOldPassword.Visible = false;
             this.textBoxNewPassword.Visible = false;
-            this.deleteButton.Visible = false;
-            this.editButton.Visible = false;
+            this.deleteUserButton.Visible = false;
+            this.deleteCategoryButton.Visible = false;
+            this.deleteObjectButton.Visible = false;
+            this.editUserButton.Visible = false;
+            this.editCategoryButton.Visible = false;
+            this.editObjectButton.Visible = false;
             this.filterButton.Visible = false;
             this.filters.Visible = false;
 
@@ -129,6 +144,8 @@ namespace ArtifactManager.FormsHandle
             this.label1.Text = "Username: " + username;
             this.label1.Visible = true;
             this.label2.Visible = true;
+            this.label1.Enabled = false;
+            this.label2.Enabled = false;
         }
 
         public void changePassword()
@@ -143,8 +160,12 @@ namespace ArtifactManager.FormsHandle
             this.textBoxOldPassword.Visible = true;
             this.textBoxNewPassword.Visible = true;
             this.confirmButton.Visible = true;
-            this.deleteButton.Visible = false;
-            this.editButton.Visible = false;
+            this.deleteUserButton.Visible = false;
+            this.deleteCategoryButton.Visible = false;
+            this.deleteObjectButton.Visible = false;
+            this.editUserButton.Visible = false;
+            this.editCategoryButton.Visible = false;
+            this.editObjectButton.Visible = false;
             this.filterButton.Visible = false;
             this.filters.Visible = false;
         }
@@ -237,10 +258,14 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the users:";
-            this.deleteButton.Visible = true;
-            this.editButton.Visible = true;
-            this.deleteButton.Enabled = false;
-            this.editButton.Enabled = false;
+            this.deleteUserButton.Visible = true;
+            this.deleteCategoryButton.Visible = false;
+            this.deleteObjectButton.Visible = false;
+            this.editUserButton.Visible = true;
+            this.editCategoryButton.Visible = false;
+            this.editObjectButton.Visible = false;
+            this.deleteUserButton.Enabled = false;
+            this.editUserButton.Enabled = false;
             this.filters.Visible = false;
 
             whatIsShown = 3;
@@ -273,11 +298,15 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the categories:";
-            this.deleteButton.Visible = true;
-            this.editButton.Visible = true;
+            this.deleteUserButton.Visible = false;
+            this.deleteCategoryButton.Visible = true;
+            this.deleteObjectButton.Visible = false;
+            this.editUserButton.Visible = false;
+            this.editCategoryButton.Visible = true;
+            this.editObjectButton.Visible = false;
             this.filterButton.Visible = true;
-            this.deleteButton.Enabled = false;
-            this.editButton.Enabled = false;
+            this.deleteCategoryButton.Enabled = false;
+            this.editCategoryButton.Enabled = false;
             this.filters.Visible = true;
             whatIsShown = 1;
 
@@ -302,11 +331,15 @@ namespace ArtifactManager.FormsHandle
             this.listBox.Visible = true;
             this.text.Visible = true;
             this.text.Text = "Here are all the objects:";
-            this.deleteButton.Visible = true;
-            this.editButton.Visible = true;
+            this.deleteUserButton.Visible = false;
+            this.deleteCategoryButton.Visible = false;
+            this.deleteObjectButton.Visible = true;
+            this.editUserButton.Visible = false;
+            this.editCategoryButton.Visible = false;
+            this.editObjectButton.Visible = true;
             this.filterButton.Visible= true;
-            this.deleteButton.Enabled = false;
-            this.editButton.Enabled = false;
+            this.deleteObjectButton.Enabled = false;
+            this.editObjectButton.Enabled = false;
             this.filters.Visible = true;
             whatIsShown = 2;
             
@@ -437,9 +470,13 @@ namespace ArtifactManager.FormsHandle
 
         public void itemSelected()
         {
-            if(listBox.SelectedIndex >= 0)
-                deleteButton.Enabled = true;
-                editButton.Enabled = true;
+            if (listBox.SelectedIndex >= 0)
+            {
+                
+                if (whatIsShown == 3){ editUserButton.Enabled = true; deleteUserButton.Enabled = true; }
+                else if (whatIsShown == 1){ editCategoryButton.Enabled = true; deleteCategoryButton.Enabled = true; }
+                else if(whatIsShown == 2){ editObjectButton.Enabled = true; deleteObjectButton.Enabled = true; }
+            }
         }
 
         public void deleteSelectedItem()

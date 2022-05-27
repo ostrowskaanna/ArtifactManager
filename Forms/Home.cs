@@ -16,40 +16,41 @@ namespace ArtifactManager
     {
         HomeHandle homeHandle = new HomeHandle();
         public string username;
+        Role role = null;
         public Home(string username_)
         {
             InitializeComponent();
             username = username_;
             homeHandle.getHomeForm(this, this.label1, this.label2,
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
-                this.listBox, this.text, this.deleteButton, this.editButton, this.filterButton, this.filtersListBox);
-            //this.checkRole();
+                this.listBox, this.text, this.deleteButton, this.deleteCategory, this.deleteObject, this.editButton, this.editCategoryButton, 
+                this.editObjectButton, this.filterButton, this.filtersListBox);
+            this.checkRole();
         }
 
         public void checkRole()
         {
-            string[] permissions = new string[9] {"AddCategory", "EditCategory", "DeleteCategory", "AddObject", "EditObject", "DeleteObject",
-            "AddUser", "EditUser", "DeleteUser"};
-            string perm;
-            int [] userPerms = new int[permissions.Length];
             using(var db = new CodeFirstContext())
             {
                 User user = db.Users.FirstOrDefault(u => u.Name == username);
-                Role role = db.Roles.FirstOrDefault(x => x.Name == user.Role);
-                foreach(string permission in permissions)
-                {
-                    perm = db.Database.SqlQuery<bool>("SELECT " + permission + " FROM Roles WHERE Name = '" + user.Role + "';").FirstOrDefault().ToString();
-                    if (perm.ToString() == "True") userPerms.Append(1);
-                    else userPerms.Append(0);
-                }
+                role = db.Roles.FirstOrDefault(x => x.Name == user.Role);
+                if (role.AddCategory) this.AddNewCategory.Enabled = true;
+                else this.AddNewCategory.Enabled = false;
+                if(role.AddObject) this.AddNewCategoryObject.Enabled = true;
+                else this.AddNewCategoryObject.Enabled = false;
+                if(role.AddUser) this.AddNewUser.Enabled = true;
+                else this.AddNewUser.Enabled = false;                
             }
-            if (userPerms[0] == 0) this.AddNewCategory.Visible = false;
-            else this.AddNewCategory.Visible = true;
-            if(userPerms[3] == 0) this.AddNewCategoryObject.Visible = false;
-            else this.AddNewCategoryObject.Visible = true;
-            if (userPerms[6] == 0) this.AddNewUser.Visible = false;
-            if (userPerms[1] == 0 || userPerms[4] == 0 || userPerms[7] == 0) this.editButton.Visible = false;
-            if (userPerms[2] == 0 || userPerms[5] == 0 || userPerms[8] == 0) this.deleteButton.Visible = false;
+        }
+
+        private void setButtons(object sender, EventArgs e)
+        {
+            if(!role.EditUser) this.editButton.Visible = false;
+            if(!role.EditCategory) this.editCategoryButton.Visible = false;
+            if(!role.EditObject) this.editObjectButton.Visible = false;
+            if(!role.DeleteUser) this.deleteButton.Visible = false;
+            if(!role.DeleteCategory) this.deleteCategory.Visible = false;
+            if(!role.DeleteObject) this.deleteObject.Visible = false;
         }
 
         private void addObjects()
@@ -295,5 +296,6 @@ namespace ArtifactManager
         {
             homeHandle.filterClick();
         }
+
     }
 }
