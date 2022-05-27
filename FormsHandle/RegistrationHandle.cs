@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -179,7 +180,7 @@ namespace ArtifactManager.FormsHandle
             if (error == 0)
             {
                 this.addNewUser();
-                MessageBox.Show("User added.");
+                MessageBox.Show("Signed up correctly.");
                 this.openHomeForm();
             }
             else if (error == 1)
@@ -203,6 +204,7 @@ namespace ArtifactManager.FormsHandle
 
         public void addNewUser()
         {
+            password = sha256_hash(password);
             using (var db = new CodeFirstContext())
             {
                 db.Users.Add(new User()
@@ -214,6 +216,21 @@ namespace ArtifactManager.FormsHandle
                 });
                 db.SaveChanges();
             }
+        }
+
+        public String sha256_hash(String value)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
+
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+            return Sb.ToString(); 
         }
 
         public void finish()

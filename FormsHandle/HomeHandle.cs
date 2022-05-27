@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ArtifactManager.DataModels;
 using ArtifactManager.Forms;
 
 namespace ArtifactManager.FormsHandle
@@ -44,6 +46,7 @@ namespace ArtifactManager.FormsHandle
         Dictionary<string, string> objAtt = new Dictionary<string, string>();
         List<string> categories = new List<string>();
         List<int> categoryIds = new List<int>();
+
         public HomeHandle()
         {
             objAtt.Add("Dragon", "Cave,Power,Size");
@@ -266,6 +269,7 @@ namespace ArtifactManager.FormsHandle
             this.editObjectButton.Visible = false;
             this.deleteUserButton.Enabled = false;
             this.editUserButton.Enabled = false;
+            this.filterButton.Visible = false;
             this.filters.Visible = false;
 
             whatIsShown = 3;
@@ -501,22 +505,48 @@ namespace ArtifactManager.FormsHandle
             {
                 if(type == "Cave")
                 {
-                    db.Caves.Remove(db.Caves.Where(c => c.Name == name.ToString()).FirstOrDefault());
+                    var cave = db.Caves.SingleOrDefault(c => c.Name == name.ToString());
+                    db.Caves.Remove(cave);
+
+                    string [] caveObj = { "Dragons", "Bats", "Spiders" };
+                    foreach(var obj in caveObj)
+                    {
+                        db.Database.ExecuteSqlCommand("DELETE FROM " + obj + " WHERE Cave_Id = " + cave.Id + ";");
+                    }
+                    db.SaveChanges();
+
                 }
                 else if (type == "Forest")
                 {
-                    db.Forests.Remove(db.Forests.Where(c => c.Name == name.ToString()).FirstOrDefault());
+                    var forest = db.Forests.SingleOrDefault(c => c.Name == name.ToString());
+                    db.Forests.Remove(forest);
+
+                    string[] forestObj = { "Ents", "Wolves", "Giants" };
+                    foreach (var obj in forestObj)
+                    {
+                        db.Database.ExecuteSqlCommand("DELETE FROM " + obj + " WHERE Forest_Id = " + forest.Id + ";");
+                    }
+                    db.SaveChanges();
                 }
                 else if (type == "Tower")
                 {
-                    db.Towers.Remove(db.Towers.Where(c => c.Name == name.ToString()).FirstOrDefault());
+                    var tower = db.Towers.SingleOrDefault(c => c.Name == name.ToString());
+                    db.Towers.Remove(tower);
+
+                    string[] towerObj = { "Knights", "Magus", "Witches" };
+                    foreach (var obj in towerObj)
+                    {
+                        db.Database.ExecuteSqlCommand("DELETE FROM " + obj + " WHERE Tower_Id = " + tower.Id + ";");
+                    }
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
             }
             MessageBox.Show("Category deleted.");
             this.getCategories();
             this.seeAllCategories();
         }
+
+
 
         public void deleteObject()
         {

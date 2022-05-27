@@ -26,6 +26,7 @@ namespace ArtifactManager
                 this.listBox, this.text, this.deleteButton, this.deleteCategory, this.deleteObject, this.editButton, this.editCategoryButton, 
                 this.editObjectButton, this.filterButton, this.filtersListBox);
             this.checkRole();
+
         }
 
         public void checkRole()
@@ -45,12 +46,12 @@ namespace ArtifactManager
 
         private void setButtons(object sender, EventArgs e)
         {
-            if(!role.EditUser) this.editButton.Visible = false;
-            if(!role.EditCategory) this.editCategoryButton.Visible = false;
-            if(!role.EditObject) this.editObjectButton.Visible = false;
-            if(!role.DeleteUser) this.deleteButton.Visible = false;
-            if(!role.DeleteCategory) this.deleteCategory.Visible = false;
-            if(!role.DeleteObject) this.deleteObject.Visible = false;
+            if (!role.EditUser) { this.editButton.Visible = false; }
+            if (!role.EditCategory) { this.editCategoryButton.Visible = false; }
+            if (!role.EditObject) { this.editObjectButton.Visible = false; }
+            if (!role.DeleteUser) { this.deleteButton.Visible = false; }
+            if (!role.DeleteCategory) { this.deleteCategory.Visible = false; }
+            if (!role.DeleteObject) { this.deleteObject.Visible = false; }
         }
 
         private void addObjects()

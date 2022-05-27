@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202205262239547_Added-Roles-Permisions.designer.cs">
       <DependentUpon>202205262239547_Added-Roles-Permisions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205272036535_AddedCascadeDeleteFunction.cs" />
+    <Compile Include="Migrations\202205272036535_AddedCascadeDeleteFunction.designer.cs">
+      <DependentUpon>202205272036535_AddedCascadeDeleteFunction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -242,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205262239547_Added-Roles-Permisions.resx">
       <DependentUpon>202205262239547_Added-Roles-Permisions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205272036535_AddedCascadeDeleteFunction.resx">
+      <DependentUpon>202205272036535_AddedCascadeDeleteFunction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

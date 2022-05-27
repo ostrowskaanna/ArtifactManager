@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,13 +38,10 @@ namespace ArtifactManager.FormsHandle
         {
             using (var db = new CodeFirstContext())
             {
-                var allUsers = db.Users.ToList();
-                foreach (var user in allUsers)
+                var allRoles = db.Roles.ToList();
+                foreach (var role in allRoles)
                 {
-                    if (!listBoxRoles.Items.Contains(user.Role))
-                    {
-                        listBoxRoles.Items.Add(user.Role);
-                    }
+                    listBoxRoles.Items.Add(role.Name);
                 }
             }
         }
@@ -125,19 +123,35 @@ namespace ArtifactManager.FormsHandle
                 MessageBox.Show("User with this username already exists.");
                 return;
             }
+            string password = sha256_hash(textBoxPassword.Text); 
             using (var db = new CodeFirstContext())
             {
                 db.Users.Add(new User()
                 {
                     Name = textBoxUsername.Text,
                     Email = textBoxEmail.Text,
-                    Password = textBoxPassword.Text,
+                    Password = password,
                     Role = listBoxRoles.SelectedItem.ToString()
                 });   
                 db.SaveChanges();
             }
             MessageBox.Show("User added.");
             this.returnToHomePanel();
+        }
+
+        public String sha256_hash(String value)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
+
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+            return Sb.ToString();
         }
     }
 }

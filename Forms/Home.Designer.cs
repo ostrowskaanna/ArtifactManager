@@ -92,7 +92,7 @@
             this.Users});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(737, 28);
+            this.Menu.Size = new System.Drawing.Size(737, 30);
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
             // 
@@ -151,21 +151,21 @@
             // AddNewCave
             // 
             this.AddNewCave.Name = "AddNewCave";
-            this.AddNewCave.Size = new System.Drawing.Size(224, 26);
+            this.AddNewCave.Size = new System.Drawing.Size(198, 26);
             this.AddNewCave.Text = "Add New Cave";
             this.AddNewCave.Click += new System.EventHandler(this.addNewCave);
             // 
             // AddNewForest
             // 
             this.AddNewForest.Name = "AddNewForest";
-            this.AddNewForest.Size = new System.Drawing.Size(224, 26);
+            this.AddNewForest.Size = new System.Drawing.Size(198, 26);
             this.AddNewForest.Text = "Add New Forest";
             this.AddNewForest.Click += new System.EventHandler(this.addNewForest);
             // 
             // AddNewTower
             // 
             this.AddNewTower.Name = "AddNewTower";
-            this.AddNewTower.Size = new System.Drawing.Size(224, 26);
+            this.AddNewTower.Size = new System.Drawing.Size(198, 26);
             this.AddNewTower.Text = "Add New Tower";
             this.AddNewTower.Click += new System.EventHandler(this.addNewTower);
             // 
@@ -359,7 +359,7 @@
             // deleteButton
             // 
             this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(153, 228);
+            this.deleteButton.Location = new System.Drawing.Point(153, 216);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(94, 39);
             this.deleteButton.TabIndex = 9;
@@ -371,7 +371,7 @@
             // editButton
             // 
             this.editButton.Enabled = false;
-            this.editButton.Location = new System.Drawing.Point(368, 228);
+            this.editButton.Location = new System.Drawing.Point(308, 214);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(94, 39);
             this.editButton.TabIndex = 10;
@@ -403,7 +403,7 @@
             // editCategoryButton
             // 
             this.editCategoryButton.Enabled = false;
-            this.editCategoryButton.Location = new System.Drawing.Point(368, 228);
+            this.editCategoryButton.Location = new System.Drawing.Point(308, 216);
             this.editCategoryButton.Name = "editCategoryButton";
             this.editCategoryButton.Size = new System.Drawing.Size(94, 39);
             this.editCategoryButton.TabIndex = 13;
@@ -415,7 +415,7 @@
             // editObjectButton
             // 
             this.editObjectButton.Enabled = false;
-            this.editObjectButton.Location = new System.Drawing.Point(368, 228);
+            this.editObjectButton.Location = new System.Drawing.Point(308, 214);
             this.editObjectButton.Name = "editObjectButton";
             this.editObjectButton.Size = new System.Drawing.Size(94, 39);
             this.editObjectButton.TabIndex = 14;
@@ -426,28 +426,33 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.setButtons);
             // 
             // deleteObject
             // 
-            this.deleteObject.Location = new System.Drawing.Point(153, 228);
+            this.deleteObject.Enabled = false;
+            this.deleteObject.Location = new System.Drawing.Point(153, 214);
             this.deleteObject.Name = "deleteObject";
             this.deleteObject.Size = new System.Drawing.Size(94, 39);
             this.deleteObject.TabIndex = 15;
             this.deleteObject.Text = "Delete";
             this.deleteObject.UseVisualStyleBackColor = true;
+            this.deleteObject.Visible = false;
+            this.deleteObject.Click += new System.EventHandler(this.deleteSelectedItem);
             // 
             // deleteCategory
             // 
             this.deleteCategory.Enabled = false;
-            this.deleteCategory.Location = new System.Drawing.Point(153, 228);
+            this.deleteCategory.Location = new System.Drawing.Point(153, 214);
             this.deleteCategory.Name = "deleteCategory";
             this.deleteCategory.Size = new System.Drawing.Size(94, 39);
             this.deleteCategory.TabIndex = 16;
             this.deleteCategory.Text = "Delete";
             this.deleteCategory.UseVisualStyleBackColor = true;
             this.deleteCategory.Visible = false;
+            this.deleteCategory.Click += new System.EventHandler(this.deleteSelectedItem);
             // 
             // Home
             // 
@@ -522,8 +527,8 @@
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button editCategoryButton;
         private System.Windows.Forms.Button editObjectButton;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button deleteObject;
         private System.Windows.Forms.Button deleteCategory;
+        private System.Windows.Forms.Timer timer1;
     }
 }
