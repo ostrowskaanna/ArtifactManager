@@ -41,7 +41,9 @@ namespace ArtifactManager
                 if(role.AddObject) this.AddNewCategoryObject.Enabled = true;
                 else this.AddNewCategoryObject.Enabled = false;
                 if(role.AddUser) this.AddNewUser.Enabled = true;
-                else this.AddNewUser.Enabled = false;                
+                else this.AddNewUser.Enabled = false;     
+                if(role.AddRole) this.AddRole.Enabled = true;
+                else this.AddRole.Enabled= false;
             }
         }
 
@@ -50,9 +52,11 @@ namespace ArtifactManager
             if (!role.EditUser) { this.editButton.Visible = false; }
             if (!role.EditCategory) { this.editCategoryButton.Visible = false; }
             if (!role.EditObject) { this.editObjectButton.Visible = false; }
+            if (!role.EditRole) { this.editRole.Visible = false; }
             if (!role.DeleteUser) { this.deleteButton.Visible = false; }
             if (!role.DeleteCategory) { this.deleteCategory.Visible = false; }
             if (!role.DeleteObject) { this.deleteObject.Visible = false; }
+            if (!role.DeleteRole) { this.deleteRole.Visible = false; }
         }
 
         private void addObjects()

@@ -55,7 +55,9 @@
             this.Users = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewUser = new System.Windows.Forms.ToolStripMenuItem();
             this.SeeAllUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Roles = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddRole = new System.Windows.Forms.ToolStripMenuItem();
+            this.SeeRoles = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxOldPassword = new System.Windows.Forms.TextBox();
@@ -72,8 +74,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.deleteObject = new System.Windows.Forms.Button();
             this.deleteCategory = new System.Windows.Forms.Button();
-            this.addNewRoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seeAllRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRole = new System.Windows.Forms.Button();
             this.editRole = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
@@ -95,10 +95,10 @@
             this.MyProfile,
             this.MyFigures,
             this.Users,
-            this.rolesToolStripMenuItem});
+            this.Roles});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(737, 28);
+            this.Menu.Size = new System.Drawing.Size(737, 30);
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
             // 
@@ -109,7 +109,7 @@
             this.ChangePassword,
             this.LogOut});
             this.MyProfile.Name = "MyProfile";
-            this.MyProfile.Size = new System.Drawing.Size(90, 24);
+            this.MyProfile.Size = new System.Drawing.Size(90, 26);
             this.MyProfile.Text = "My Profile";
             // 
             // ProfileDetails
@@ -141,7 +141,7 @@
             this.SeeAllCategories,
             this.SeeAllObjects});
             this.MyFigures.Name = "MyFigures";
-            this.MyFigures.Size = new System.Drawing.Size(70, 24);
+            this.MyFigures.Size = new System.Drawing.Size(70, 26);
             this.MyFigures.Text = "Figures";
             // 
             // AddNewCategory
@@ -274,7 +274,7 @@
             this.AddNewUser,
             this.SeeAllUsers});
             this.Users.Name = "Users";
-            this.Users.Size = new System.Drawing.Size(58, 24);
+            this.Users.Size = new System.Drawing.Size(58, 26);
             this.Users.Text = "Users";
             // 
             // AddNewUser
@@ -291,14 +291,28 @@
             this.SeeAllUsers.Text = "See All Users";
             this.SeeAllUsers.Click += new System.EventHandler(this.seeAllUsers);
             // 
-            // rolesToolStripMenuItem
+            // Roles
             // 
-            this.rolesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewRoleToolStripMenuItem,
-            this.seeAllRolesToolStripMenuItem});
-            this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
-            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
-            this.rolesToolStripMenuItem.Text = "Roles";
+            this.Roles.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddRole,
+            this.SeeRoles});
+            this.Roles.Name = "Roles";
+            this.Roles.Size = new System.Drawing.Size(59, 26);
+            this.Roles.Text = "Roles";
+            // 
+            // AddRole
+            // 
+            this.AddRole.Name = "AddRole";
+            this.AddRole.Size = new System.Drawing.Size(224, 26);
+            this.AddRole.Text = "Add New Role";
+            this.AddRole.Click += new System.EventHandler(this.addNewRole);
+            // 
+            // SeeRoles
+            // 
+            this.SeeRoles.Name = "SeeRoles";
+            this.SeeRoles.Size = new System.Drawing.Size(224, 26);
+            this.SeeRoles.Text = "See All Roles";
+            this.SeeRoles.Click += new System.EventHandler(this.seeAllRoles);
             // 
             // label1
             // 
@@ -469,20 +483,6 @@
             this.deleteCategory.Visible = false;
             this.deleteCategory.Click += new System.EventHandler(this.deleteSelectedItem);
             // 
-            // addNewRoleToolStripMenuItem
-            // 
-            this.addNewRoleToolStripMenuItem.Name = "addNewRoleToolStripMenuItem";
-            this.addNewRoleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.addNewRoleToolStripMenuItem.Text = "Add New Role";
-            this.addNewRoleToolStripMenuItem.Click += new System.EventHandler(this.addNewRole);
-            // 
-            // seeAllRolesToolStripMenuItem
-            // 
-            this.seeAllRolesToolStripMenuItem.Name = "seeAllRolesToolStripMenuItem";
-            this.seeAllRolesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.seeAllRolesToolStripMenuItem.Text = "See All Roles";
-            this.seeAllRolesToolStripMenuItem.Click += new System.EventHandler(this.seeAllRoles);
-            // 
             // deleteRole
             // 
             this.deleteRole.Enabled = false;
@@ -585,9 +585,9 @@
         private System.Windows.Forms.Button deleteObject;
         private System.Windows.Forms.Button deleteCategory;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewRoleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seeAllRolesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Roles;
+        private System.Windows.Forms.ToolStripMenuItem AddRole;
+        private System.Windows.Forms.ToolStripMenuItem SeeRoles;
         private System.Windows.Forms.Button deleteRole;
         private System.Windows.Forms.Button editRole;
     }

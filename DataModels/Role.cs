@@ -24,5 +24,9 @@ namespace ArtifactManager.DataModels
         public bool AddUser { get; set; }
         public bool EditUser { get; set; }
         public bool DeleteUser { get; set; }
+        public bool AddRole { get; set; }
+        public bool EditRole { get; set; }
+        public bool DeleteRole { get; set; }
+
     }
 }

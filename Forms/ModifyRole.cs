@@ -16,13 +16,18 @@ namespace ArtifactManager.Forms
     {
 
         Role roleToModify;
+        string role;
+        string username;
         ModifyRoleHandle modifyRoleHandle = new ModifyRoleHandle();
 
-        public ModifyRole(Role roleToModify_)
+        public ModifyRole(Role roleToModify_, string role_, string username_)
         {
             InitializeComponent();
             roleToModify = roleToModify_;
-            modifyRoleHandle.getModifyRoleForm();
+            role = role_;
+            username = username_;
+            modifyRoleHandle.getModifyRoleForm(this.roleLabel, this.permisionsListBox, this.returnButton, 
+                this.changeButton, this.roleToModify, this.role, this.username);
         }
     }
 }

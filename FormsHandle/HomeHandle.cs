@@ -643,7 +643,7 @@ namespace ArtifactManager.FormsHandle
                 using(var db = new CodeFirstContext())
                 {
                     db.Roles.Remove(db.Roles.Where(r => r.Name == roleToDelete.ToString()).FirstOrDefault());
-                    db.Database.ExecuteSqlCommand("DELETE FROM Users WHERE Role = " + roleToDelete.ToString() + ";");
+                    db.Database.ExecuteSqlCommand("DELETE FROM Users WHERE Role = '" + roleToDelete.ToString() + "';");
                     db.SaveChanges();
                 }
                 MessageBox.Show("Role deleted.");
@@ -702,7 +702,8 @@ namespace ArtifactManager.FormsHandle
                 roleToModify = db.Roles.FirstOrDefault(u => u.Name == role);
             }
             this.Hide();
-
+            ModifyRole modifyRoleForm = new ModifyRole(roleToModify, role, username);
+            modifyRoleForm.ShowDialog();
             this.Close();
         }
 
@@ -740,7 +741,9 @@ namespace ArtifactManager.FormsHandle
 
         public void addNewRole()
         {
-
+            home.Hide();
+            NewRole newRole = new NewRole(this.username);
+            home.Close();
         }
 
         public void seeAllRoles()

@@ -28,19 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.roleLabel = new System.Windows.Forms.Label();
+            this.permisionsListBox = new System.Windows.Forms.CheckedListBox();
+            this.returnButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // roleLabel
+            // 
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Location = new System.Drawing.Point(77, 45);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(42, 16);
+            this.roleLabel.TabIndex = 0;
+            this.roleLabel.Text = "Role: ";
+            // 
+            // permisionsListBox
+            // 
+            this.permisionsListBox.FormattingEnabled = true;
+            this.permisionsListBox.Location = new System.Drawing.Point(30, 73);
+            this.permisionsListBox.Name = "permisionsListBox";
+            this.permisionsListBox.Size = new System.Drawing.Size(218, 225);
+            this.permisionsListBox.TabIndex = 1;
+            // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(30, 316);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(105, 44);
+            this.returnButton.TabIndex = 2;
+            this.returnButton.Text = "Return";
+            this.returnButton.UseVisualStyleBackColor = true;
+            // 
+            // changeButton
+            // 
+            this.changeButton.Location = new System.Drawing.Point(141, 316);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(107, 44);
+            this.changeButton.TabIndex = 3;
+            this.changeButton.Text = "Change";
+            this.changeButton.UseVisualStyleBackColor = true;
             // 
             // ModifyRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 441);
+            this.ClientSize = new System.Drawing.Size(306, 441);
+            this.Controls.Add(this.changeButton);
+            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.permisionsListBox);
+            this.Controls.Add(this.roleLabel);
             this.Name = "ModifyRole";
             this.Text = "ModifyRole";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label roleLabel;
+        private System.Windows.Forms.CheckedListBox permisionsListBox;
+        private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Button changeButton;
     }
 }

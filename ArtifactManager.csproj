@@ -80,6 +80,9 @@
     <Compile Include="FormsHandle\ModifyObjectHandle.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormsHandle\ModifyRoleHandle.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormsHandle\ModifyUserHandle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +130,12 @@
     </Compile>
     <Compile Include="Forms\NewCategoryObject.Designer.cs">
       <DependentUpon>NewCategoryObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewRole.Designer.cs">
+      <DependentUpon>NewRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202205181454030_Initial.cs" />
     <Compile Include="Migrations\202205181454030_Initial.designer.cs">
@@ -192,6 +201,10 @@
     <Compile Include="Migrations\202205272036535_AddedCascadeDeleteFunction.designer.cs">
       <DependentUpon>202205272036535_AddedCascadeDeleteFunction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207131003491_RoleTableModified.cs" />
+    <Compile Include="Migrations\202207131003491_RoleTableModified.designer.cs">
+      <DependentUpon>202207131003491_RoleTableModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,11 +224,17 @@
     <EmbeddedResource Include="Forms\ModifyObject.resx">
       <DependentUpon>ModifyObject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ModifyRole.resx">
+      <DependentUpon>ModifyRole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewCategory.resx">
       <DependentUpon>NewCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewCategoryObject.resx">
       <DependentUpon>NewCategoryObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewRole.resx">
+      <DependentUpon>NewRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205181454030_Initial.resx">
       <DependentUpon>202205181454030_Initial.cs</DependentUpon>
@@ -255,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205272036535_AddedCascadeDeleteFunction.resx">
       <DependentUpon>202205272036535_AddedCascadeDeleteFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131003491_RoleTableModified.resx">
+      <DependentUpon>202207131003491_RoleTableModified.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
