@@ -23,8 +23,9 @@ namespace ArtifactManager
             username = username_;
             homeHandle.getHomeForm(this, this.label1, this.label2,
                 this.textBoxOldPassword, this.textBoxNewPassword, this.confirmButton, this.username, this.Info,
-                this.listBox, this.text, this.deleteButton, this.deleteCategory, this.deleteObject, this.editButton, this.editCategoryButton, 
-                this.editObjectButton, this.filterButton, this.filtersListBox);
+                this.listBox, this.text, this.deleteButton, this.deleteCategory, this.deleteObject, this.deleteRole,
+                this.editButton, this.editCategoryButton, this.editObjectButton, this.editRole,
+                this.filterButton, this.filtersListBox);
             this.checkRole();
 
         }
@@ -298,5 +299,14 @@ namespace ArtifactManager
             homeHandle.filterClick();
         }
 
+        private void addNewRole(object sender, EventArgs e)
+        {
+            homeHandle.addNewRole();
+        }
+
+        private void seeAllRoles(object sender, EventArgs e)
+        {
+            homeHandle.seeAllRoles();
+        }
     }
 }

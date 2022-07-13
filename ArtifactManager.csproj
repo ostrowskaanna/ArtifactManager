@@ -110,6 +110,12 @@
     <Compile Include="Forms\ModifyObject.Designer.cs">
       <DependentUpon>ModifyObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ModifyRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModifyRole.Designer.cs">
+      <DependentUpon>ModifyRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewCategory.cs">
       <SubType>Form</SubType>
     </Compile>

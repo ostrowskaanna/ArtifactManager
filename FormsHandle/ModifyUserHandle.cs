@@ -40,7 +40,7 @@ namespace ArtifactManager.FormsHandle
         {
             textBoxUsername.Text = userToModify.Name;
             textBoxEmail.Text = userToModify.Email;
-            textBoxPassword.Text = userToModify.Password;
+            //textBoxPassword.Text = userToModify.Password;
             using(var db = new CodeFirstContext())
             {
                 int i = 0;
@@ -71,7 +71,7 @@ namespace ArtifactManager.FormsHandle
         
         public void usernameChanged()
         {
-            if (textBoxUsername.Text == userToModify.Name)
+            if (textBoxUsername.Text == userToModify.Name || textBoxUsername.Text.Count() == 0)
             {
                 changeButton.Enabled = false;
             }
@@ -84,7 +84,7 @@ namespace ArtifactManager.FormsHandle
 
         public void emailChanged()
         {
-            if (textBoxEmail.Text == userToModify.Email)
+            if (textBoxEmail.Text == userToModify.Email || textBoxEmail.Text.Count() == 0)
             {
                 changeButton.Enabled = false;
             }
@@ -96,7 +96,7 @@ namespace ArtifactManager.FormsHandle
 
         public void passwordChanged()
         {
-            if (textBoxPassword.Text == userToModify.Password)
+            if (textBoxPassword.Text.Count() == 0)
             {
                 changeButton.Enabled = false;
             }

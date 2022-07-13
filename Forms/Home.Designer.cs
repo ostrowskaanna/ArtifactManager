@@ -55,6 +55,7 @@
             this.Users = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewUser = new System.Windows.Forms.ToolStripMenuItem();
             this.SeeAllUsers = new System.Windows.Forms.ToolStripMenuItem();
+            this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxOldPassword = new System.Windows.Forms.TextBox();
@@ -71,6 +72,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.deleteObject = new System.Windows.Forms.Button();
             this.deleteCategory = new System.Windows.Forms.Button();
+            this.addNewRoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seeAllRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRole = new System.Windows.Forms.Button();
+            this.editRole = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,10 +94,11 @@
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MyProfile,
             this.MyFigures,
-            this.Users});
+            this.Users,
+            this.rolesToolStripMenuItem});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(737, 30);
+            this.Menu.Size = new System.Drawing.Size(737, 28);
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
             // 
@@ -274,16 +280,25 @@
             // AddNewUser
             // 
             this.AddNewUser.Name = "AddNewUser";
-            this.AddNewUser.Size = new System.Drawing.Size(187, 26);
+            this.AddNewUser.Size = new System.Drawing.Size(224, 26);
             this.AddNewUser.Text = "Add New User";
             this.AddNewUser.Click += new System.EventHandler(this.addNewUser);
             // 
             // SeeAllUsers
             // 
             this.SeeAllUsers.Name = "SeeAllUsers";
-            this.SeeAllUsers.Size = new System.Drawing.Size(187, 26);
+            this.SeeAllUsers.Size = new System.Drawing.Size(224, 26);
             this.SeeAllUsers.Text = "See All Users";
             this.SeeAllUsers.Click += new System.EventHandler(this.seeAllUsers);
+            // 
+            // rolesToolStripMenuItem
+            // 
+            this.rolesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewRoleToolStripMenuItem,
+            this.seeAllRolesToolStripMenuItem});
+            this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
+            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.rolesToolStripMenuItem.Text = "Roles";
             // 
             // label1
             // 
@@ -359,9 +374,9 @@
             // deleteButton
             // 
             this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(153, 216);
+            this.deleteButton.Location = new System.Drawing.Point(164, 216);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(94, 39);
+            this.deleteButton.Size = new System.Drawing.Size(94, 36);
             this.deleteButton.TabIndex = 9;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -433,7 +448,7 @@
             // deleteObject
             // 
             this.deleteObject.Enabled = false;
-            this.deleteObject.Location = new System.Drawing.Point(153, 214);
+            this.deleteObject.Location = new System.Drawing.Point(164, 217);
             this.deleteObject.Name = "deleteObject";
             this.deleteObject.Size = new System.Drawing.Size(94, 39);
             this.deleteObject.TabIndex = 15;
@@ -445,20 +460,60 @@
             // deleteCategory
             // 
             this.deleteCategory.Enabled = false;
-            this.deleteCategory.Location = new System.Drawing.Point(153, 214);
+            this.deleteCategory.Location = new System.Drawing.Point(164, 218);
             this.deleteCategory.Name = "deleteCategory";
-            this.deleteCategory.Size = new System.Drawing.Size(94, 39);
+            this.deleteCategory.Size = new System.Drawing.Size(94, 37);
             this.deleteCategory.TabIndex = 16;
             this.deleteCategory.Text = "Delete";
             this.deleteCategory.UseVisualStyleBackColor = true;
             this.deleteCategory.Visible = false;
             this.deleteCategory.Click += new System.EventHandler(this.deleteSelectedItem);
             // 
+            // addNewRoleToolStripMenuItem
+            // 
+            this.addNewRoleToolStripMenuItem.Name = "addNewRoleToolStripMenuItem";
+            this.addNewRoleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addNewRoleToolStripMenuItem.Text = "Add New Role";
+            this.addNewRoleToolStripMenuItem.Click += new System.EventHandler(this.addNewRole);
+            // 
+            // seeAllRolesToolStripMenuItem
+            // 
+            this.seeAllRolesToolStripMenuItem.Name = "seeAllRolesToolStripMenuItem";
+            this.seeAllRolesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.seeAllRolesToolStripMenuItem.Text = "See All Roles";
+            this.seeAllRolesToolStripMenuItem.Click += new System.EventHandler(this.seeAllRoles);
+            // 
+            // deleteRole
+            // 
+            this.deleteRole.Enabled = false;
+            this.deleteRole.Location = new System.Drawing.Point(164, 216);
+            this.deleteRole.Name = "deleteRole";
+            this.deleteRole.Size = new System.Drawing.Size(94, 38);
+            this.deleteRole.TabIndex = 17;
+            this.deleteRole.Text = "Delete";
+            this.deleteRole.UseVisualStyleBackColor = true;
+            this.deleteRole.Visible = false;
+            this.deleteRole.Click += new System.EventHandler(this.deleteSelectedItem);
+            // 
+            // editRole
+            // 
+            this.editRole.Enabled = false;
+            this.editRole.Location = new System.Drawing.Point(308, 215);
+            this.editRole.Name = "editRole";
+            this.editRole.Size = new System.Drawing.Size(94, 39);
+            this.editRole.TabIndex = 18;
+            this.editRole.Text = "Edit";
+            this.editRole.UseVisualStyleBackColor = true;
+            this.editRole.Visible = false;
+            this.editRole.Click += new System.EventHandler(this.editSelectedItem);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 282);
+            this.Controls.Add(this.editRole);
+            this.Controls.Add(this.deleteRole);
             this.Controls.Add(this.deleteCategory);
             this.Controls.Add(this.deleteObject);
             this.Controls.Add(this.editObjectButton);
@@ -530,5 +585,10 @@
         private System.Windows.Forms.Button deleteObject;
         private System.Windows.Forms.Button deleteCategory;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewRoleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seeAllRolesToolStripMenuItem;
+        private System.Windows.Forms.Button deleteRole;
+        private System.Windows.Forms.Button editRole;
     }
 }

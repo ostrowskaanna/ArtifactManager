@@ -24,9 +24,11 @@ namespace ArtifactManager.FormsHandle
         Button deleteUserButton;
         Button deleteCategoryButton;
         Button deleteObjectButton;
+        Button deleteRoleButton;
         Button editUserButton;
         Button editCategoryButton;
         Button editObjectButton;
+        Button editRoleButton;
         Button filterButton;
         CheckedListBox filters;
 
@@ -63,8 +65,8 @@ namespace ArtifactManager.FormsHandle
         public void getHomeForm(Home home_, Label label1_, Label label2_,
             TextBox textBoxOldPassword_, TextBox textBoxNewPasword_, Button confirmButton_, string username_,
             Label Info_, ListBox listBox_, Label text_, Button deleteButton_, Button deleteCategoryButton_,
-            Button deleteObjectButton_, Button editUserButton_, Button editCategoryButton_,
-            Button editObjectButton_, Button filterButton_, 
+            Button deleteObjectButton_,  Button deleteRoleButton_, Button editUserButton_, Button editCategoryButton_,
+            Button editObjectButton_, Button editRoleButton_, Button filterButton_, 
             CheckedListBox filters_)
         {
             home = home_;
@@ -82,9 +84,11 @@ namespace ArtifactManager.FormsHandle
             deleteUserButton = deleteButton_;
             deleteCategoryButton = deleteCategoryButton_;
             deleteObjectButton = deleteObjectButton_;
+            deleteRoleButton = deleteRoleButton_;
             editUserButton = editUserButton_;
             editCategoryButton = editCategoryButton_;
             editObjectButton = editObjectButton_;
+            editRoleButton = editRoleButton_;
             filterButton = filterButton_;
             filters = filters_;
             this.getCategories();
@@ -130,11 +134,14 @@ namespace ArtifactManager.FormsHandle
             this.deleteUserButton.Visible = false;
             this.deleteCategoryButton.Visible = false;
             this.deleteObjectButton.Visible = false;
+            this.deleteRoleButton.Visible = false;
             this.editUserButton.Visible = false;
             this.editCategoryButton.Visible = false;
             this.editObjectButton.Visible = false;
+            this.editRoleButton.Visible = false;
             this.filterButton.Visible = false;
             this.filters.Visible = false;
+            this.confirmButton.Visible = false;
 
             using (var db = new CodeFirstContext())
             {
@@ -166,9 +173,11 @@ namespace ArtifactManager.FormsHandle
             this.deleteUserButton.Visible = false;
             this.deleteCategoryButton.Visible = false;
             this.deleteObjectButton.Visible = false;
+            this.deleteRoleButton.Visible = false;
             this.editUserButton.Visible = false;
             this.editCategoryButton.Visible = false;
             this.editObjectButton.Visible = false;
+            this.editRoleButton.Visible = false;
             this.filterButton.Visible = false;
             this.filters.Visible = false;
         }
@@ -264,9 +273,11 @@ namespace ArtifactManager.FormsHandle
             this.deleteUserButton.Visible = true;
             this.deleteCategoryButton.Visible = false;
             this.deleteObjectButton.Visible = false;
+            this.deleteRoleButton.Visible = false;
             this.editUserButton.Visible = true;
             this.editCategoryButton.Visible = false;
             this.editObjectButton.Visible = false;
+            this.editRoleButton.Visible = false;
             this.deleteUserButton.Enabled = false;
             this.editUserButton.Enabled = false;
             this.filterButton.Visible = false;
@@ -305,9 +316,11 @@ namespace ArtifactManager.FormsHandle
             this.deleteUserButton.Visible = false;
             this.deleteCategoryButton.Visible = true;
             this.deleteObjectButton.Visible = false;
+            this.deleteRoleButton.Visible = false;
             this.editUserButton.Visible = false;
             this.editCategoryButton.Visible = true;
             this.editObjectButton.Visible = false;
+            this.editRoleButton.Visible = false;
             this.filterButton.Visible = true;
             this.deleteCategoryButton.Enabled = false;
             this.editCategoryButton.Enabled = false;
@@ -338,9 +351,11 @@ namespace ArtifactManager.FormsHandle
             this.deleteUserButton.Visible = false;
             this.deleteCategoryButton.Visible = false;
             this.deleteObjectButton.Visible = true;
+            this.deleteRoleButton.Visible = false;
             this.editUserButton.Visible = false;
             this.editCategoryButton.Visible = false;
             this.editObjectButton.Visible = true;
+            this.editRoleButton.Visible = false;
             this.filterButton.Visible= true;
             this.deleteObjectButton.Enabled = false;
             this.editObjectButton.Enabled = false;
@@ -480,6 +495,7 @@ namespace ArtifactManager.FormsHandle
                 if (whatIsShown == 3){ editUserButton.Enabled = true; deleteUserButton.Enabled = true; }
                 else if (whatIsShown == 1){ editCategoryButton.Enabled = true; deleteCategoryButton.Enabled = true; }
                 else if(whatIsShown == 2){ editObjectButton.Enabled = true; deleteObjectButton.Enabled = true; }
+                else if(whatIsShown == 4) { editRoleButton.Enabled = true; deleteRoleButton.Enabled = true; }
             }
         }
 
@@ -488,6 +504,7 @@ namespace ArtifactManager.FormsHandle
             if (whatIsShown == 1) this.deleteCategory();
             else if (whatIsShown == 2) this.deleteObject();
             else if(whatIsShown == 3) this.deleteUser();
+            else if(whatIsShown == 4) this.deleteRole();
         }
 
         public void deleteCategory()
@@ -614,11 +631,32 @@ namespace ArtifactManager.FormsHandle
             this.seeAllUsers();
         }
 
+        public void deleteRole()
+        {
+            var roleToDelete = listBox.SelectedItem;
+            if (roleToDelete.ToString() == "admin")
+            {
+                MessageBox.Show("You can't delete admin role!");
+            }
+            else
+            {
+                using(var db = new CodeFirstContext())
+                {
+                    db.Roles.Remove(db.Roles.Where(r => r.Name == roleToDelete.ToString()).FirstOrDefault());
+                    db.Database.ExecuteSqlCommand("DELETE FROM Users WHERE Role = " + roleToDelete.ToString() + ";");
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Role deleted.");
+                this.seeAllRoles();
+            }
+        }
+
         public void editSelectedItem()
         {
-            if(whatIsShown == 1) this.editCategory();
+            if (whatIsShown == 1) this.editCategory();
             else if (whatIsShown == 2) this.editObject();
-            else if(whatIsShown == 3) this.editUser();
+            else if (whatIsShown == 3) this.editUser();
+            else if (whatIsShown == 4) this.editRole();
         }
 
         public void editCategory()
@@ -655,6 +693,19 @@ namespace ArtifactManager.FormsHandle
             this.Close();
         }
 
+        public void editRole()
+        {
+            Role roleToModify;
+            string role = listBox.SelectedItem.ToString();
+            using(var db = new CodeFirstContext())
+            {
+                roleToModify = db.Roles.FirstOrDefault(u => u.Name == role);
+            }
+            this.Hide();
+
+            this.Close();
+        }
+
         public void openNewCategoryForm(int categoryType)
         {
             home.Hide();
@@ -686,5 +737,48 @@ namespace ArtifactManager.FormsHandle
             newObject.ShowDialog();
             home.Close();
         }
+
+        public void addNewRole()
+        {
+
+        }
+
+        public void seeAllRoles()
+        {
+            this.Info.Visible = false;
+            this.label1.Visible = false;
+            this.label2.Visible = false;
+            this.textBoxNewPassword.Visible = false;
+            this.textBoxOldPassword.Visible = false;
+            this.confirmButton.Visible = false;
+            this.listBox.Visible = true;
+            this.text.Visible = true;
+            this.text.Text = "Here are all the roles:";
+            this.deleteUserButton.Visible = false;
+            this.deleteCategoryButton.Visible = false;
+            this.deleteObjectButton.Visible = false;
+            this.deleteRoleButton.Visible = true;
+            this.editUserButton.Visible = false;
+            this.editCategoryButton.Visible = false;
+            this.editObjectButton.Visible = false;
+            this.editRoleButton.Visible = true;
+            this.deleteRoleButton.Enabled = false;
+            this.editRoleButton.Enabled = false;
+            this.filterButton.Visible = false;
+            this.filters.Visible = false;
+
+            whatIsShown = 4;
+
+            listBox.Items.Clear();
+
+            using (var db = new CodeFirstContext())
+            {
+                foreach(var role in db.Roles)
+                {
+                    listBox.Items.Add(role.Name);
+                }
+            }
+        }
+
     }
 }
