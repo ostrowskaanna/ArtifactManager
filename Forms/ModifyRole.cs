@@ -29,5 +29,22 @@ namespace ArtifactManager.Forms
             modifyRoleHandle.getModifyRoleForm(this.roleLabel, this.permisionsListBox, this.returnButton, 
                 this.changeButton, this.roleToModify, this.role, this.username);
         }
+
+        private void returnToHome(object sender, EventArgs e)
+        {
+            modifyRoleHandle.returnToHome();
+        }
+
+        private void changePerms(object sender, EventArgs e)
+        {
+            modifyRoleHandle.changePerms();
+        }
+
+
+        private void checkChanged(object sender, EventArgs e)
+        {
+            int changedIndex = permisionsListBox.Items.IndexOf(sender);
+            modifyRoleHandle.checkChanged(changedIndex);
+        }
     }
 }

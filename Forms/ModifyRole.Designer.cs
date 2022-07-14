@@ -50,6 +50,7 @@
             this.permisionsListBox.Name = "permisionsListBox";
             this.permisionsListBox.Size = new System.Drawing.Size(218, 225);
             this.permisionsListBox.TabIndex = 1;
+            this.permisionsListBox.SelectedIndexChanged += new System.EventHandler(this.checkChanged);
             // 
             // returnButton
             // 
@@ -59,15 +60,18 @@
             this.returnButton.TabIndex = 2;
             this.returnButton.Text = "Return";
             this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnToHome);
             // 
             // changeButton
             // 
+            this.changeButton.Enabled = false;
             this.changeButton.Location = new System.Drawing.Point(141, 316);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(107, 44);
             this.changeButton.TabIndex = 3;
             this.changeButton.Text = "Change";
             this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changePerms);
             // 
             // ModifyRole
             // 

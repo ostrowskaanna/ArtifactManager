@@ -19,6 +19,8 @@ namespace ArtifactManager.FormsHandle
         string role;
         string username;
 
+        bool [] changedParams;
+
         public void getModifyRoleForm(Label roleLabel_, CheckedListBox permissions_, Button returnButton_, 
             Button changeButton_, Role roleToModify_, string role_, string username_)
         {
@@ -29,30 +31,69 @@ namespace ArtifactManager.FormsHandle
             roleToModify = roleToModify_;
             role = role_;
             username = username_;
-            this.set();
+            changedParams = this.setInitialPerms();
         }
 
-        public void set()
+        public bool [] setInitialPerms()
         {
             roleLabel.Text = "Role: " + role;
 
-            using(var db = new CodeFirstContext())
+            using (var db = new CodeFirstContext())
             {
                 var names = typeof(Role).GetProperties()
                         .Select(property => property.Name)
                         .ToArray();
 
+                
+
                 for (int i = 2; i < names.Length; i++)
                 {
                     permissions.Items.Add(names[i]);
-                    
-                    var perm = db.Roles.SqlQuery("SELECT " + names[i] + " FROM Roles WHERE Name = '" + role + "';").FirstOrDefault();
-                    MessageBox.Show(perm.ToString());
-                   
-                   
-                    //if (perm == 1) permissions.SetItemCheckState(i, CheckState.Checked);
+
+                    bool perm = db.Database.SqlQuery<bool>("SELECT " + names[i] + " FROM Roles WHERE Name='" + role + "'").FirstOrDefault();
+                    if (perm) permissions.SetItemCheckState(i-2, CheckState.Checked);
+
                 }
+
+                bool [] paramsChanged = new bool[permissions.Items.Count];
+                for (int i = 0; i < paramsChanged.Length; i++)
+                {
+                    paramsChanged[i] = false;
+                }
+                return paramsChanged;
             }
+            
+        }
+
+        public void checkChanged(int changedIndex)
+        {
+            MessageBox.Show(changedIndex.ToString());
+            //changedParams[changedIndex] = !changedParams[changedIndex];
+            //if (checkIfAnyParamsIsChanged()) changeButton.Enabled = true;
+            //else changeButton.Enabled = false;
+        }
+
+
+        public bool checkIfAnyParamsIsChanged()
+        {
+            for(int i = 0; i < changedParams.Length; i++)
+            {
+                if (changedParams[i]) return true; 
+            }
+            return false;
+        }
+
+        public void changePerms()
+        {
+
+        }
+
+        public void returnToHome()
+        {
+            this.Hide();
+            Home home = new Home(username);
+            home.ShowDialog();
+            this.Close();
         }
     }
 }
