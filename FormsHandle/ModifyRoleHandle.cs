@@ -19,7 +19,7 @@ namespace ArtifactManager.FormsHandle
         string role;
         string username;
 
-        bool [] changedParams;
+        bool [] initialParams;
 
         public void getModifyRoleForm(Label roleLabel_, CheckedListBox permissions_, Button returnButton_, 
             Button changeButton_, Role roleToModify_, string role_, string username_)
@@ -31,7 +31,7 @@ namespace ArtifactManager.FormsHandle
             roleToModify = roleToModify_;
             role = role_;
             username = username_;
-            changedParams = this.setInitialPerms();
+            initialParams = this.setInitialPerms();
         }
 
         public bool [] setInitialPerms()
@@ -44,48 +44,53 @@ namespace ArtifactManager.FormsHandle
                         .Select(property => property.Name)
                         .ToArray();
 
-                
+                bool[] permsBeforeChange = new bool[names.Length - 2];
 
                 for (int i = 2; i < names.Length; i++)
                 {
                     permissions.Items.Add(names[i]);
 
                     bool perm = db.Database.SqlQuery<bool>("SELECT " + names[i] + " FROM Roles WHERE Name='" + role + "'").FirstOrDefault();
-                    if (perm) permissions.SetItemCheckState(i-2, CheckState.Checked);
-
+                    if (perm) permissions.SetItemCheckState(i - 2, CheckState.Checked);
+                    permsBeforeChange[i - 2] = perm;
                 }
 
-                bool [] paramsChanged = new bool[permissions.Items.Count];
-                for (int i = 0; i < paramsChanged.Length; i++)
-                {
-                    paramsChanged[i] = false;
-                }
-                return paramsChanged;
+                return permsBeforeChange;
             }
             
         }
 
-        public void checkChanged(int changedIndex)
+        public void checkChanged()
         {
-            MessageBox.Show(changedIndex.ToString());
-            //changedParams[changedIndex] = !changedParams[changedIndex];
-            //if (checkIfAnyParamsIsChanged()) changeButton.Enabled = true;
-            //else changeButton.Enabled = false;
+            changeButton.Enabled = false;
+            MessageBox.Show(initialParams[0].ToString());
+            for (int i = 0; i < permissions.Items.Count; i++)
+            {
+                if(permissions.GetItemChecked(i) != initialParams[i])
+                {
+                    changeButton.Enabled = true;
+                    return;
+                }
+
+            }
         }
 
 
         public bool checkIfAnyParamsIsChanged()
         {
-            for(int i = 0; i < changedParams.Length; i++)
-            {
-                if (changedParams[i]) return true; 
-            }
             return false;
         }
 
         public void changePerms()
         {
+            using(var db = new CodeFirstContext())
+            {
+                for(int i = 0; i < permissions.Items.Count; i++)
+                {
+                    //db.Database.ExecuteSqlCommand("UPDATE Roles SET " + permissions.Items[i].ToString() + );
+                }
 
+            }
         }
 
         public void returnToHome()

@@ -43,8 +43,8 @@ namespace ArtifactManager.Forms
 
         private void checkChanged(object sender, EventArgs e)
         {
-            int changedIndex = permisionsListBox.Items.IndexOf(sender);
-            modifyRoleHandle.checkChanged(changedIndex);
+            
+            modifyRoleHandle.checkChanged();
         }
     }
 }

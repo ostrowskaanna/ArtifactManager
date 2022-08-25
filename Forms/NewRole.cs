@@ -18,5 +18,10 @@ namespace ArtifactManager.Forms
             InitializeComponent();
             username = username_;
         }
+
+        private void returnToHomePanel(object sender, EventArgs e)
+        {
+
+        }
     }
 }

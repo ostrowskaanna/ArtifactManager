@@ -743,6 +743,7 @@ namespace ArtifactManager.FormsHandle
         {
             home.Hide();
             NewRole newRole = new NewRole(this.username);
+            newRole.ShowDialog();
             home.Close();
         }
 

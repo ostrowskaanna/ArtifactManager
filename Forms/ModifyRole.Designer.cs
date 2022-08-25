@@ -50,7 +50,7 @@
             this.permisionsListBox.Name = "permisionsListBox";
             this.permisionsListBox.Size = new System.Drawing.Size(218, 225);
             this.permisionsListBox.TabIndex = 1;
-            this.permisionsListBox.SelectedIndexChanged += new System.EventHandler(this.checkChanged);
+            this.permisionsListBox.Click += new System.EventHandler(this.checkChanged);
             // 
             // returnButton
             // 
