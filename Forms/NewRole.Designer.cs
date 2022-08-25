@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.roleLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.roleTextBox = new System.Windows.Forms.TextBox();
             this.permissionsListBox = new System.Windows.Forms.CheckedListBox();
             this.returnButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -44,12 +44,13 @@
             this.roleLabel.TabIndex = 0;
             this.roleLabel.Text = "Role:";
             // 
-            // textBox1
+            // roleTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 22);
-            this.textBox1.TabIndex = 1;
+            this.roleTextBox.Location = new System.Drawing.Point(104, 40);
+            this.roleTextBox.Name = "roleTextBox";
+            this.roleTextBox.Size = new System.Drawing.Size(151, 22);
+            this.roleTextBox.TabIndex = 1;
+            this.roleTextBox.TextChanged += new System.EventHandler(this.checkIfRoleFilled);
             // 
             // permissionsListBox
             // 
@@ -78,6 +79,7 @@
             this.addButton.TabIndex = 4;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addNewRole);
             // 
             // NewRole
             // 
@@ -87,7 +89,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.permissionsListBox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.roleTextBox);
             this.Controls.Add(this.roleLabel);
             this.Name = "NewRole";
             this.Text = "NewRole";
@@ -99,7 +101,7 @@
         #endregion
 
         private System.Windows.Forms.Label roleLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox roleTextBox;
         private System.Windows.Forms.CheckedListBox permissionsListBox;
         private System.Windows.Forms.Button returnButton;
         private System.Windows.Forms.Button addButton;
