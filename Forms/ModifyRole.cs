@@ -26,7 +26,7 @@ namespace ArtifactManager.Forms
             roleToModify = roleToModify_;
             role = role_;
             username = username_;
-            modifyRoleHandle.getModifyRoleForm(this.roleLabel, this.permisionsListBox, this.returnButton, 
+            modifyRoleHandle.getModifyRoleForm(this, this.roleLabel, this.permisionsListBox, this.returnButton, 
                 this.changeButton, this.roleToModify, this.role, this.username);
         }
 

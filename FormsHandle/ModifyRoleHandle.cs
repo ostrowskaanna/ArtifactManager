@@ -1,4 +1,5 @@
 ﻿using ArtifactManager.DataModels;
+using ArtifactManager.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ArtifactManager.FormsHandle
 {
     public class ModifyRoleHandle : Form
     {
+        ModifyRole modifyRole;
 
         Label roleLabel;
         CheckedListBox permissions;
@@ -19,11 +21,13 @@ namespace ArtifactManager.FormsHandle
         string role;
         string username;
 
+        string[] names;
         bool [] initialParams;
 
-        public void getModifyRoleForm(Label roleLabel_, CheckedListBox permissions_, Button returnButton_, 
+        public void getModifyRoleForm(ModifyRole modifyRole_, Label roleLabel_, CheckedListBox permissions_, Button returnButton_, 
             Button changeButton_, Role roleToModify_, string role_, string username_)
         {
+            modifyRole = modifyRole_;
             roleLabel = roleLabel_;
             permissions = permissions_;
             returnButton = returnButton_;
@@ -40,7 +44,7 @@ namespace ArtifactManager.FormsHandle
 
             using (var db = new CodeFirstContext())
             {
-                var names = typeof(Role).GetProperties()
+                names = typeof(Role).GetProperties()
                         .Select(property => property.Name)
                         .ToArray();
 
@@ -63,7 +67,6 @@ namespace ArtifactManager.FormsHandle
         public void checkChanged()
         {
             changeButton.Enabled = false;
-            MessageBox.Show(initialParams[0].ToString());
             for (int i = 0; i < permissions.Items.Count; i++)
             {
                 if(permissions.GetItemChecked(i) != initialParams[i])
@@ -71,14 +74,7 @@ namespace ArtifactManager.FormsHandle
                     changeButton.Enabled = true;
                     return;
                 }
-
             }
-        }
-
-
-        public bool checkIfAnyParamsIsChanged()
-        {
-            return false;
         }
 
         public void changePerms()
@@ -87,18 +83,22 @@ namespace ArtifactManager.FormsHandle
             {
                 for(int i = 0; i < permissions.Items.Count; i++)
                 {
-                    //db.Database.ExecuteSqlCommand("UPDATE Roles SET " + permissions.Items[i].ToString() + );
+                    db.Database.ExecuteSqlCommand("UPDATE Roles SET " + names[i+2] + "='" + permissions.GetItemChecked(i).ToString() + 
+                        "' WHERE Name='" + role + "';");
                 }
-
+                db.SaveChanges();
             }
+            MessageBox.Show("Permissions have been changed.");
+            this.returnToHome();
+
         }
 
         public void returnToHome()
         {
-            this.Hide();
+            modifyRole.Hide();
             Home home = new Home(username);
             home.ShowDialog();
-            this.Close();
+            modifyRole.Close();
         }
     }
 }
