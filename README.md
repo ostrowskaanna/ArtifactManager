@@ -1,2 +1,2 @@
 # ArtifactManager
-an implementation of game's artifact manager in C# 
+an implementation of program managing game's artifacts in C# 
